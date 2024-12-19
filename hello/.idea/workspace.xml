@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="L1 hw">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BinarySearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RandomWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/RandomWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barnsley.class" beforeDir="false" afterPath="$PROJECT_DIR$/Barnsley.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollidingDisks.class" beforeDir="false" afterPath="$PROJECT_DIR$/CollidingDisks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/HelloWorld.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +98,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Barnsley.executor": "Run",
+    "Application.BookExample.executor": "Run",
     "Application.CollidingDisks.executor": "Run",
     "Application.HelloWorld.executor": "Run",
     "Application.RandomWord.executor": "Run",
@@ -108,9 +112,16 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.RandomWord">
+  <component name="RunManager" selected="Application.BookExample">
     <configuration name="Barnsley" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Barnsley" />
+      <module name="Algorithms, Part I" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BookExample" />
       <module name="Algorithms, Part I" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,6 +151,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BookExample" />
         <item itemvalue="Application.RandomWord" />
         <item itemvalue="Application.CollidingDisks" />
         <item itemvalue="Application.HelloWorld" />
@@ -194,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734599985712</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="L1 hw">
+      <option name="closed" value="true" />
+      <created>1734604169730</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734604169730</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
