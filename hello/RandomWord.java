@@ -10,18 +10,16 @@ import edu.princeton.cs.algs4.StdRandom;
 public class RandomWord {
     public static void main(String[] args) {
         String output = "";
-        int i = 1;
-        System.out.println(args.length);
-        String word = StdIn.readString();
-        System.out.println(word);
-        while (StdIn.isEmpty()) {
-            System.out.println("Reading word: " + output + " (index " + i + ")");
+        int i = 0;
+        while (!StdIn.isEmpty()) {
+            String word = StdIn.readString();
+            i++;
             if (StdRandom.bernoulli(1.0 / i)) {
                 output = word;
             }
-            i++;
+
         }
-        System.out.println(output);
+        System.out.println("word" + output);
 
     }
 }
