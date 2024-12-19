@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/HelloGoodbye.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RandomWord.java" afterDir="false" />
+    <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="book 1.1 example">
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RandomWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/RandomWord.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +98,7 @@
     "Application.Barnsley.executor": "Run",
     "Application.CollidingDisks.executor": "Run",
     "Application.HelloWorld.executor": "Run",
+    "Application.RandomWord.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -106,7 +109,7 @@
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.CollidingDisks">
+  <component name="RunManager" selected="Application.RandomWord">
     <configuration name="Barnsley" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Barnsley" />
       <module name="Algorithms, Part I" />
@@ -129,8 +132,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RandomWord" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RandomWord" />
+      <module name="Algorithms, Part I" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RandomWord" />
         <item itemvalue="Application.CollidingDisks" />
         <item itemvalue="Application.HelloWorld" />
         <item itemvalue="Application.Barnsley" />
@@ -152,6 +163,31 @@
       <option name="presentableId" value="Default" />
       <updated>1733974042391</updated>
     </task>
+    <task id="LOCAL-00001" summary="Ch1 hw">
+      <option name="closed" value="true" />
+      <created>1733990656365</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733990656365</updated>
+    </task>
+    <task id="LOCAL-00002" summary="book 1.1 example">
+      <option name="closed" value="true" />
+      <created>1734168996960</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734168996960</updated>
+    </task>
+    <task id="LOCAL-00003" summary="book 1.1 example">
+      <option name="closed" value="true" />
+      <created>1734524361333</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734524361333</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -189,6 +225,11 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ch1 hw" />
+    <MESSAGE value="book 1.1 example" />
+    <option name="LAST_COMMIT_MESSAGE" value="book 1.1 example" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
