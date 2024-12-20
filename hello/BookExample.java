@@ -65,6 +65,18 @@ public class BookExample {
         }
     }
 
+    public static void transpoMatrix(int[][] a) {
+        int newCol = a.length; // new col is a's row
+        int newRow = a[0].length;
+
+        for (int j = 0; j < newCol; j++) {
+            for (int i = 0; i < newRow; i++) {
+                System.out.print(a[i][j]);
+            }
+            System.out.println();
+        }
+
+    }
 
     public static void main(String[] args) {
         if (args.length > 0) {
@@ -80,6 +92,13 @@ public class BookExample {
             }
         }
 
-        checkDouble(0.1, 0.2);
+        // checkDouble(0.1, 0.2);
+        int[][] matrix1 = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+        };
+        transpoMatrix(matrix1);
+
     }
 }
