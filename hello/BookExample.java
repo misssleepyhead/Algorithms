@@ -54,8 +54,32 @@ public class BookExample {
         }
     }
 
-    public static void main(String[] args) {
-        plotFunction();
+    public static void checkDouble(double x, double y) {
+        double ans = (x + y) / 2.0;
+        if (ans < 1.0 && ans > 0.0) {
+            System.out.println("True");
 
+        }
+        else {
+            System.out.println("False");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        if (args.length > 0) {
+            // 1.1.3
+            int a = Integer.valueOf(args[0]);
+            int b = Integer.valueOf(args[1]);
+            int c = Integer.valueOf(args[2]);
+            if (a == b && b == c) {
+                System.out.println("Equal");
+            }
+            else {
+                System.out.println("Not equal");
+            }
+        }
+
+        checkDouble(0.1, 0.2);
     }
 }
