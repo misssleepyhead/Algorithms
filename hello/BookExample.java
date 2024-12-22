@@ -5,6 +5,7 @@
  **************************************************************************** */
 
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
 
 public class BookExample {
 
@@ -87,6 +88,24 @@ public class BookExample {
         System.out.println(s);
     }
 
+    // 1.1.12
+    public static void binaryMatrix(int row, int col) {
+        boolean[][] matrix = new boolean[row][col];
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= col; j++) {
+                String value = "";
+                if (matrix[i - 1][j - 1] == true) {
+                    value = "*";
+                }
+                else {
+                    value = "false";
+                }
+                StdOut.printf("( %d, %d, %s)", i, j, value);
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         if (args.length > 0) {
             // 1.1.3
@@ -108,7 +127,7 @@ public class BookExample {
                 { 7, 8, 9 }
         };
         // transpoMatrix(matrix1);
-        printBinary(8);
-
+        // printBinary(8);
+        binaryMatrix(3, 4);
     }
 }
