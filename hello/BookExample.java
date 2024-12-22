@@ -66,6 +66,7 @@ public class BookExample {
         }
     }
 
+    // 1.1.13
     public static void transpoMatrix(int[][] a) {
         int newCol = a.length; // new col is a's row
         int newRow = a[0].length;
@@ -106,6 +107,27 @@ public class BookExample {
         }
     }
 
+    // 1.1.14
+    public static int lg(int N) {
+        int result = 0;
+        while (N >= 2) {
+            N /= 2;
+            result++;
+        }
+        return result;
+    }
+
+    // 1.1.20 a recursive method that compute value of N!
+    public static int ln(int N) {
+        int helper = 0;
+        if (N == 0) {
+            return 0;
+        }
+        else {
+            return N * ln(N - 1);
+        }
+    }
+
     public static void main(String[] args) {
         if (args.length > 0) {
             // 1.1.3
@@ -129,5 +151,7 @@ public class BookExample {
         // transpoMatrix(matrix1);
         // printBinary(8);
         binaryMatrix(3, 4);
+        System.out.println(lg(17));
+        System.out.println(ln(3));
     }
 }
