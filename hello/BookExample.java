@@ -128,6 +128,25 @@ public class BookExample {
         }
     }
 
+    // 1.1.30 create N*N boolean array a[][] such that a[i][j] is true
+    // if i and j are relatively prime(no common factor) and false otherwise
+    public static boolean[][] primeMatrix(int N) {
+        boolean[][] a = new boolean[N][N];
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= N; j++) {
+                if (gcd(i, j) == 1) {
+                    a[i - 1][j - 1] = true;
+                }
+                else {
+                    a[i - 1][j - 1] = false;
+                }
+
+            }
+        }
+        return a;
+    }
+
+
     public static void main(String[] args) {
         if (args.length > 0) {
             // 1.1.3
@@ -153,5 +172,14 @@ public class BookExample {
         binaryMatrix(3, 4);
         System.out.println(lg(17));
         System.out.println(ln(3));
+
+        boolean a[][] = primeMatrix(5);
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(i);
+            for (int j = 0; j < a[0].length; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
