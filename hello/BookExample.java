@@ -78,6 +78,15 @@ public class BookExample {
 
     }
 
+    // 1.1.9 print int binary representation
+    public static void printBinary(int a) {
+        String s = "";
+        for (int n = a; n > 0; n /= 2) {
+            s = (n % 2) + s;
+        }
+        System.out.println(s);
+    }
+
     public static void main(String[] args) {
         if (args.length > 0) {
             // 1.1.3
@@ -98,7 +107,8 @@ public class BookExample {
                 { 4, 5, 6 },
                 { 7, 8, 9 }
         };
-        transpoMatrix(matrix1);
+        // transpoMatrix(matrix1);
+        printBinary(8);
 
     }
 }
