@@ -82,10 +82,24 @@ public class BinarySearch {
 
     }
 
+    // 1.1.29 returns the number of elements that equal with key
+    public static int count(int key, int[] a) {
+        int keyRank = rank(key, a);
+        int smaller = rankSmaller(key, a);
+        return keyRank - smaller;
+    }
+
     public static boolean testRankSmaller() {
         int[] a = { 1, 2, 3, 4, 4, 5, 6, 7, 8 };
         int actual = rankSmaller(4, a);
         int expected = 3;
+        return actual == expected;
+    }
+
+    public static boolean testCount() {
+        int[] a = { 1, 2, 3, 4, 4, 5, 6, 7, 8 };
+        int actual = count(4, a);
+        int expected = 1;
         return actual == expected;
     }
 
@@ -98,6 +112,7 @@ public class BinarySearch {
      */
     public static void main(String[] args) {
         System.out.println(testRankSmaller());
+        System.out.println(testCount());
 
         // // read the integers from a file
         // In in = new In(args[0]);
