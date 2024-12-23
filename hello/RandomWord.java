@@ -19,7 +19,7 @@ public class RandomWord {
             }
 
         }
-        System.out.println("word" + output);
+        System.out.println(output);
 
     }
 }
