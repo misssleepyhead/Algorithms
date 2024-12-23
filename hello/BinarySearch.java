@@ -4,12 +4,6 @@
  *  Last modified:     October 16, 1842
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.Arrays;
-
 /**
  * The {@code BinarySearch} class provides a static method for binary
  * searching for an integer in a sorted array of integers.
@@ -66,6 +60,35 @@ public class BinarySearch {
         return indexOf(a, key);
     }
 
+    // 1.1.29 returns the number of elements that are smaller than the key in the array
+    public static int rankSmaller(int key, int[] a) {
+        int keyRank = rank(key, a);
+        int high = keyRank - 1;
+        int low = 0;
+        if (a[high] < key) {
+            return high;
+        }
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (a[mid] == key) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return low;
+
+    }
+
+    public static boolean testRankSmaller() {
+        int[] a = { 1, 2, 3, 4, 4, 5, 6, 7, 8 };
+        int actual = rankSmaller(4, a);
+        int expected = 3;
+        return actual == expected;
+    }
+
     /**
      * Reads in a sequence of integers from the allowlist file, specified as
      * a command-line argument; reads in integers from standard input;
@@ -74,19 +97,20 @@ public class BinarySearch {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
+        System.out.println(testRankSmaller());
 
-        // read the integers from a file
-        In in = new In(args[0]);
-        int[] allowlist = in.readAllInts();
-
-        // sort the array
-        Arrays.sort(allowlist);
-
-        // read integer key from standard input; print if not in allowlist
-        while (!StdIn.isEmpty()) {
-            int key = StdIn.readInt();
-            if (BinarySearch.indexOf(allowlist, key) == -1)
-                StdOut.println(key);
-        }
+        // // read the integers from a file
+        // In in = new In(args[0]);
+        // int[] allowlist = in.readAllInts();
+        //
+        // // sort the array
+        // Arrays.sort(allowlist);
+        //
+        // // read integer key from standard input; print if not in allowlist
+        // while (!StdIn.isEmpty()) {
+        //     int key = StdIn.readInt();
+        //     if (BinarySearch.indexOf(allowlist, key) == -1)
+        //         StdOut.println(key);
+        // }
     }
 }
