@@ -20,6 +20,25 @@ public class Matrix {
         return product;
     }
 
+    /** Implement matrix multiplication */
+    public static double[][] multi(double[][] a, double[][] b) {
+        int row = a.length;
+        int col = b[0].length;
+        if (a[0].length != b.length) {
+            throw new IllegalArgumentException(
+                    "The column number  of a and row number of b must be the same");
+        }
+        double[][] product = new double[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                for (int k = 0; k < a[0].length; k++) {     // Iterate over the shared dimension
+                    product[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        return product;
+    }
+
     public static void main(String[] args) {
 
     }
