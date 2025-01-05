@@ -32,10 +32,24 @@ public class CheckCircular {
         return s.length() == t.length() && (s + s).indexOf(t) != -1;
     }
 
+    public static String mystery(String s) {
+        int N = s.length();
+        if (N <= 1) {
+            return s;
+        }
+        String a = s.substring(0, N / 2);
+        // System.out.println(a);
+        String b = s.substring(N / 2, N);
+        // System.out.println(b);
+        return mystery(b) + mystery(a);
+    }
+
     public static void main(String[] args) {
         String s = "ACTGACG";
         String t = "TGACGAC";
         System.out.println(checkCircular(s, t));
+        System.out.println(s);
+        System.out.println(mystery("ABCD"));
 
     }
 }
