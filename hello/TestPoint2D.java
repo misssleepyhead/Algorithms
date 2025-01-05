@@ -41,6 +41,11 @@ public class TestPoint2D {
         System.out.printf("Closest pair: %s and %s\n", closestPointA, closestPointB);
         System.out.printf("Distance: %.5f\n", closestDistance);
 
+        // String s = "Hello world";
+        // s.toUpperCase();
+        // s.substring(6, 11);
+        // StdOut.println(s);
+
 
     }
 }
