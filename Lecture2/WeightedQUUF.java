@@ -1,15 +1,17 @@
 
-/**
- * Use id[] to represent components, two element has same root id if
- * they are in the same component*/
-
-public class QuickUnionUF {
+/** Weight quick union
+ * Keep track of the size of the component
+ * when union, connect the smaller component to the larger one*/
+public class WeightedQUUF {
     private int[] id;
+    private int[] size;
 
-    public QuickUnionUF(int N) {
+    public WeightedQUUF(int N) {
         id=new int[N];
+        size = new int[N];
         for(int i=0;i<N;i++){
             id[i] = i;
+            size[i]=1;
         }
     }
     // keep upward looking until the id is itself
@@ -30,7 +32,14 @@ public class QuickUnionUF {
         if(proot==qroot){
             return;
         }
-        id[proot]=qroot;
+        if(size[p]<size[q]){
+            id[proot]=qroot;
+            size[qroot] +=size[proot];
+        }else{
+            size[proot] +=size[qroot];
+            id[qroot]=proot;
+        }
+
     }
 
     public int find(int p){
@@ -40,4 +49,5 @@ public class QuickUnionUF {
     public int count(){
         return id.length;
     }
+
 }
