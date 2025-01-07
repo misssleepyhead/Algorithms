@@ -4,9 +4,80 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="L1 book exercises">
+    <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="L1.2 book practice 1.2.16">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.noai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeInsightSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/lift.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/file.template.settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/includes/File Header.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/AnnotationType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Class.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Enum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Interface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/findbugs-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml.old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/algs4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lift/algs4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lift/checkstyle-coursera.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lift/checkstyle-lift.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lift/checkstyle-suppressions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.lift/spotbugs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms, Part I.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barnsley.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barnsley.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BinarySearch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binomial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckCircular.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollidingDisks.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollidingDisks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Counter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flips.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlipsMax.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloGoodbye.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyRational.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Point2D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RandomWord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rolls.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPoint2D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VisualAccumulator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VisualCounter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WELCOME.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithms.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals25.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biased-coin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/die.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dream.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/largeAllowlist.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loaded-die.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/names.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/roshambo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tinyAllowText.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tinyTale.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/two-dice.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,65 +165,79 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Barnsley.executor": "Run",
+    "Application.BinarySearch.executor": "Run",
     "Application.BookExample.executor": "Run",
+    "Application.CheckCircular.executor": "Run",
     "Application.CollidingDisks.executor": "Run",
     "Application.HelloGoodbye.executor": "Run",
     "Application.HelloWorld.executor": "Run",
+    "Application.Matrix.executor": "Run",
+    "Application.MyRational.executor": "Run",
     "Application.RandomWord.executor": "Run",
+    "Application.TestPoint2D.executor": "Run",
+    "Application.VisualAccumulator.executor": "Run",
+    "Application.VisualCounter.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/peichunc/Desktop/Algorithms/hello",
+    "last_opened_file_path": "/home/peichunc/Desktop/Algorithms/Lecture1",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.BookExample">
-    <configuration name="BookExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BookExample" />
+  <component name="RunManager" selected="Application.MyRational">
+    <configuration name="CheckCircular" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CheckCircular" />
       <module name="Algorithms, Part I" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CollidingDisks" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CollidingDisks" />
+    <configuration name="MyRational" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyRational" />
       <module name="Algorithms, Part I" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloGoodbye" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HelloGoodbye" />
+    <configuration name="TestPoint2D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestPoint2D" />
+      <module name="Algorithms, Part I" />
+      <option name="PROGRAM_PARAMETERS" value="10" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VisualAccumulator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="VisualAccumulator" />
       <module name="Algorithms, Part I" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HelloWorld" />
-      <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="ARIEL ERIC" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RandomWord" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="RandomWord" />
+    <configuration name="VisualCounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="VisualCounter" />
       <module name="Algorithms, Part I" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CheckCircular" />
+      <item itemvalue="Application.MyRational" />
+      <item itemvalue="Application.VisualAccumulator" />
+      <item itemvalue="Application.VisualCounter" />
+      <item itemvalue="Application.TestPoint2D" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BookExample" />
-        <item itemvalue="Application.HelloGoodbye" />
-        <item itemvalue="Application.RandomWord" />
-        <item itemvalue="Application.CollidingDisks" />
-        <item itemvalue="Application.HelloWorld" />
+        <item itemvalue="Application.MyRational" />
+        <item itemvalue="Application.VisualCounter" />
+        <item itemvalue="Application.VisualAccumulator" />
+        <item itemvalue="Application.CheckCircular" />
+        <item itemvalue="Application.TestPoint2D" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +328,175 @@
       <option name="project" value="LOCAL" />
       <updated>1734693679575</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="L1 book exercises">
+      <option name="closed" value="true" />
+      <created>1734694963746</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734694963746</updated>
+    </task>
+    <task id="LOCAL-00011" summary="L1 book exercises 1.1.9">
+      <option name="closed" value="true" />
+      <created>1734865616660</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734865616660</updated>
+    </task>
+    <task id="LOCAL-00012" summary="L1 book exercises 1.1.12">
+      <option name="closed" value="true" />
+      <created>1734866368355</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1734866368356</updated>
+    </task>
+    <task id="LOCAL-00013" summary="L1 book exercises 1.1.20">
+      <option name="closed" value="true" />
+      <created>1734867505419</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1734867505419</updated>
+    </task>
+    <task id="LOCAL-00014" summary="L1 book">
+      <option name="closed" value="true" />
+      <created>1734867862422</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1734867862422</updated>
+    </task>
+    <task id="LOCAL-00015" summary="L1 book 1.1.30">
+      <option name="closed" value="true" />
+      <created>1734868851831</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1734868851831</updated>
+    </task>
+    <task id="LOCAL-00016" summary="L1 book 1.1.29">
+      <option name="closed" value="true" />
+      <created>1734924195739</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1734924195739</updated>
+    </task>
+    <task id="LOCAL-00017" summary="L1 book 1.1.29b">
+      <option name="closed" value="true" />
+      <created>1734924457708</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1734924457708</updated>
+    </task>
+    <task id="LOCAL-00018" summary="L1 book 1.1.32 matrix">
+      <option name="closed" value="true" />
+      <created>1734925362069</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1734925362069</updated>
+    </task>
+    <task id="LOCAL-00019" summary="L1 book 1.1.32 matrix">
+      <option name="closed" value="true" />
+      <created>1734937441969</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1734937441969</updated>
+    </task>
+    <task id="LOCAL-00020" summary="L1 book 1.1.32 matrix">
+      <option name="closed" value="true" />
+      <created>1734939682264</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1734939682264</updated>
+    </task>
+    <task id="LOCAL-00021" summary="L1 hw">
+      <option name="closed" value="true" />
+      <created>1734941020651</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1734941020651</updated>
+    </task>
+    <task id="LOCAL-00022" summary="L1 book example">
+      <option name="closed" value="true" />
+      <created>1735216526009</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1735216526009</updated>
+    </task>
+    <task id="LOCAL-00023" summary="L1.2 book example">
+      <option name="closed" value="true" />
+      <created>1735297366210</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1735297366210</updated>
+    </task>
+    <task id="LOCAL-00024" summary="L1.2 book practice 1.2.1">
+      <option name="closed" value="true" />
+      <created>1735991724311</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1735991724311</updated>
+    </task>
+    <task id="LOCAL-00025" summary="L1.2 book practice 1.2.1">
+      <option name="closed" value="true" />
+      <created>1736056962448</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1736056962448</updated>
+    </task>
+    <task id="LOCAL-00026" summary="L1.2 book practice 1.2.6">
+      <option name="closed" value="true" />
+      <created>1736059838221</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1736059838221</updated>
+    </task>
+    <task id="LOCAL-00027" summary="L1.2 book practice 1.2.6">
+      <option name="closed" value="true" />
+      <created>1736060124091</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1736060124091</updated>
+    </task>
+    <task id="LOCAL-00028" summary="L1.2 book practice">
+      <option name="closed" value="true" />
+      <created>1736060129675</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1736060129675</updated>
+    </task>
+    <task id="LOCAL-00029" summary="L1.2 book practice 1.2.10">
+      <option name="closed" value="true" />
+      <created>1736062971600</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1736062971600</updated>
+    </task>
+    <task id="LOCAL-00030" summary="L1.2 book practice 1.2.16">
+      <option name="closed" value="true" />
+      <created>1736068053447</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1736068053447</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -285,9 +538,24 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ch1 hw" />
     <MESSAGE value="book 1.1 example" />
-    <MESSAGE value="L1 hw" />
     <MESSAGE value="L1 book exercises" />
-    <option name="LAST_COMMIT_MESSAGE" value="L1 book exercises" />
+    <MESSAGE value="L1 book exercises 1.1.9" />
+    <MESSAGE value="L1 book exercises 1.1.12" />
+    <MESSAGE value="L1 book exercises 1.1.20" />
+    <MESSAGE value="L1 book" />
+    <MESSAGE value="L1 book 1.1.30" />
+    <MESSAGE value="L1 book 1.1.29" />
+    <MESSAGE value="L1 book 1.1.29b" />
+    <MESSAGE value="L1 book 1.1.32 matrix" />
+    <MESSAGE value="L1 hw" />
+    <MESSAGE value="L1 book example" />
+    <MESSAGE value="L1.2 book example" />
+    <MESSAGE value="L1.2 book practice 1.2.1" />
+    <MESSAGE value="L1.2 book practice 1.2.6" />
+    <MESSAGE value="L1.2 book practice" />
+    <MESSAGE value="L1.2 book practice 1.2.10" />
+    <MESSAGE value="L1.2 book practice 1.2.16" />
+    <option name="LAST_COMMIT_MESSAGE" value="L1.2 book practice 1.2.16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
