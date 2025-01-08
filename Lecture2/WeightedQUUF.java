@@ -44,6 +44,7 @@ public class WeightedQUUF {
 
     public void union(int p, int q){
         arrayAccesses=0;
+        operationCounts++;
         int proot = root(p);
         int qroot = root(q);
         if(proot==qroot){
@@ -66,7 +67,7 @@ public class WeightedQUUF {
     }
 
     private void draw(int cost){
-        operationCounts++;
+
         StdDraw.setPenColor(StdDraw.DARK_GRAY);
         StdDraw.point(operationCounts, cost);
 
@@ -76,6 +77,7 @@ public class WeightedQUUF {
     }
 
     public int find(int p){
+        operationCounts++;
         arrayAccesses = 0; // Reset for this operation
         int result = root(p);
         total += arrayAccesses;
