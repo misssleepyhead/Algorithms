@@ -15,34 +15,34 @@ public class WQUPathComperssion {
         }
     }
     // keep upward looking until the id is itself
-    private int root(int i){
-        while(id[i]!=i){
-            id[i] = id[id[i]]; // Path compression: Point to grandparent
-            // id[i] = root(id[i]); // Recursively find root and compress path
-            i=id[i];
-
-        }
-        return i;
-    }
+//    private int root(int i){
+//        while(id[i]!=i){
+//            id[i] = id[id[i]]; // Path compression: Point to grandparent
+//            // id[i] = root(id[i]); // Recursively find root and compress path
+//            i=id[i];
+//
+//        }
+//        return i;
+//    }
 
     // two pass implement
-//    private int root(int i) {
-//        int root = i;
-//
-//        // First pass: Find the root
-//        while (id[root] != root) {
-//            root = id[root];
-//        }
-//
-//        // Second pass: Path compression, point all nodes directly to the root
-//        while (id[i] != i) {
-//            int parent = id[i];
-//            id[i] = root; // Point to the root
-//            i = parent;   // Move to the next node in the path
-//        }
-//
-//        return root;
-//    }
+    private int root(int i) {
+        int root = i;
+
+        // First pass: Find the root
+        while (id[root] != root) {
+            root = id[root];
+        }
+
+        // Second pass: Path compression, point all nodes directly to the root
+        while (id[i] != i) {
+            int parent = id[i];
+            id[i] = root; // Point to the root
+            i = parent;   // Move to the next node in the path
+        }
+
+        return root;
+    }
 
     public boolean connected(int p, int q){
         return root(p)==root(p);
