@@ -6,79 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="L1.2 book practice 1.2.16">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/.noai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/codeInsightSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/dictionaries/lift.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/externalDependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/file.template.settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/includes/File Header.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/internal/AnnotationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/internal/Class.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/internal/Enum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/internal/Interface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/internal/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/fileTemplates/internal/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/findbugs-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/inspectionProfiles/Algorithms__Part_I.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/inspectionProfiles/Algorithms__Part_I.xml.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/libraries/algs4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.idea/saveactions_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lecture2/WeightedQUUF.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture2/WeightedQUUF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hello/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.lift/algs4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.lift/checkstyle-coursera.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.lift/checkstyle-lift.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.lift/checkstyle-suppressions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/.lift/spotbugs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Algorithms, Part I.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Barnsley.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Barnsley.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/BinarySearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Binomial.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/BookExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/CheckCircular.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/CollidingDisks.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/CollidingDisks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Flips.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/FlipsMax.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/HelloGoodbye.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/HelloWorld.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/HelloWorld.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Matrix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/MyRational.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Point2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/RandomWord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/Rolls.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/TestPoint2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/VisualAccumulator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/VisualCounter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/WELCOME.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/algorithms.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/animals.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/animals25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/animals8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/biased-coin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/coin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/colors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/die.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/dream.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/largeAllowlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/loaded-die.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/names.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/roshambo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/tinyAllowText.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/tinyTale.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello/two-dice.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +111,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/peichunc/Desktop/Algorithms/Lecture2",
+    "last_opened_file_path": "/home/peichunc/Desktop/Algorithms/Lecture1",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2"

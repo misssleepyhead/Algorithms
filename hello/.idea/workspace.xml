@@ -5,79 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="L1.2 book practice 1.2.16">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.noai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeInsightSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/lift.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/externalDependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/file.template.settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/includes/File Header.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/AnnotationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Class.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Enum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Interface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/findbugs-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/algs4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lift/algs4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lift/checkstyle-coursera.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lift/checkstyle-lift.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lift/checkstyle-suppressions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lift/spotbugs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithms, Part I.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barnsley.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barnsley.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BinarySearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binomial.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckCircular.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CollidingDisks.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CollidingDisks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flips.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlipsMax.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelloGoodbye.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelloWorld.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelloWorld.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyRational.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Point2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RandomWord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rolls.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestPoint2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VisualAccumulator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VisualCounter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WELCOME.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biased-coin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/colors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/die.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dream.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/largeAllowlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loaded-die.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/names.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/roshambo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tinyAllowText.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tinyTale.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/two-dice.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lecture2/WeightedQUUF.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture2/WeightedQUUF.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,31 +90,31 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Barnsley.executor": "Run",
-    "Application.BinarySearch.executor": "Run",
-    "Application.BookExample.executor": "Run",
-    "Application.CheckCircular.executor": "Run",
-    "Application.CollidingDisks.executor": "Run",
-    "Application.HelloGoodbye.executor": "Run",
-    "Application.HelloWorld.executor": "Run",
-    "Application.Matrix.executor": "Run",
-    "Application.MyRational.executor": "Run",
-    "Application.RandomWord.executor": "Run",
-    "Application.TestPoint2D.executor": "Run",
-    "Application.VisualAccumulator.executor": "Run",
-    "Application.VisualCounter.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/peichunc/Desktop/Algorithms/Lecture1",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Barnsley.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BinarySearch.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BookExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CheckCircular.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CollidingDisks.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloGoodbye.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloWorld.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Matrix.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyRational.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RandomWord.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestPoint2D.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VisualAccumulator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.VisualCounter.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/peichunc/Desktop/Algorithms/Lecture1&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.MyRational">
     <configuration name="CheckCircular" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CheckCircular" />
@@ -227,9 +155,9 @@
     <list>
       <item itemvalue="Application.CheckCircular" />
       <item itemvalue="Application.MyRational" />
+      <item itemvalue="Application.TestPoint2D" />
       <item itemvalue="Application.VisualAccumulator" />
       <item itemvalue="Application.VisualCounter" />
-      <item itemvalue="Application.TestPoint2D" />
     </list>
     <recent_temporary>
       <list>
