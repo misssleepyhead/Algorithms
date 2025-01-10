@@ -69,7 +69,7 @@ public class Percolation {
     // is the site (row, col) full? connected to virtual top and must open too.
     public boolean isFull(int row, int col) {
         validateIndices(row, col);
-        return isOpen(row,col) && connectedSites.connected(VIRTUAL_TOP, convert2D(row,col));
+        return isOpen(row, col) && connectedSites.connected(VIRTUAL_TOP, convert2D(row, col));
     }
 
     // returns the number of open sites
@@ -119,20 +119,20 @@ public class Percolation {
 
     // test client (optional){}
     public static void main(String[] args) {
-        Percolation p=new Percolation(5);
-        p.open(1,2);
-        p.open(5,5);
-        p.open(2,1);
+        Percolation p = new Percolation(5);
+        p.open(1, 2);
+        p.open(5, 5);
+        p.open(2, 1);
         System.out.println(p.numberOfOpenSites()); // 3
-        p.open(2,2);
-        System.out.println(p.isFull(2,1)); //true
-        p.open(3,2);
-        p.open(3,3);
-        p.open(4,3);
+        p.open(2, 2);
+        System.out.println(p.isFull(2, 1)); //true
+        p.open(3, 2);
+        p.open(3, 3);
+        p.open(4, 3);
         System.out.println(p.percolates());
-        p.open(4,4);
-        p.open(5,4);
-        System.out.println(p.isFull(5,5));
+        p.open(4, 4);
+        p.open(5, 4);
+        System.out.println(p.isFull(5, 5));
         System.out.println(p.percolates());
     }
 }
