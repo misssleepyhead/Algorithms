@@ -43,28 +43,32 @@ public class PercolationStats {
             }
             thresholds[i]=(double) perc.numberOfOpenSites()/totalSites;
         }
-        this.mean = mean();
-        this.stddev=stddev();
+        simulation();
+        // Calculate statistics
+        this.mean = StdStats.mean(thresholds);
+        this.stddev = StdStats.stddev(thresholds);
+        this.confidenceLo = mean - (1.96 * stddev) / Math.sqrt(trials);
+        this.confidenceHi = mean + (1.96 * stddev) / Math.sqrt(trials);
     }
 
     // sample mean of percolation threshold
     public double mean() {
-        return StdStats.mean(thresholds);
+        return mean;
     }
 
     // sample standard deviation of percolation threshold
     public double stddev() {
-        return StdStats.stddev(thresholds);
+        return stddev;
     }
 
     // low endpoint of 95% confidence interval
     public double confidenceLo() {
-        return mean - (1.96*stddev)/Math.sqrt(trials);
+        return confidenceLo;
     }
 
     // high endpoint of 95% confidence interval
     public double confidenceHi() {
-        return mean + (1.96*stddev)/Math.sqrt(trials);
+        return confidenceHi;
     }
 
     // test client (see below)
