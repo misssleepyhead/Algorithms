@@ -69,7 +69,7 @@ public class Percolation {
     // is the site (row, col) full? connected to virtual top and must open too.
     public boolean isFull(int row, int col) {
         validateIndices(row, col);
-        return isOpen(row, col) && connectedSites.connected(VIRTUAL_TOP, convert2D(row, col));
+        return isOpen(row, col) && connectedSites.find(VIRTUAL_TOP)==connectedSites.find(convert2D(row,col));
     }
 
     // returns the number of open sites
@@ -79,7 +79,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return connectedSites.connected(VIRTUAL_TOP, VIRTUAL_BOTTOM);
+        return connectedSites.find(VIRTUAL_TOP)==connectedSites.find(VIRTUAL_BOTTOM);
     }
 
     // helper function: validate col, row value
