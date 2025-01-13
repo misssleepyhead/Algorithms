@@ -1,9 +1,5 @@
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Assignment
@@ -52,9 +48,9 @@ public class Percolation {
         }
 
         //connect to open neighbors
-        List<Integer> openNeighbors = checkNeighbors(row, col);
-        for (int i = 0; i < openNeighbors.size(); i++) {
-            connectedSites.union(index, openNeighbors.get(i));
+        int[] openNeighbors = checkNeighbors(row, col);
+        for (int i = 0; i < openNeighbors.length; i++) {
+            connectedSites.union(index, openNeighbors[i]);
         }
 
 
@@ -96,8 +92,9 @@ public class Percolation {
     }
 
     // helper function: return the open neighbor of the given indices
-    private List<Integer> checkNeighbors(int row, int col) {
-        List<Integer> openNeighbors = new ArrayList<>();
+    private int[] checkNeighbors(int row, int col) {
+        int[]openNeighbors = new int[4];
+        int count=0;
         int[][] directions = {
                 {-1, 0}, // Top
                 {1, 0},  // Bottom
@@ -110,10 +107,14 @@ public class Percolation {
             int newCol = col + dir[1];
 
             if (newRow >= 1 && newRow <= side && newCol <= side && newCol >= 1 && isOpen(newRow, newCol)) {
-                openNeighbors.add(convert2D(newRow, newCol));
+                openNeighbors[count++]=convert2D(newRow,newCol);
             }
+
         }
-        return openNeighbors;
+        // Trim the array to include only valid neighbors
+        int[] result = new int[count];
+        System.arraycopy(openNeighbors, 0, result, 0, count);
+        return result;
 
     }
 
@@ -125,14 +126,14 @@ public class Percolation {
         p.open(2, 1);
         System.out.println(p.numberOfOpenSites()); // 3
         p.open(2, 2);
-        System.out.println(p.isFull(2, 1)); //true
+        System.out.println(p.isFull(2, 1)); // true
         p.open(3, 2);
         p.open(3, 3);
         p.open(4, 3);
-        System.out.println(p.percolates());
+        System.out.println(p.percolates()); // false
         p.open(4, 4);
         p.open(5, 4);
-        System.out.println(p.isFull(5, 5));
-        System.out.println(p.percolates());
+        System.out.println(p.isFull(5, 5)); // false
+        System.out.println(p.percolates()); // true
     }
 }
