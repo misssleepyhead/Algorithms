@@ -42,9 +42,9 @@ public class PercolationStats {
             while (!perc.percolates()) {
                 int row = StdRandom.uniformInt(1, side + 1);
                 int col = StdRandom.uniformInt(1, side + 1);
-                while (!perc.isOpen(row, col)) {
-                    perc.open(row, col);
-                }
+
+                perc.open(row, col);
+
             }
             thresholds[i] = (double) perc.numberOfOpenSites() / totalSites;
         }
