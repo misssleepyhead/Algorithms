@@ -15,33 +15,34 @@ public class PercolationStats {
     private double stddev;
     private double confidenceLo;
     private double confidenceHi;
+
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
-        if(n<=0 || trials<=0){
+        if (n <= 0 || trials <= 0) {
             throw new IllegalArgumentException("Grid side and trials cannot be 0");
         }
-        this.side=n;
+        this.side = n;
         this.trials = trials;
         this.totalSites = n * n;
         this.thresholds = new double[trials];
-        this.mean=0;
-        this.stddev=0;
-        this.confidenceLo=0;
-        this.confidenceHi=0;
+        this.mean = 0;
+        this.stddev = 0;
+        this.confidenceLo = 0;
+        this.confidenceHi = 0;
     }
 
-    private void simulation(){
+    private void simulation() {
 
-        for(int i=0;i<trials;i++){
+        for (int i = 0; i < trials; i++) {
             Percolation perc = new Percolation(side);
-            while(!perc.percolates()){
-                int row = StdRandom.uniformInt(1,side+1);
-                int col = StdRandom.uniformInt(1,side+1);
-                while (!perc.isOpen(row,col)) {
+            while (!perc.percolates()) {
+                int row = StdRandom.uniformInt(1, side + 1);
+                int col = StdRandom.uniformInt(1, side + 1);
+                while (!perc.isOpen(row, col)) {
                     perc.open(row, col);
                 }
             }
-            thresholds[i]=(double) perc.numberOfOpenSites()/totalSites;
+            thresholds[i] = (double) perc.numberOfOpenSites() / totalSites;
         }
         simulation();
         // Calculate statistics
