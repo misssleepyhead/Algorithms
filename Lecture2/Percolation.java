@@ -12,8 +12,8 @@ public class Percolation {
 
     private WeightedQuickUnionUF connectedSites;
 
-    private final int VIRTUAL_TOP;
-    private final int VIRTUAL_BOTTOM;
+    private final int virtualTop;
+    private final int virtualBottom;
 
     private int openSite;
 
@@ -26,8 +26,26 @@ public class Percolation {
         this.side = n;
         grid = new boolean[n][n]; // default false means blocked
         connectedSites = new WeightedQuickUnionUF(n * n + 2); // grid and virtual top/bottom
-        VIRTUAL_TOP = n * n;
-        VIRTUAL_BOTTOM = n * n + 1;
+        virtualTop = n * n;
+        virtualBottom = n * n + 1;
+        init();
+
+
+    }
+
+    /**
+     * Connect the first row to virtualTop and the bottom row to virtualBottom
+     */
+    private void init() {
+        /* Connect all first row to top*/
+        for (int i = 0; i < side; i++) {
+            connectedSites.union(i, virtualTop);
+        }
+
+        /* Connect all bottom row to the virtual bottom*/
+        for (int i = side * (side - 1); i < side * side; i++) {
+            connectedSites.union(i, virtualBottom);
+        }
     }
 
     // opens the site (row, col) if it is not open already
@@ -42,9 +60,9 @@ public class Percolation {
 
         // connect to VIRTUAL-TOP/BOTTOM if it is in the top row or bottom row
         if (row == 1) {
-            connectedSites.union(VIRTUAL_TOP, index);
+            connectedSites.union(virtualTop, index);
         } else if (row == side) {
-            connectedSites.union(VIRTUAL_BOTTOM, index);
+            connectedSites.union(virtualBottom, index);
         }
 
         //connect to open neighbors
@@ -65,7 +83,7 @@ public class Percolation {
     // is the site (row, col) full? connected to virtual top and must open too.
     public boolean isFull(int row, int col) {
         validateIndices(row, col);
-        return isOpen(row, col) && connectedSites.find(VIRTUAL_TOP) == connectedSites.find(convert2D(row, col));
+        return isOpen(row, col) && connectedSites.find(virtualTop) == connectedSites.find(convert2D(row, col));
     }
 
     // returns the number of open sites
@@ -75,7 +93,11 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return connectedSites.find(VIRTUAL_TOP) == connectedSites.find(VIRTUAL_BOTTOM);
+        if (side != 1) {
+            return connectedSites.find(virtualTop) == connectedSites.find(virtualBottom);
+        } else {
+            return grid[0][0];
+        }
     }
 
     // helper function: validate col, row value
@@ -93,8 +115,8 @@ public class Percolation {
 
     // helper function: return the open neighbor of the given indices
     private int[] checkNeighbors(int row, int col) {
-        int[]openNeighbors = new int[4];
-        int count=0;
+        int[] openNeighbors = new int[4];
+        int count = 0;
         int[][] directions = {
                 {-1, 0}, // Top
                 {1, 0},  // Bottom
@@ -107,7 +129,7 @@ public class Percolation {
             int newCol = col + dir[1];
 
             if (newRow >= 1 && newRow <= side && newCol <= side && newCol >= 1 && isOpen(newRow, newCol)) {
-                openNeighbors[count++]=convert2D(newRow,newCol);
+                openNeighbors[count++] = convert2D(newRow, newCol);
             }
 
         }
@@ -120,20 +142,23 @@ public class Percolation {
 
     // test client (optional){}
     public static void main(String[] args) {
-        Percolation p = new Percolation(5);
-        p.open(1, 2);
-        p.open(5, 5);
-        p.open(2, 1);
-        System.out.println(p.numberOfOpenSites()); // 3
-        p.open(2, 2);
-        System.out.println(p.isFull(2, 1)); // true
-        p.open(3, 2);
-        p.open(3, 3);
-        p.open(4, 3);
-        System.out.println(p.percolates()); // false
-        p.open(4, 4);
-        p.open(5, 4);
-        System.out.println(p.isFull(5, 5)); // false
-        System.out.println(p.percolates()); // true
+        Percolation p = new Percolation(1);
+        p.open(1, 1);
+        System.out.println(p.percolates());
+        System.out.println(p.isFull(1, 1));
+//        p.open(1, 2);
+//        p.open(5, 5);
+//        p.open(2, 1);
+//        System.out.println(p.numberOfOpenSites()); // 3
+//        p.open(2, 2);
+//        System.out.println(p.isFull(2, 1)); // true
+//        p.open(3, 2);
+//        p.open(3, 3);
+//        p.open(4, 3);
+//        System.out.println(p.percolates()); // false
+//        p.open(4, 4);
+//        p.open(5, 4);
+//        System.out.println(p.isFull(5, 5)); // false
+//        System.out.println(p.percolates()); // true
     }
 }
