@@ -16,8 +16,11 @@ public class PercolationStats {
     private double confidenceLo;
     private double confidenceHi;
 
+    private double CONFIDENCE_95 = 1.96;
+
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
+
         if (n <= 0 || trials <= 0) {
             throw new IllegalArgumentException("Grid side and trials cannot be 0");
         }
@@ -25,13 +28,16 @@ public class PercolationStats {
         this.trials = trials;
         this.totalSites = n * n;
         this.thresholds = new double[trials];
-        this.mean = 0;
-        this.stddev = 0;
-        this.confidenceLo = 0;
-        this.confidenceHi = 0;
+        simulation();
+        // Calculate statistics
+        this.mean = StdStats.mean(thresholds);
+        this.stddev = StdStats.stddev(thresholds);
+        this.confidenceLo = mean - (CONFIDENCE_95 * stddev) / Math.sqrt(trials);
+        this.confidenceHi = mean + (CONFIDENCE_95 * stddev) / Math.sqrt(trials);
     }
 
     private void simulation() {
+
 
         for (int i = 0; i < trials; i++) {
             Percolation perc = new Percolation(side);
@@ -44,12 +50,7 @@ public class PercolationStats {
             }
             thresholds[i] = (double) perc.numberOfOpenSites() / totalSites;
         }
-        simulation();
-        // Calculate statistics
-        this.mean = StdStats.mean(thresholds);
-        this.stddev = StdStats.stddev(thresholds);
-        this.confidenceLo = mean - (1.96 * stddev) / Math.sqrt(trials);
-        this.confidenceHi = mean + (1.96 * stddev) / Math.sqrt(trials);
+
     }
 
     // sample mean of percolation threshold
