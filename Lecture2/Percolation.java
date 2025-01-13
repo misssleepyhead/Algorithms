@@ -27,7 +27,7 @@ public class Percolation {
         this.side = n;
         grid = new boolean[n][n]; // default false means blocked
         connectedTwoSites = new WeightedQuickUnionUF(n * n + 2); // grid and virtual top/bottom
-        connectedTopSites = new WeightedQuickUnionUF(n*n+1);
+        connectedTopSites = new WeightedQuickUnionUF(n * n + 1);
         virtualTop = n * n;
         virtualBottom = n * n + 1;
         init();
@@ -42,7 +42,7 @@ public class Percolation {
         /* Connect all first row to top*/
         for (int i = 0; i < side; i++) {
             connectedTwoSites.union(i, virtualTop);
-            connectedTopSites.union(i,virtualTop);
+            connectedTopSites.union(i, virtualTop);
         }
 
         /* Connect all bottom row to the virtual bottom*/
@@ -71,7 +71,7 @@ public class Percolation {
         //connect to open neighbors
         int[] openNeighbors = checkNeighbors(row, col);
         for (int i = 0; i < openNeighbors.length; i++) {
-            connectedTopSites.union(index,openNeighbors[i]);
+            connectedTopSites.union(index, openNeighbors[i]);
             connectedTwoSites.union(index, openNeighbors[i]);
         }
 
