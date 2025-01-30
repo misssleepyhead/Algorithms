@@ -13,13 +13,12 @@ public class BitonicBinarySearch {
     public static int standardSearch(int[] nums, int target) {
         // step 1: Search the largest element using binary search
         int peak = findPeak(nums, 0, nums.length - 1);
-        // step 2: Cut the array into two parts, one is increasing and another is decreasing
-        // step 3: Binary search on each part, increasing part> normal bs
+        // step 2: Binary search on each part, increasing part> normal bs
         int result = bsIncreasing(nums, 0,peak,target);
         if (result!=-1){
             return result;
         }
-        // decreasing part> bs on a decreasing sequence
+        // decreasing part> bs on a decreasing sequence, reverse logic, move left instead of right
         return bsDecreasing(nums, peak+1, nums.length-1, target);
     }
 
