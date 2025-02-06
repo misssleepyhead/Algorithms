@@ -15,6 +15,7 @@ public class Evaluate {
 
         while (!StdIn.isEmpty()) {
             String s = StdIn.readString();
+//            System.out.println(s);
             if      (s.equals("("))               ;
             else if (s.equals("+"))    ops.push(s);
             else if (s.equals("-"))    ops.push(s);
