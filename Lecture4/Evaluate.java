@@ -24,7 +24,9 @@ public class Evaluate {
             else if (s.equals("sqrt")) ops.push(s);
             else if (s.equals(")")) {
                 String op = ops.pop();
+//                System.out.println(op);
                 double v = vals.pop();
+                System.out.println(v);
                 if      (op.equals("+"))    v = vals.pop() + v;
                 else if (op.equals("-"))    v = vals.pop() - v;
                 else if (op.equals("*"))    v = vals.pop() * v;
