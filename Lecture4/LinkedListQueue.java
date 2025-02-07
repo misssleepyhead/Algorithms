@@ -23,6 +23,12 @@ public class LinkedListQueue<Item> implements Iterable<Item> {
         Node next;
     }
 
+    public LinkedListQueue() {
+        first=null;
+        last=null;
+        N=0;
+    }
+
     public boolean isEmpty() {
         return N == 0;
     }
@@ -49,8 +55,9 @@ public class LinkedListQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         Item item = first.item;
         first = first.next;
-        if (isEmpty()) last = null;
         N--;
+        if (isEmpty()) last = null;
+
         return item;
 
     }
