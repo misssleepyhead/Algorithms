@@ -1,48 +1,40 @@
-import edu.princeton.cs.algs4.StdIn;
+package ElementarySorts;
+
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Comparator;
 
-/**
- * The {@SelectionSort} class provides static method for sorting an
- * array using <em> Selction sort</em>
- * This implementation makes ~ &frac12; <em>n</em><sup>2</sup> compares to sort
- * any array of length <em>n</em>, so it is not suitable for sorting large arrays.
- * It performs exactly <em>n</em> exchanges.
- */
-public class SelectionSort {
-    // this class should not be instantiated
-    private SelectionSort() {
-    }
+public class InsertionSort {
+    private InsertionSort(){}
 
+    /**
+     * Rearranges the array in ascending order, using the natural order.
+     * @param a the array to be sorted
+     */
     public static void sort(Comparable[] a) {
         int n = a.length;
-        for (int i = 0; i < n; i++) {
-            int min = i;
-            for (int j = i + 1; j < n; j++) {
-                if (less(a[j], a[min])) {
-                    min = j;
-                }
+        for (int i = 1; i < n; i++) {
+            for (int j = i; j > 0 && less(a[j], a[j-1]); j--) {
+                exch(a, j, j-1);
             }
-            exch(a, i, min);
             assert isSorted(a, 0, i);
         }
         assert isSorted(a);
     }
 
-    public static void sort(Object[] a, Comparator comparator) {
-        int n = a.length;
-        for (int i = 0; i < n; i++) {
-            int min = i;
-            for (int j = i + 1; j < n; j++) {
-                if (less(comparator, a[j], a[min])) {
-                    min = j;
-                }
+    /**
+     * Rearranges the subarray a[lo..hi) in ascending order, using the natural order.
+     * @param a the array to be sorted
+     * @param lo left endpoint (inclusive)
+     * @param hi right endpoint (exclusive)
+     */
+    public static void sort(Comparable[] a, int lo, int hi) {
+        for (int i = lo + 1; i < hi; i++) {
+            for (int j = i; j > lo && less(a[j], a[j-1]); j--) {
+                exch(a, j, j-1);
             }
-            exch(a, i, min);
-            assert isSorted(a, comparator, 0, i);
         }
-        assert isSorted(a, comparator);
+        assert isSorted(a, lo, hi);
     }
 
     /***************************************************************************
@@ -102,17 +94,5 @@ public class SelectionSort {
         for (int i = 0; i < a.length; i++) {
             StdOut.println(a[i]);
         }
-    }
-
-    /**
-     * Reads in a sequence of strings from standard input; selection sorts them;
-     * and prints them to standard output in ascending order.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
-        SelectionSort.sort(a);
-        show(a);
     }
 }
