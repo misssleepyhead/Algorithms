@@ -52,10 +52,10 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        String alg1 = args[0];
-        String alg2 = args[1];
-        int n = Integer.parseInt(args[2]);
-        int trials = Integer.parseInt(args[3]);
+        String alg1 = "Insertion";
+        String alg2 = "Selection";
+        int n = Integer.parseInt("1000");
+        int trials = Integer.parseInt("100");
         double time1, time2;
         if (args.length == 5 && args[4].equals("sorted")) {
             time1 = timeSortedInput(alg1, n, trials);   // Total for alg1.
