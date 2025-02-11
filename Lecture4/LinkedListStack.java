@@ -21,6 +21,14 @@ public class LinkedListStack<Item> implements Iterable<Item> {
     private static class Node<Item> {
         Item item;
         Node next;
+
+        Node(Node<Item> x){
+            item = x.item;
+            if (x.next != null) {
+                next=new Node(x.next);
+            }
+        }
+        Node(){}
     }
 
     /**
@@ -29,6 +37,13 @@ public class LinkedListStack<Item> implements Iterable<Item> {
     public LinkedListStack() {
         first = null;
         n = 0;
+    }
+
+    /** Stack t=new Stack(s)
+     * makes t reference a new and independent copy of the stack s.
+     * */
+    public LinkedListStack(LinkedListStack<Item> s){
+        first = new Node(s.first);
     }
 
     /**

@@ -18,6 +18,9 @@ public class FixedCapacityStack<Item> implements Iterable<Item> {
     public boolean isEmpty() {
         return n == 0;
     }
+    public boolean isFull(){
+        return n==a.length;
+    }
 
     public void push(Item item) {
         a[n++] = item;
