@@ -16,7 +16,7 @@ public class Evaluate {
 //        Scanner scanner = new Scanner(System.in);
 //
 //        while (scanner.hasNext()) {
-//            String s = StdIn.readString();
+//           String s = scanner.next();
 ////            System.out.println(s);
 //            if (s.equals("(")) ;
 //            else if (s.equals("+")) ops.push(s);
@@ -42,8 +42,9 @@ public class Evaluate {
     public static void main(String[] args) {
         Stack<String> ops = new Stack<String>();
         Stack<Double> vals = new Stack<Double>();
-        while (!StdIn.isEmpty()) {
-            String s = StdIn.readString();
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            String s = scanner.next();
             if (s.equals("(")) {
             } else if (s.equals("+")) {
                 ops.push(s);
@@ -54,6 +55,7 @@ public class Evaluate {
                 if (op.equals("+")) vals.push(vals.pop() + vals.pop());
                 else if (op.equals("*")) vals.push(vals.pop() * vals.pop());
             } else vals.push(Double.parseDouble(s));
+
         }
         System.out.println(vals.pop());
     }
