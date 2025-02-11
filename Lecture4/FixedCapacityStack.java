@@ -30,6 +30,8 @@ public class FixedCapacityStack<Item> implements Iterable<Item> {
         return a[--n]; // decrement n first then return new updated n
     }
 
+    // delete the
+    public void delete(int k){}
     @Override
     public Iterator<Item> iterator() {
         return new ReverseArrayIterator();
