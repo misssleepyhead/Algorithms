@@ -5,13 +5,13 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The {@code LinkedListStack} class represents a last-in-first-out (LIFO) stack of generic items.
- *  It supports the usual <em>push</em> and <em>pop</em> operations, along with methods
- *  for peeking at the top item, testing if the stack is empty, and iterating through
- *  the items in LIFO order.
- *  <p>
- *  This implementation uses a singly linked list with a static nested class for
- *  linked-list nodes.
+ * The {@code LinkedListStack} class represents a last-in-first-out (LIFO) stack of generic items.
+ * It supports the usual <em>push</em> and <em>pop</em> operations, along with methods
+ * for peeking at the top item, testing if the stack is empty, and iterating through
+ * the items in LIFO order.
+ * <p>
+ * This implementation uses a singly linked list with a static nested class for
+ * linked-list nodes.
  */
 public class LinkedListStack<Item> implements Iterable<Item> {
     private Node<Item> first;
@@ -106,6 +106,12 @@ public class LinkedListStack<Item> implements Iterable<Item> {
             return item;
 
         }
+    }
+
+    // return most recently inserted item w/o popping it
+    public Item peak() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        return first.item;
     }
 
     public String toString() {
