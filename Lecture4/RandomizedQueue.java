@@ -1,6 +1,8 @@
+import edu.princeton.cs.algs4.StdRandom;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Random;
+
 
 /**
  * A randomized queue is similar to a stack or queue,
@@ -23,14 +25,15 @@ import java.util.Random;
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] queue;
     private int size;
-    private Random random;
+//    private Random random;
+
 
     private int last;       // index of next available slot
 
     // construct an empty randomized queue
     public RandomizedQueue() {
         queue = (Item[]) new Object[10];
-        random = new Random();
+
         size = 0;
         last = 0;
     }
@@ -61,7 +64,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     // remove and return a random item
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Empty queue");
-        int randomIndex = random.nextInt(size);
+        int randomIndex = StdRandom.uniformInt(size);
         Item item = queue[randomIndex];
 
         queue[randomIndex] = queue[size - 1];
@@ -77,7 +80,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     // return a random item (but do not remove it)
     public Item sample() {
         if (isEmpty()) throw new NoSuchElementException("Empty queue");
-        int randomIndex = random.nextInt(size);
+        int randomIndex = StdRandom.uniformInt(size);
         return queue[randomIndex];
     }
 
@@ -127,9 +130,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     // randomly rearranges the elements of an array
     // using the Fisher-Yates Shuffle algorithm, which runs in O(n) time.
     private void shuffle(int[] array) {
-        Random rd = new Random(); // create a random object
+
         for (int i = array.length; i > 0; i--) { // start from the last index
-            int index = rd.nextInt(i + 1); // pick a random index between 0 and i
+            int index = StdRandom.uniformInt(i + 1); // pick a random index between 0 and i
             int temp = array[index]; // swap array[i] with array[index]
             array[index] = array[i];
             array[i] = temp;
