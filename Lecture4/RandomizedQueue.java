@@ -107,6 +107,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             for (int j = 0; j < size; j++) {
                 randomOrder[j] = j;
             }
+            shuffle(randomOrder);
         }
 
         @Override
@@ -137,6 +138,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             array[index] = array[i];
             array[i] = temp;
         }
+
     }
 
     // unit testing (required)
