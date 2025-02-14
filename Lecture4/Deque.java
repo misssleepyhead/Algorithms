@@ -46,9 +46,10 @@ public class Deque<Item> implements Iterable<Item> {
         first = new Node<>();
         first.item = item;
         first.next = oldFirst;
-        first.prev=null;
+        first.prev = null;
+
         if (isEmpty()) last = first; // If it was empty, last must also be the new node
-        else oldFirst.prev=first;
+        else oldFirst.prev = first;
         size++;
     }
 
@@ -59,8 +60,11 @@ public class Deque<Item> implements Iterable<Item> {
         last = new Node<>();
         last.item = item;
         last.next = null;
+        last.prev = oldlast;
+
         if (isEmpty()) first = last;
         else oldlast.next = last;
+
         size++;
     }
 
@@ -72,8 +76,10 @@ public class Deque<Item> implements Iterable<Item> {
         Item item = first.item;
         first = first.next;
         size--;
+
         if (isEmpty()) last = null;
         else first.prev = null;
+
         return item;
     }
 
@@ -85,10 +91,11 @@ public class Deque<Item> implements Iterable<Item> {
 
         Item item = last.item;
         last = last.prev;
-        size --;
+        size--;
 
-        if(isEmpty()) first=null;
-        else last.next=null;
+        if (isEmpty()) first = null;
+        else last.next = null;
+
         return item;
 
 
@@ -101,7 +108,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private class LinkedIterator implements Iterator<Item> {
-        Node<Item> current;
+        private Node<Item> current;
 
         public LinkedIterator(Node<Item> first) {
             current = first;
@@ -144,9 +151,9 @@ public class Deque<Item> implements Iterable<Item> {
         queue.addLast(1);
         queue.addLast(2);
         queue.addLast(3);
-        System.out.println(queue.removeLast());
-        System.out.println(queue.removeLast());
-        System.out.println(queue.removeLast());
+        System.out.println(queue.removeFirst()); // Expected: 1
+        System.out.println(queue.removeFirst()); // Expected: 2
+        System.out.println(queue.removeFirst()); // Expected: 3
 
 
     }
