@@ -19,6 +19,7 @@ public class Deque<Item> implements Iterable<Item> {
     private static class Node<Item> {
         Item item;
         Node<Item> next;
+        Node<Item> prev;
     }
 
     // construct an empty deque
@@ -45,7 +46,9 @@ public class Deque<Item> implements Iterable<Item> {
         first = new Node<>();
         first.item = item;
         first.next = oldFirst;
+        first.prev=null;
         if (isEmpty()) last = first; // If it was empty, last must also be the new node
+        else oldFirst.prev=first;
         size++;
     }
 
@@ -64,36 +67,28 @@ public class Deque<Item> implements Iterable<Item> {
     // remove and return the item from the front
     public Item removeFirst() {
         if (isEmpty()) {
-            throw new NoSuchElementException("empty queue");
+            throw new NoSuchElementException("empty deque");
         }
         Item item = first.item;
         first = first.next;
         size--;
         if (isEmpty()) last = null;
+        else first.prev = null
         return item;
     }
 
     // remove and return the item from the back
     public Item removeLast() {
         if (isEmpty()) {
-            throw new NoSuchElementException("empty stack");
+            throw new NoSuchElementException("empty deque");
         }
 
         Item item = last.item;
-        // case1: only one element
-        if (first == last) {
-            first = null;
-            last = null;
-        } else {
-            // case2: more than one element
-            Node<Item> current = first;
-            while (current.next != last) {
-                current = current.next;
-            }
-            current.next = null;
-            last = current;
-        }
-        size--;
+        last = last.prev;
+        size --;
+
+        if(isEmpty()) first=null;
+        else last.next=null;
         return item;
 
 
