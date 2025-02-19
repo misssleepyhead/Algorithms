@@ -68,5 +68,6 @@ public class Calculate {
 
     public static void main(String[] args) {
         System.out.println(cal("(1+((2+3)*(4*5)))"));
+//        System.out.println("(1+1)");
     }
 }
