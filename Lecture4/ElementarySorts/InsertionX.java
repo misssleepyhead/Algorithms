@@ -29,6 +29,7 @@ public class InsertionX {
         if (exchanges == 0) return;
 
         // insertion sort
+        // i started at 2 because we know a[0] <= a[1], so a[1] is already in the correct place
         for (int i = 2; i < n; i++) {
             Comparable v = a[i]; // store the value
             int j = i;
