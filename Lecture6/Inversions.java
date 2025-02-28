@@ -66,7 +66,7 @@ public class Inversions {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 4, 1, 3, 5};
+        int[] arr = {2, 4, 3, 1, 5};
         System.out.println("Number of inversions: " + countInversions(arr));
     }
 }
