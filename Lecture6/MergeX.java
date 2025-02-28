@@ -26,7 +26,7 @@ public class MergeX {
         for (int k = lo; k <= hi; k++) {
             if      (i > mid)              dst[k] = src[j++];
             else if (j > hi)               dst[k] = src[i++];
-            else if (less(src[j], src[i])) dst[k] = src[j++];   // to ensure stability
+            else if (less(src[j], src[i])) dst[k] = src[j++];   // to ensure stability, merge from a[] to aux[]
             else                           dst[k] = src[i++];
         }
 
@@ -55,7 +55,7 @@ public class MergeX {
             return;
         }
 
-        merge(src, dst, lo, mid, hi);
+        merge(src, dst, lo, mid, hi); // switch roles of aux[] and a[]
     }
 
     public static void sort(Comparable[] a) {
