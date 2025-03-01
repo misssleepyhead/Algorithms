@@ -32,13 +32,14 @@ public class BruteCollinearPoints {
 
     // the number of line segments
     public int numberOfSegments() {
-        int counts = 0;
+        return segments.size();
 
     }
 
 
     // the line segments
     public LineSegment[] segments() {
+        return segments.toArray(new LineSegment[0]);
     }
 }
 
