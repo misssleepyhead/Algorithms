@@ -1,18 +1,23 @@
 package collinear;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class BruteCollinearPoints {
     Point[] points;
     private static final Point origin = new Point(0, 0);
-    double[] slopes;
     Comparator<Point> comparator;
+    List<LineSegment> segments;
+
+    Point[] aux;
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
-        this.points = points;
-        slopes = slopesOfPoints(points);
+        int n=points.length;
+        this.points = Arrays.copyOf(points, n);
         comparator = origin.slopeOrder();
+
     }
 
     private double[] slopesOfPoints(Point[] points) {
@@ -20,15 +25,16 @@ public class BruteCollinearPoints {
         for (int i = 0; i < points.length; i++) {
             slopes[i] = origin.slopeTo(points[i]);
         }
+
+        Arrays.sort(points,(a,b)-> Double.compare(origin.slopeTo(a),origin.slopeTo(b)));
         return slopes;
     }
 
     // the number of line segments
     public int numberOfSegments() {
-        int counts=0;
+        int counts = 0;
 
     }
-
 
 
     // the line segments
