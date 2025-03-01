@@ -26,23 +26,25 @@ public class QuickSort {
         int i = lo, j = hi + 1;
         Comparable v = a[lo];
         while (true) {
+            // find item on left to swap
             while (less(a[++i], v)) {
                 if (i == hi) break;
             }
-
+            //find item on right to swap
             while (less(v, a[--j])) {
-                if (j == lo) break;
+                if (j == lo) break; // redundant since a[lo] acts as sentinel
             }
 
             // check if pointers cross
             if (i >= j) break;
 
+            // swap
             exch(a, i, j);
         }
 
         // put pivot v ar a[j]
         exch(a, lo, j);
-        return j;
+        return j; // return pivot index which is known to be in the correct place
     }
 
 
