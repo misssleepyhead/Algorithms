@@ -1,20 +1,23 @@
 package collinear;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 public class BruteCollinearPoints {
     Point[] points;
-        List<LineSegment> segments;
+    List<LineSegment> segments;
     int n;
 
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
+        if(points==null) throw new IllegalArgumentException();
         n = points.length;
         this.points = Arrays.copyOf(points, n);
         Arrays.sort(this.points);
+        segments = new ArrayList<>();
         slopesOfPoints(this.points);
 
 
@@ -22,7 +25,15 @@ public class BruteCollinearPoints {
 
     // brute force
     private void slopesOfPoints(Point[] sortedPoints) {
-        double[] slopes = new double[n];
+        for (Point p : sortedPoints) {
+            if (p == null) throw new IllegalArgumentException("Point cannot be null");
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            if (sortedPoints[i].compareTo(sortedPoints[i + 1]) == 0) {
+                throw new IllegalArgumentException("Duplicate points detected");
+            }
+        }
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
                 Point p = sortedPoints[i];
