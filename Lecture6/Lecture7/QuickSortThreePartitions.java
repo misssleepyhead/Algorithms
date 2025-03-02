@@ -8,7 +8,7 @@ import edu.princeton.cs.algs4.StdRandom;
  * using quick sort with 3-way partitioning
  */
 public class QuickSortThreePartitions {
-    private static final int CUTOFF = 7;  // cutoff to insertion sort
+    private static final int CUTOFF = 10;  // cutoff to insertion sort
 
     public QuickSortThreePartitions() {
     }
