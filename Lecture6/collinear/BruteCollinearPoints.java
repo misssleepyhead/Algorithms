@@ -6,28 +6,47 @@ import java.util.List;
 
 public class BruteCollinearPoints {
     Point[] points;
-    private static final Point origin = new Point(0, 0);
-    Comparator<Point> comparator;
-    List<LineSegment> segments;
+        List<LineSegment> segments;
+    int n;
 
-    Point[] aux;
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
-        int n=points.length;
+        n = points.length;
         this.points = Arrays.copyOf(points, n);
-        comparator = origin.slopeOrder();
+        Arrays.sort(points);
+        slopesOfPoints(points);
+
 
     }
 
-    private double[] slopesOfPoints(Point[] points) {
-        double[] slopes = new double[points.length];
-        for (int i = 0; i < points.length; i++) {
-            slopes[i] = origin.slopeTo(points[i]);
-        }
+    // brute force
+    private void slopesOfPoints(Point[] sortedPoints) {
+        double[] slopes = new double[n];
+        for (int i = 0; i < n - 3; i++) {
+            for (int j = i + 1; j < n - 2; j++) {
+                Point p = sortedPoints[i];
+                Point q = sortedPoints[j];
+                double pqSlope = p.slopeTo(q);
 
-        Arrays.sort(points,(a,b)-> Double.compare(origin.slopeTo(a),origin.slopeTo(b)));
-        return slopes;
+                for (int k = j + 1; k < n - 1; k++) {
+                    Point r = sortedPoints[k];
+                    double pkSlope = p.slopeTo(r);
+                    if (pqSlope != pkSlope) break; // break if three points are not collinear
+
+                    for (int l = k + 1; l < n; l++) {
+                        Point s = sortedPoints[l];
+                        double psSlope = p.slopeTo(s);
+                        if(pqSlope==psSlope){
+                            segments.add(new LineSegment(p,s));
+                        }else {
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
     }
 
     // the number of line segments
