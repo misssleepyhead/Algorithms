@@ -14,8 +14,8 @@ public class BruteCollinearPoints {
     public BruteCollinearPoints(Point[] points) {
         n = points.length;
         this.points = Arrays.copyOf(points, n);
-        Arrays.sort(points);
-        slopesOfPoints(points);
+        Arrays.sort(this.points);
+        slopesOfPoints(this.points);
 
 
     }
