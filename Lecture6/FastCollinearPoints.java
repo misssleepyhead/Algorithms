@@ -7,31 +7,35 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FastCollinearPoints {
-    Point[] points;
-    int n;
-    List<LineSegment> segments;
+    private Point[] points;
+    private List<LineSegment> segments;
+    private int n;
 
     // finds all line segments containing 4 or more points
-    public FastCollinearPoints(Point[] points) {
-        if (points == null) throw new IllegalArgumentException();
-        n = points.length;
-        this.points = Arrays.copyOf(points, n);
+    public FastCollinearPoints(Point[] inputPoints) {
+        if (inputPoints == null) throw new IllegalArgumentException();
+        n = inputPoints.length;
+        for (Point p : inputPoints) {
+            if (p == null) throw new IllegalArgumentException("Point cannot be null");
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            if (inputPoints[i].compareTo(inputPoints[i + 1]) == 0) {
+                throw new IllegalArgumentException("Duplicate points detected");
+            }
+        }
+
+        points = new Point[n];
+        for (int i = 0; i < n; i++) {
+            points[i] = inputPoints[i];
+        }
+
         segments = new ArrayList<>();
         findSegments(this.points);
 
     }
 
     private void findSegments(Point[] sortedPoints) {
-        for (Point p : sortedPoints) {
-            if (p == null) throw new IllegalArgumentException("Point cannot be null");
-        }
-
-        for (int i = 0; i < n - 1; i++) {
-            if (sortedPoints[i].compareTo(sortedPoints[i + 1]) == 0) {
-                throw new IllegalArgumentException("Duplicate points detected");
-            }
-        }
-
         for (int i = 0; i < n; i++) {
             Point origin = sortedPoints[i];
 
