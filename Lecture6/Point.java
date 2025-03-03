@@ -50,14 +50,10 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        double yDifference = that.y - this.y;
-        double xDifference = that.x - this.x;
-
-        if (yDifference == 0) return 0.0;
-        if (xDifference == yDifference) return Double.NEGATIVE_INFINITY;
-        if (xDifference == 0) return Double.POSITIVE_INFINITY;
-
-        return yDifference / xDifference;
+        if (this.x == that.x && this.y == that.y) return Double.NEGATIVE_INFINITY;
+        else if (this.x != that.x && this.y == that.y) return +0.0;
+        else if (this.x == that.x && this.y != that.y) return Double.POSITIVE_INFINITY;
+        return (double) (that.y - this.y) / (that.x - this.x);
     }
 
     /**
@@ -84,7 +80,10 @@ public class Point implements Comparable<Point> {
      * @return the Comparator that defines this ordering on points
      */
     public Comparator<Point> slopeOrder() {
-        return (a, b) -> Double.compare(slopeTo(a), slopeTo(b));
+        return (a, b) -> {
+            if (a == null || b == null) throw new NullPointerException();
+            return Double.compare(slopeTo(a), slopeTo(b));
+        };
     }
 
 
@@ -114,7 +113,7 @@ public class Point implements Comparable<Point> {
         Comparator<Point> comparator = p.slopeOrder();
         System.out.println(comparator.compare(a, b));
         System.out.println(comparator.compare(a, c));
-        System.out.println(comparator.compare(c,a));
+        System.out.println(comparator.compare(c, a));
         System.out.println(comparator.compare(c, d));
 
     }

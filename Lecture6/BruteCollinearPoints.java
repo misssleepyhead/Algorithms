@@ -29,30 +29,24 @@ public class BruteCollinearPoints {
         Arrays.sort(points);
         n = points.length;
         segments = new ArrayList<>();
-        slopesOfPoints(points);
 
-
-    }
-
-    // brute force
-    private void slopesOfPoints(Point[] sortedPoints) {
-
+        // brute force
         // store all collinear points
         Point[][] allPoints = new Point[n * n][];
 
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
-                Point p = sortedPoints[i];
-                Point q = sortedPoints[j];
+                Point p = points[i];
+                Point q = points[j];
                 double pqSlope = p.slopeTo(q);
 
                 for (int k = j + 1; k < n - 1; k++) {
-                    Point r = sortedPoints[k];
+                    Point r = points[k];
                     double pkSlope = p.slopeTo(r);
                     if (pqSlope != pkSlope) break; // break if three points are not collinear
 
                     for (int m = k + 1; m < n; m++) {
-                        Point s = sortedPoints[m];
+                        Point s = points[m];
                         double psSlope = p.slopeTo(s);
                         if (pqSlope == psSlope) {
                             segments.add(new LineSegment(p, s));
@@ -64,6 +58,7 @@ public class BruteCollinearPoints {
                 }
             }
         }
+
     }
 
     // the number of line segments
