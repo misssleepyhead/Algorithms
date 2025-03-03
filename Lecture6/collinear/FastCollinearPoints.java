@@ -1,5 +1,9 @@
 package collinear;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +19,7 @@ public class FastCollinearPoints {
         n = points.length;
         this.points = Arrays.copyOf(points, n);
         segments = new ArrayList<>();
+        findSegments(this.points);
 
     }
 
@@ -43,15 +48,24 @@ public class FastCollinearPoints {
             quickSort3way(otherPoints, 0, otherPoints.length - 1, origin);
 
             // 3. find groups of at least 3 points with the same slope
-            int j=0;
-            while (j<otherPoints.length-2){
+            int j = 0;
+            while (j < otherPoints.length - 2) {
+                List<Point> group = new ArrayList<>();
+                group.add(origin);
+                double slope = origin.slopeTo(otherPoints[j]);
 
+                while (j < otherPoints.length && origin.slopeTo(otherPoints[j]) == slope) {
+                    group.add(otherPoints[j]);
+                    j++;
+                }
+
+                // if we found 4+ collinear, add to segment
+                if (group.size() >= 4) {
+                    group.sort(null); // sort(null) = Comparator.naturalOrder()
+                    segments.add(new LineSegment(group.get(0), group.get(group.size() - 1)));
+                }
             }
-
-
         }
-
-
     }
 
     // quicksort 3 way
@@ -87,5 +101,35 @@ public class FastCollinearPoints {
     // the line segments
     public LineSegment[] segments() {
         return segments.toArray(new LineSegment[0]);
+    }
+
+    public static void main(String[] args) {
+
+        // read the n points from a file
+        In in = new In(args[0]);
+        int n = in.readInt();
+        Point[] points = new Point[n];
+        for (int i = 0; i < n; i++) {
+            int x = in.readInt();
+            int y = in.readInt();
+            points[i] = new Point(x, y);
+        }
+
+        // draw the points
+        StdDraw.enableDoubleBuffering();
+        StdDraw.setXscale(0, 32768);
+        StdDraw.setYscale(0, 32768);
+        for (Point p : points) {
+            p.draw();
+        }
+        StdDraw.show();
+
+        // print and draw the line segments
+        FastCollinearPoints collinear = new FastCollinearPoints(points);
+        for (LineSegment segment : collinear.segments()) {
+            StdOut.println(segment);
+            segment.draw();
+        }
+        StdDraw.show();
     }
 }
