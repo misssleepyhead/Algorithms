@@ -33,6 +33,7 @@ public class BruteCollinearPoints {
         // brute force
         // store all collinear points
         Point[][] allPoints = new Point[n * n][];
+        int countGroup = 0;
 
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
@@ -48,22 +49,21 @@ public class BruteCollinearPoints {
 
                     for (int m = k + 1; m < n; m++) {
                         Point s = points[m];
-                        double psSlope = p.slopeTo(s);
-                        if (pqSlope == psSlope) {
-                            collinearGroup.add(p);
-                            collinearGroup.add(q);
-                            collinearGroup.add(r);
-                            collinearGroup.add(s);
+                        if (Double.compare(p.slopeTo(q), p.slopeTo(r)) == 0 &&
+                                Double.compare(p.slopeTo(q), p.slopeTo(s)) == 0) {
+                            allPoints[countGroup] = new Point[2];
+                            allPoints[countGroup][0] = p;
+                            allPoints[countGroup][1] = s;
+                            countGroup++;
                         } else {
                             break;
                         }
                     }
 
-                    if(collinearGroup.size()>=4){
+                    if (collinearGroup.size() >= 4) {
                         collinearGroup.sort(null);
-                        segments.add(new LineSegment(collinearGroup.get(0),collinearGroup.get(collinearGroup.size()-1)));
+                        segments.add(new LineSegment(collinearGroup.get(0), collinearGroup.get(collinearGroup.size() - 1)));
                     }
-
 
                 }
             }
