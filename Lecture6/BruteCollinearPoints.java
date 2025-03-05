@@ -36,6 +36,7 @@ public class BruteCollinearPoints {
 
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
+                List<Point> collinearGroup = new ArrayList<>();
                 Point p = points[i];
                 Point q = points[j];
                 double pqSlope = p.slopeTo(q);
@@ -49,12 +50,21 @@ public class BruteCollinearPoints {
                         Point s = points[m];
                         double psSlope = p.slopeTo(s);
                         if (pqSlope == psSlope) {
-                            segments.add(new LineSegment(p, s));
+                            collinearGroup.add(p);
+                            collinearGroup.add(q);
+                            collinearGroup.add(r);
+                            collinearGroup.add(s);
                         } else {
                             break;
                         }
-
                     }
+
+                    if(collinearGroup.size()>=4){
+                        collinearGroup.sort(null);
+                        segments.add(new LineSegment(collinearGroup.get(0),collinearGroup.get(collinearGroup.size()-1)));
+                    }
+
+
                 }
             }
         }
