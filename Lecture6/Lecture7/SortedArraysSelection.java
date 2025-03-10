@@ -5,9 +5,12 @@ package Lecture7;
  * given two sorted array a[], b[], length is n1,n2, and an int where 0<=k<=n1+n2, design an algorithm to find a key of rank k,
  * the order of growth runtime worst case is log n, where n = n1+n2
  * version 1: n1=n2, k=n/2
+ * version 2: k=n/2
  * <p>
  * Solution:
  * 1. since arrays are sorted, we can use binary search based algorithm
+ * 2. always start search at the smaller array, avoid out of bound and make sure the
+ * runtime is always O(log MIN(n1,n2)) not O(log MAX(n1,n2))
  */
 public class SortedArraysSelection {
 
@@ -41,7 +44,7 @@ public class SortedArraysSelection {
 
     public static void main(String[] args) {
         int[] a = {1, 3, 5, 7, 9};
-        int[] b = {2, 4, 6, 8, 10};
+        int[] b = {2, 4, 6, 8};
 
         int k = 5; // Finding the 5th smallest element (median)
         System.out.println("The " + k + "th smallest element is: " + findKthElement(a, b, k));
