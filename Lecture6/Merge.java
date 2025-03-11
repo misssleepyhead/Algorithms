@@ -126,6 +126,48 @@ public class Merge {
     }
 
     /**
+     * web exercise 8
+     * Merging two arrays of different lengths. Given two sorted arrays a[] and b[] of sizes M and
+     * N where M ≥ N, devise an algorithm to merge them into a new sorted array c[] using ~ N lg M compares.
+     */
+    public static int[] mergingTwoDifferentLength(int[] a, int[] b) {
+        int M = a.length, N = b.length;
+        int[] c = new int[N + M];
+
+        System.arraycopy(a, 0, c, 0, M); // copy a to c
+
+        // insert elements from b[] using bs
+        for (int i = 0; i < N; i++) {
+            int pos = bsInsertPosition(c, b[i], 0, M + 1);
+            insertShift(c, b[i], pos, M + i);
+        }
+        return c;
+
+
+    }
+
+    // binary search to find the correct position
+    private static int bsInsertPosition(int[] arr, int key, int left, int right) {
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] < key) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    // insert element at the position and shift the rest
+    private static void insertShift(int[] arr, int key, int pos, int length) {
+        for (int i = length; i > pos; i--) { // shift pos+1 to length to right
+            arr[i] = arr[i - 1];
+        }
+        arr[pos] = key;
+    }
+
+    /**
      * Reads in a sequence of strings from standard input; mergesorts them;
      * and prints them to standard output in ascending order.
      *
