@@ -21,6 +21,8 @@ public class BruteCollinearPoints {
                 throw new IllegalArgumentException("Duplicate points detected");
             }
         }
+
+
         points = new Point[n];
         for (int i = 0; i < n; i++) {
             points[i] = inputPoints[i];
@@ -35,39 +37,35 @@ public class BruteCollinearPoints {
         Point[][] allPoints = new Point[n * n][];
         int countGroup = 0;
 
-        for (int i = 0; i < n - 3; i++) {
-            for (int j = i + 1; j < n - 2; j++) {
-                List<Point> collinearGroup = new ArrayList<>();
-                Point p = points[i];
-                Point q = points[j];
-                double pqSlope = p.slopeTo(q);
-
-                for (int k = j + 1; k < n - 1; k++) {
-                    Point r = points[k];
-                    double pkSlope = p.slopeTo(r);
-                    if (pqSlope != pkSlope) break; // break if three points are not collinear
-
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = j + 1; k < n; k++) {
                     for (int m = k + 1; m < n; m++) {
-                        Point s = points[m];
-                        if (Double.compare(p.slopeTo(q), p.slopeTo(r)) == 0 &&
-                                Double.compare(p.slopeTo(q), p.slopeTo(s)) == 0) {
+                        if (Double.compare(points[i].slopeTo(points[j]), points[i].slopeTo(points[m])) == 0 &&
+                                Double.compare(points[i].slopeTo(points[j]), points[i].slopeTo(points[k])) == 0) {
                             allPoints[countGroup] = new Point[2];
-                            allPoints[countGroup][0] = p;
-                            allPoints[countGroup][1] = s;
+                            allPoints[countGroup][0] = points[i];
+                            allPoints[countGroup][1] = points[j];
                             countGroup++;
-                        } else {
-                            break;
                         }
                     }
-
-                    if (collinearGroup.size() >= 4) {
-                        collinearGroup.sort(null);
-                        segments.add(new LineSegment(collinearGroup.get(0), collinearGroup.get(collinearGroup.size() - 1)));
-                    }
-
                 }
             }
         }
+
+        LineSegment[] temp = new LineSegment[countGroup];
+        int countLine = 0, j = 1;
+        for (int i = 0; i < countGroup; i = j, i++) {
+            double firstSlope = allPoints[i][0].slopeTo(allPoints[i][1]);
+            while (j < countGroup) {
+                if ((Double.compare(allPoints[i][0].slopeTo(allPoints[j][0]), firstSlope) != 0
+                        && Double.compare(allPoints[i][0].slopeTo(allPoints[j][0]), Double.NEGATIVE_INFINITY) != 0) ||
+                        ((Double.compare(allPoints[i][1].slopeTo(allPoints[j][1]), firstSlope) != 0
+                                && Double.compare(allPoints[i][1].slopeTo(allPoints[j][1]), Double.NEGATIVE_INFINITY) != 0)
+            }
+
+        }
+
 
     }
 
@@ -80,7 +78,8 @@ public class BruteCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        return segments.toArray(new LineSegment[0]);
+        LineSegment[] outputs = new LineSegment[segments.size()];
+        re
     }
 }
 
