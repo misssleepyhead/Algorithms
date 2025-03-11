@@ -33,11 +33,6 @@ public class BruteCollinearPoints {
         n = points.length;
         segments = new ArrayList<>();
 
-        // brute force
-        // store all collinear points
-        Point[][] allPoints = new Point[n * n][];
-        int countGroup = 0;
-
         for (int i = 0; i < n - 3; i++) {
             for (int j = i + 1; j < n - 2; j++) {
                 double slopeIJ = points[i].slopeTo(points[j]);
