@@ -4,8 +4,11 @@ import edu.princeton.cs.algs4.Insertion;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
+import java.util.Arrays;
+
 public class QuickSort {
     private static final int CUTOFF = 10;  // cutoff to insertion sort
+
     public QuickSort() {
     }
 
@@ -17,8 +20,8 @@ public class QuickSort {
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo+CUTOFF-1){
-            Insertion.sort(a,lo,hi);
+        if (hi <= lo + CUTOFF - 1) {
+            Insertion.sort(a, lo, hi);
             return;
         }
         int j = partition(a, lo, hi);
@@ -97,8 +100,8 @@ public class QuickSort {
      * {@code a[0]} through {@code a[k-1]} are less than (or equal to) {@code a[k]}; and
      * {@code a[k+1]} through {@code a[n-1]} are greater than (or equal to) {@code a[k]}.
      *
-     * @param  a the array
-     * @param  k the rank of the key
+     * @param a the array
+     * @param k the rank of the key
      * @return the key of rank {@code k}
      * @throws IllegalArgumentException unless {@code 0 <= k < a.length}
      */
@@ -110,10 +113,28 @@ public class QuickSort {
         int lo = 0, hi = a.length - 1;
         while (hi > lo) {
             int i = partition(a, lo, hi);
-            if      (i > k) hi = i - 1;
+            if (i > k) hi = i - 1;
             else if (i < k) lo = i + 1;
             else return a[i];
         }
         return a[lo];
     }
+
+    // exercise: median of 3 partitioning
+    private static int median3partition(Comparable[] a, int low, int high) {
+        // select three values from the array
+        int mid = low + (high - low) / 2;
+
+        // find median
+        if (a[low].compareTo(a[mid]) > 0) exch(a, low, mid);
+        if (a[low].compareTo(a[high]) > 0) exch(a, low, high);
+        if (a[mid].compareTo(a[high]) > 0) exch(a, mid, high);
+
+        // Median is now at index mid, move it to the pivot position (high - 1)
+        exch(a, mid, high - 1);
+        return partition(a, low, high - 1);
+
+
+    }
+
 }
