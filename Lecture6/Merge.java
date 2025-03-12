@@ -143,7 +143,6 @@ public class Merge {
         }
         return c;
 
-
     }
 
     // binary search to find the correct position
