@@ -4,7 +4,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
 
 public class FastCollinearPoints {
     private Point[] points;
@@ -13,31 +15,31 @@ public class FastCollinearPoints {
 
     // finds all line segments containing 4 or more points
     public FastCollinearPoints(Point[] inputPoints) {
-        if (inputPoints == null) throw new IllegalArgumentException();
+        if (inputPoints == null) throw new IllegalArgumentException("Input array is null");
+
         n = inputPoints.length;
-        for (Point p : inputPoints) {
+        points = Arrays.copyOf(inputPoints, n);
+        Arrays.sort(points); // Sort to ensure lexicographic order
+
+        // Check for null and duplicate points
+        for (Point p : points) {
             if (p == null) throw new IllegalArgumentException("Point cannot be null");
         }
-
         for (int i = 0; i < n - 1; i++) {
-            if (inputPoints[i].compareTo(inputPoints[i + 1]) == 0) {
+            if (points[i].compareTo(points[i + 1]) == 0) {
                 throw new IllegalArgumentException("Duplicate points detected");
             }
         }
 
-        points = new Point[n];
-        for (int i = 0; i < n; i++) {
-            points[i] = inputPoints[i];
-        }
-
         segments = new ArrayList<>();
-        findSegments(this.points);
+        // Find collinear segments
+        findSegments();
 
     }
 
-    private void findSegments(Point[] sortedPoints) {
+    private void findSegments() {
         for (int i = 0; i < n; i++) {
-            Point origin = sortedPoints[i];
+            Point origin = points[i];
 
             // 1. create point[] but exclude origin
             Point[] otherPoints = new Point[n - 1];
@@ -47,11 +49,11 @@ public class FastCollinearPoints {
             }
 
             // 2. use quick sort to sort other points
-            quickSort3way(otherPoints, 0, otherPoints.length - 1, origin);
+            Arrays.sort(otherPoints, origin.slopeOrder());
 
             // 3. find groups of at least 3 points with the same slope
             int j = 0;
-            while (j < otherPoints.length - 2) {
+            while (j < otherPoints.length) {
                 List<Point> group = new ArrayList<>();
                 group.add(origin);
                 double slope = origin.slopeTo(otherPoints[j]);
@@ -63,8 +65,14 @@ public class FastCollinearPoints {
 
                 // if we found 4+ collinear, add to segment
                 if (group.size() >= 4) {
-                    group.sort(null); // sort(null) = Comparator.naturalOrder()
-                    segments.add(new LineSegment(group.get(0), group.get(group.size() - 1)));
+                    Collections.sort(group); // sort(null) = Comparator.naturalOrder()
+                    Point start = group.get(0);
+                    Point end = group.get(group.size() - 1);
+
+                    // **Only add the segment if the origin is the smallest point**
+                    if (origin.compareTo(start) == 0) {
+                        segments.add(new LineSegment(start, end));
+                    }
                 }
             }
         }
@@ -80,8 +88,8 @@ public class FastCollinearPoints {
 
         while (i <= gt) {
             double currentSlope = origin.slopeTo(points[i]);
-            if (currentSlope < pivotSlope) exch(points, lt++, i++);
-            else if (currentSlope > pivotSlope) exch(points, i, gt--);
+            if (Double.compare(currentSlope, pivotSlope) < 0) exch(points, lt++, i++);
+            else if (Double.compare(currentSlope, pivotSlope) > 0) exch(points, i, gt--);
             else i++;
         }
         quickSort3way(points, lo, lt - 1, origin);
