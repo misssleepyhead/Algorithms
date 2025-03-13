@@ -3,10 +3,11 @@ name: Java CI for CollinearPoints
 on:
   push:
     paths:
-      - 'Lecture6/collinear/**' # Runs only if files in 'Lecture6/collinear/' are changed
+      - 'Lecture6/collinear/**'
   pull_request:
     paths:
       - 'Lecture6/collinear/**'
+  workflow_dispatch: # Add this line
 
 jobs:
   build:
