@@ -31,8 +31,8 @@ jobs:
           wget -q -O lib/junit-jupiter-engine.jar https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar
           wget -q -O lib/junit-platform-console-standalone.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
 
-      - name: Compile Java Code (Including Tests)
+      - name: Compile Java Code (Including Test Classes)
         run: javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out Lecture6/collinear/*.java
 
-      - name: Run Tests with JUnit 5
+      - name: Run JUnit 5 Tests
         run: java -jar lib/junit-platform-console-standalone.jar --classpath out --select-class Lecture6.collinear.TestCollinear
