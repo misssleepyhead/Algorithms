@@ -20,3 +20,4 @@ public class TestCollinear {
         assertEquals(0,fp.numberOfSegments());
     }
 }
+// Trigger GitHub Actions
