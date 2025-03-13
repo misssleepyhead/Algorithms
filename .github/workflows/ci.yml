@@ -3,10 +3,10 @@ name: Java CI for CollinearPoints
 on:
   push:
     paths:
-      - 'collinear/**' # Runs only if files in 'collinear/' are changed
+      - 'Lecture6/collinear/**' # Runs only if files in 'Lecture6/collinear/' are changed
   pull_request:
     paths:
-      - 'collinear/**' 
+      - 'Lecture6/collinear/**'
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
           java-version: '17'
 
       - name: Compile Java Code
-        run: javac -cp .:lib/* collinear/*.java
+        run: javac -cp .:lib/* Lecture6/collinear/*.java
 
       - name: Run Tests
-        run: java -cp .:lib/* org.junit.runner.JUnitCore collinear.TestCollinear
+        run: java -cp .:lib/* org.junit.runner.JUnitCore Lecture6.collinear.TestCollinear
