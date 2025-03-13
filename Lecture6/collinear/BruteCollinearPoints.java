@@ -1,3 +1,5 @@
+package collinear;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,7 +16,7 @@ public class BruteCollinearPoints {
         if (inputPoints == null) throw new IllegalArgumentException();
         n = inputPoints.length;
         for (Point p : inputPoints) {
-            if (p == null) throw new IllegalArgumentException("Point cannot be null");
+            if (p == null) throw new IllegalArgumentException("collinear.Point cannot be null");
         }
 
         for (int i = 0; i < n - 1; i++) {

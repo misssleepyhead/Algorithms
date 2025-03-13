@@ -1,3 +1,5 @@
+package collinear;
+
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
@@ -23,7 +25,7 @@ public class FastCollinearPoints {
 
         // Check for null and duplicate points
         for (Point p : points) {
-            if (p == null) throw new IllegalArgumentException("Point cannot be null");
+            if (p == null) throw new IllegalArgumentException("collinear.Point cannot be null");
         }
         for (int i = 0; i < n - 1; i++) {
             if (points[i].compareTo(points[i + 1]) == 0) {
