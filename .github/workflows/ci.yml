@@ -35,4 +35,4 @@ jobs:
         run: javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar:lib/junit-jupiter-engine.jar" Lecture6/collinear/*.java
 
       - name: Run Tests
-        run: java -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar:lib/junit-jupiter-engine.jar:." -jar lib/junit-platform-console-standalone.jar --select-class Lecture6.collinear.TestCollinear
+        run: java -jar lib/junit-platform-console-standalone.jar --select-class Lecture6.collinear.TestCollinear
