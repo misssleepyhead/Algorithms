@@ -118,14 +118,16 @@ public class FastCollinearPoints {
     public static void main(String[] args) {
 
         // read the n points from a file
-        In in = new In(args[0]);
-        int n = in.readInt();
-        Point[] points = new Point[n];
-        for (int i = 0; i < n; i++) {
-            int x = in.readInt();
-            int y = in.readInt();
-            points[i] = new Point(x, y);
-        }
+//        In in = new In(args[0]);
+//        int n = in.readInt();
+//        Point[] points = new Point[n];
+//        for (int i = 0; i < n; i++) {
+//            int x = in.readInt();
+//            int y = in.readInt();
+//            points[i] = new Point(x, y);
+//        }
+
+        Point[] points= {new Point(19000,10000), new Point(18000,10000),new Point(32000,10000), new Point(21000,10000),new Point(14000,10000),new Point(1234,5678)};
 
         // draw the points
         StdDraw.enableDoubleBuffering();
@@ -143,5 +145,6 @@ public class FastCollinearPoints {
             segment.draw();
         }
         StdDraw.show();
+
     }
 }
