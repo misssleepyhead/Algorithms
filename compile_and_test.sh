@@ -10,13 +10,20 @@ wget -q -O lib/junit-jupiter-api.jar https://repo1.maven.org/maven2/org/junit/ju
 wget -q -O lib/junit-jupiter-engine.jar https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar
 wget -q -O lib/junit-platform-console-standalone.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
 
+echo "Finding Java files..."
+find . -type f -name "*.java" \
+  ! -path "*/.idea/*" \
+  ! -path "*/.github/*" \
+  ! -path "*/fileTemplates/*" \
+  ! -path "*/fileTemplates/internal/*" \
+  ! -path "*/includes/*" \
+  > java_files_list.txt
+
+echo "List of Java files to be compiled:"
+cat java_files_list.txt  # Print the list of Java files
+
 echo "Compiling Java files..."
-find . -name "*.java" \
-    ! -path "./.idea/*" \
-    ! -path "./.github/*" \
-    ! -path "./.idea/fileTemplates/*" \
-    ! -path "./.idea/fileTemplates/internal/*" \
-    -print0 | xargs -0 javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out
+xargs javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out < java_files_list.txt
 
 echo "Checking compiled files..."
 find out/ -name "*.class"
