@@ -34,6 +34,8 @@ public class MaxPQ<Key extends Comparable<Key>> {
         pq = temp;
     }
 
+
+
     public void insert(Key v) {
         // double size of array if necessary
         if (N == pq.length - 1) resize(2 * pq.length);
