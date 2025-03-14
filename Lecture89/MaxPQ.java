@@ -24,6 +24,10 @@ public class MaxPQ<Key extends Comparable<Key>> {
         return N;
     }
 
+    public Key max(){
+        return pq[1];
+    }
+
     // resize the underlying array to have the given capacity
     private void resize(int capacity) {
         assert capacity > N;
