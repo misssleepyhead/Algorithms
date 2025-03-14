@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - 'Lecture6/collinear/**'
-      - 'Lecture89'
+      - 'Lecture89/**'
   pull_request:
     paths:
       - 'Lecture6/collinear/**'
-      - 'Lecture89'
+      - 'Lecture89/**'
   workflow_dispatch:
 
 jobs:
@@ -34,11 +34,11 @@ jobs:
           wget -q -O lib/junit-platform-console-standalone.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
 
       - name: Compile Java Code (Including Test Classes)
-        run: javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out Lecture6/collinear/*.java
+        run: javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out Lecture6/collinear/*.java Lecture89/*.java
 
       - name: Check Compiled Files
         run: ls -R out/ # Verify that TestCollinear.class exists
 
       - name: Run JUnit 5 Tests
-        run: java -jar lib/junit-platform-console-standalone.jar --classpath out --select-class collinear.TestCollinear
+        run: java -jar lib/junit-platform-console-standalone.jar --classpath out --select-class collinear.TestCollinear --select-class TestPQ
 
