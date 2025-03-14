@@ -11,7 +11,12 @@ wget -q -O lib/junit-jupiter-engine.jar https://repo1.maven.org/maven2/org/junit
 wget -q -O lib/junit-platform-console-standalone.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
 
 echo "Compiling Java files..."
-javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out $(find . -name "*.java" ! -path "./.idea/*" ! -path "./.github/*")
+find . -name "*.java" \
+    ! -path "./.idea/*" \
+    ! -path "./.github/*" \
+    ! -path "./.idea/fileTemplates/*" \
+    ! -path "./.idea/fileTemplates/internal/*" \
+    -print0 | xargs -0 javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out
 
 echo "Checking compiled files..."
 find out/ -name "*.class"
