@@ -36,6 +36,9 @@ jobs:
       - name: Compile Java Code (Including Test Classes)
         run: javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out Lecture6/collinear/*.java Lecture89/*.java
 
+      - name: Check Java Source Files
+        run: find . -name "*.java"
+
       - name: Check Compiled Files
         run: find out/ -name "*.class"
 
