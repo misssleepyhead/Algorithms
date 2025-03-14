@@ -37,7 +37,8 @@ jobs:
         run: javac -cp ".:lib/algs4.jar:lib/junit-jupiter-api.jar" -d out Lecture6/collinear/*.java Lecture89/*.java
 
       - name: Check Compiled Files
-        run: ls -R out/ # Verify that TestCollinear.class exists
+        run: find out/ -name "*.class"
+
 
       - name: Run JUnit 5 Tests
         run: java -jar lib/junit-platform-console-standalone.jar --classpath out --select-class collinear.TestCollinear --select-class TestPQ
