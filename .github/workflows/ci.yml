@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - 'Lecture6/collinear/**'
+      - 'Lecture89'
   pull_request:
     paths:
       - 'Lecture6/collinear/**'
+      - 'Lecture89'
   workflow_dispatch:
 
 jobs:
