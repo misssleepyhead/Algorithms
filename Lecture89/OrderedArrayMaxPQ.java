@@ -1,3 +1,7 @@
+/**
+ * implement ordered array Max priority queue
+ * store elements in array, and rearrange the order every time we insert, so delMax just delete the last element in the array
+ */
 public class OrderedArrayMaxPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int n;

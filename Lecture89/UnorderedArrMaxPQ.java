@@ -1,3 +1,8 @@
+
+/**
+ * implement unordered array Max priority queue
+ * store elements in array, and when call dekMax(), we scan through the whole array to delete it
+ */
 public class UnorderedArrMaxPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int n;
