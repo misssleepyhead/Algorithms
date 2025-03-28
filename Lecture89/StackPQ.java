@@ -22,7 +22,7 @@ public class StackPQ<T> {
 
         @Override
         public int compareTo(Node other) {
-            return Integer.compare(other.order, this.order);
+            return Integer.compare(this.order, other.order);
         }
     }
 
@@ -35,11 +35,11 @@ public class StackPQ<T> {
     }
 
     // add node with order number
-    public void push(T item){
-        pq.add(new Node(item,order++));
+    public void push(T item) {
+        pq.add(new Node(item, order--));
     }
 
-    public T pop(){
+    public T pop() {
         return pq.poll().item;
     }
 
@@ -50,6 +50,9 @@ public class StackPQ<T> {
         stackPQ.push(2);
         stackPQ.push(3);
         stackPQ.push(0);
+        System.out.println(stackPQ.pop());
+        System.out.println(stackPQ.pop());
+        System.out.println(stackPQ.pop());
         System.out.println(stackPQ.pop());
     }
 }
