@@ -14,10 +14,19 @@ public class Board {
         }
     }
 
-    // string representation of this board
+    // string representation of this board, returns a string composed of n + 1 lines.
+    // The first line contains the board size n; the remaining n lines
+    // contains the n-by-n grid of tiles in row-major order, using 0 to designate the blank square.
     public String toString() {
-        String s = "";
-        return s;
+        StringBuilder s = new StringBuilder(String.valueOf(n));
+        for (int i = 0; i < n; i++) {
+            s.append("/n");
+            for (int j = 0; j < tiles[0].length; j++) {
+                String number = String.valueOf(tiles[i][j]);
+                s.append(number);
+            }
+        }
+        return s.toString();
     }
 
     // board dimension n
