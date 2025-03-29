@@ -29,6 +29,7 @@ public class StackPQ<T> {
     private PriorityQueue<Node> pq;
     private int order;
 
+
     public StackPQ() {
         pq = new PriorityQueue<>();
         order = 0;
@@ -41,6 +42,10 @@ public class StackPQ<T> {
 
     public T pop() {
         return pq.poll().item;
+    }
+
+    public int size(){
+        return order*(-1)+1;
     }
 
 
