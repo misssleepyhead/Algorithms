@@ -78,7 +78,7 @@ public class Board {
             for (int j = 0; j < n; j++) {
                 int tile = tiles[i][j];
                 int goalTile = goal[i][j];
-                if (tile != goalTile) {
+                if (tile != 0 && tile != goalTile) {
                     int goalRow = (tile - 1) / n;
                     int goalCol = (tile - 1) % n;
                     distance += Math.abs(i - goalRow) + Math.abs(j - goalCol);
@@ -90,12 +90,21 @@ public class Board {
 
     // is this board the goal board?
     public boolean isGoal() {
-        return false;
+        return manhattan() == 0 && hamming() == 0;
     }
 
     // does this board equal y?
     public boolean equals(Object y) {
-        return false;
+        if (this == y) return true;
+        if (y == null || this.getClass() != y.getClass()) return false;
+        Board that = (Board) y;
+        if (this.dimension() != that.dimension()) return false;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (this.tiles[i][j] != that.tiles[i][j]) return false;
+            }
+        }
+        return true;
     }
 
     // all neighboring boards
