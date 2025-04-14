@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Slider puzzle
  * 8-puzzle is a sliding puzzle on a 3 by 3 grid with 8 tiles from 1 to 8
@@ -108,8 +111,45 @@ public class Board {
     }
 
     // all neighboring boards
+    // return a list of board contains all the possible movement results of boards
     public Iterable<Board> neighbors() {
-        return null;
+        List<Board> neighbors = new ArrayList<>();
+
+        // find the empty tile
+        int blankRow = 0, blankCol = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (tiles[i][j] == 0) {
+                    blankRow = i;
+                    blankCol = j;
+                    break;
+                }
+            }
+        }
+
+
+
+        // try 4 directions: up,down,left,right
+        int[][] dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        for (int[] d : dir) {
+            int newRow = blankRow + d[0];
+            int newCol = blankCol + d[1];
+
+            if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < n) {
+                // copy the current tiles
+                int[][] newBoard = new int[n][n];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        newBoard[i][j] = tiles[i][j];
+                    }
+                }
+
+                newBoard[blankRow][blankCol] = newBoard[newRow][newCol];
+                newBoard[newRow][newCol]=0;
+                neighbors.add(new Board(newBoard));
+            }
+        }
+        return neighbors;
     }
 
     // a board that is obtained by exchanging any pair of tiles
