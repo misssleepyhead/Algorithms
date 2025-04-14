@@ -159,5 +159,13 @@ public class Board {
 
     // unit testing (not graded)
     public static void main(String[] args) {
+        int[][] tiles= {{1,0,3},{4,2,5},{7,8,6}};
+        Board board=new Board(tiles);
+        System.out.println(board);
+        System.out.println(board.isGoal());
+        System.out.println("Neighbors:");
+        for (Board neighbor : board.neighbors()) {
+            System.out.println(neighbor);
+        }
     }
 }
