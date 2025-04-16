@@ -128,7 +128,6 @@ public class Board {
         }
 
 
-
         // try 4 directions: up,down,left,right
         int[][] dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         for (int[] d : dir) {
@@ -145,7 +144,7 @@ public class Board {
                 }
 
                 newBoard[blankRow][blankCol] = newBoard[newRow][newCol];
-                newBoard[newRow][newCol]=0;
+                newBoard[newRow][newCol] = 0;
                 neighbors.add(new Board(newBoard));
             }
         }
@@ -154,13 +153,37 @@ public class Board {
 
     // a board that is obtained by exchanging any pair of tiles
     public Board twin() {
+        int[][] copy = new int[n][n];
+        //deep copy tiles
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                copy[i][j] = tiles[i][j];
+            }
+        }
+        // swap tiles
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                if (copy[i][j] != 0 && copy[i][j + 1] != 0) {
+                    swap(copy, new int[]{i, j}, new int[]{i, j + 1});
+                    return new Board(copy);
+                }
+            }
+        }
         return null;
+
+    }
+
+    private void swap(int[][] b, int[] first, int[] second) {
+        int helper = b[first[0]][first[1]];
+        b[first[0]][first[1]] = b[second[0]][second[1]];
+        b[second[0]][second[1]] = helper;
+
     }
 
     // unit testing (not graded)
     public static void main(String[] args) {
-        int[][] tiles= {{1,0,3},{4,2,5},{7,8,6}};
-        Board board=new Board(tiles);
+        int[][] tiles = {{1, 0, 3}, {4, 2, 5}, {7, 8, 6}};
+        Board board = new Board(tiles);
         System.out.println(board);
         System.out.println(board.isGoal());
         System.out.println("Neighbors:");
