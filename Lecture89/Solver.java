@@ -44,31 +44,31 @@ public class Solver {
         twinPQ.insert(new SearchNode(initial.twin(), 0, null));
 
 
-        while(true){
+        while (true) {
             // delete the min from pq
-            SearchNode current= pq.delMin();
+            SearchNode current = pq.delMin();
             SearchNode twinCurrent = twinPQ.delMin();
 
-            if(current.board.isGoal()){
-                solutionNode=current;
-                isSolvable=true;
+            if (current.board.isGoal()) {
+                solutionNode = current;
+                isSolvable = true;
                 break;
             }
 
             // if the twin board is solvable then main one must be unsolvable
-            if(twinCurrent.board.isGoal()){
-                isSolvable=false;
+            if (twinCurrent.board.isGoal()) {
+                isSolvable = false;
                 break;
             }
 
             // add its neighbors to the pq
-            for(Board b:current.board.neighbors()){
+            for (Board b : current.board.neighbors()) {
                 if (current.prev == null || !b.equals(current.prev.board)) {
                     pq.insert(new SearchNode(b, current.moves + 1, current));
                 }
             }
 
-            for(Board tb:twinCurrent.board.neighbors()){
+            for (Board tb : twinCurrent.board.neighbors()) {
                 if (twinCurrent.prev == null || !tb.equals(twinCurrent.prev.board)) {
                     twinPQ.insert(new SearchNode(tb, twinCurrent.moves + 1, twinCurrent));
                 }
@@ -84,14 +84,14 @@ public class Solver {
 
     // min number of moves to solve initial board; -1 if unsolvable
     public int moves() {
-        return isSolvable? solutionNode.moves : -1;
+        return isSolvable ? solutionNode.moves : -1;
     }
 
     // sequence of boards in a shortest solution; null if unsolvable
     public Iterable<Board> solution() {
-        if(!isSolvable) return null;
+        if (!isSolvable) return null;
         LinkedList<Board> solutionBoards = new LinkedList<>();
-        for(SearchNode node = solutionNode;solutionNode!=null;solutionNode=solutionNode.prev){
+        for (SearchNode node = solutionNode; solutionNode != null; solutionNode = solutionNode.prev) {
             solutionBoards.addFirst(node.board);
         }
         return solutionBoards;
@@ -99,8 +99,8 @@ public class Solver {
 
     // test client (see below)
     public static void main(String[] args) {
-        int[][] tiles = new int[][]{{0,1,3},{4,2,5},{7,8,6}};
-        Solver solver=new Solver(new Board(tiles));
+        int[][] tiles = new int[][]{{0, 1, 3}, {4, 2, 5}, {7, 8, 6}};
+        Solver solver = new Solver(new Board(tiles));
         System.out.println(solver.solution());
     }
 
