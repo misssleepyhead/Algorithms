@@ -14,7 +14,7 @@ public class Board {
     // where tiles[row][col] = tile at (row, col)
     private int n;
     private int[][] tiles;
-//    private int[][] goal;
+//    private int[][] goal;  remove goal variable to save memory space
 
     public Board(int[][] tiles) {
         n = tiles.length;

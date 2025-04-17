@@ -90,7 +90,7 @@ public class Solver {
         if (!isSolvable) return null;
         LinkedList<Board> solutionBoards = new LinkedList<>();
         for (SearchNode node = solutionNode; node != null; node = node.prev) {
-            solutionBoards.addFirst(node.board);
+            solutionBoards.addFirst(node.board); // add first function is to inverse the order, so initial is in the first position
         }
         return solutionBoards;
     }
