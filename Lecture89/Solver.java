@@ -99,6 +99,9 @@ public class Solver {
 
     // test client (see below)
     public static void main(String[] args) {
+        int[][] tiles = new int[][]{{0,1,3},{4,2,5},{7,8,6}};
+        Solver solver=new Solver(new Board(tiles));
+        System.out.println(solver.solution());
     }
 
 }
