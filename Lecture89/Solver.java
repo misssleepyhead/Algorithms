@@ -1,8 +1,6 @@
 import edu.princeton.cs.algs4.MinPQ;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
 
 /**
  * Slider puzzle
@@ -91,7 +89,7 @@ public class Solver {
     public Iterable<Board> solution() {
         if (!isSolvable) return null;
         LinkedList<Board> solutionBoards = new LinkedList<>();
-        for (SearchNode node = solutionNode; solutionNode != null; solutionNode = solutionNode.prev) {
+        for (SearchNode node = solutionNode; node != null; node = node.prev) {
             solutionBoards.addFirst(node.board);
         }
         return solutionBoards;
