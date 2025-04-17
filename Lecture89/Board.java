@@ -14,22 +14,22 @@ public class Board {
     // where tiles[row][col] = tile at (row, col)
     private int n;
     private int[][] tiles;
-    private int[][] goal;
+//    private int[][] goal;
 
     public Board(int[][] tiles) {
         n = tiles.length;
         this.tiles = new int[n][n];
-        this.goal = new int[n][n];
+//        this.goal = new int[n][n];
         int correct = 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 this.tiles[i][j] = tiles[i][j];
                 // Fill goal with correct numbers
-                if (i == n - 1 && j == n - 1) {
-                    this.goal[i][j] = 0;  // last cell is blank
-                } else {
-                    this.goal[i][j] = correct++;
-                }
+//                if (i == n - 1 && j == n - 1) {
+//                    this.goal[i][j] = 0;  // last cell is blank
+//                } else {
+//                    this.goal[i][j] = correct++;
+//                }
             }
         }
     }
@@ -59,13 +59,15 @@ public class Board {
     // the hamming distance between a board and the goal board is the number of tiles in the wrong position
     public int hamming() {
         int wrongTile = 0;
+        int correctTile=1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int tile = tiles[i][j];
-                int goalTile = goal[i][j];
-                if (tile != goalTile && tile != 0) {
+//                int goalTile = goal[i][j];
+                if (tile != correctTile && tile != 0) {
                     wrongTile++;
                 }
+                correctTile++;
             }
         }
         return wrongTile;
@@ -80,8 +82,8 @@ public class Board {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int tile = tiles[i][j];
-                int goalTile = goal[i][j];
-                if (tile != 0 && tile != goalTile) {
+//                int goalTile = goal[i][j];
+                if (tile != 0 ) {
                     int goalRow = (tile - 1) / n;
                     int goalCol = (tile - 1) % n;
                     distance += Math.abs(i - goalRow) + Math.abs(j - goalCol);
