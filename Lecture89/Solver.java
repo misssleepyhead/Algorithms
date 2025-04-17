@@ -5,6 +5,26 @@ import java.util.LinkedList;
 /**
  * Slider puzzle
  * implement A* search to solve n by n slider puzzles
+ *
+ * We use A* in the 8-puzzle because it's an efficient and strategic way to find the shortest solution path. A* is a search algorithm that explores nodes in an order determined by a priority function:
+ * f(n) = g(n) + h(n)
+ * where n is the current board state, g(n) is the actual cost (i.e., number of moves so far), and h(n) is a heuristic — an estimate of the remaining cost to reach the goal.
+ *
+ * For the heuristic, we use Manhattan distance, because it's both admissible (never overestimates the true cost) and consistent (respects the triangle inequality). These properties are crucial to guarantee that A* finds an optimal solution.
+ *
+ * One interesting part of this problem is that not all board configurations are solvable. This is determined by the number of inversions in the board. A board is solvable if and only if the number of inversions is even.
+ *
+ * Rather than computing inversions directly, we use a smart trick: we create a twin board by swapping any two non-zero tiles, which flips the inversion parity. We then run A* on both the original board and its twin in parallel. Only one of them can be solvable — if the twin reaches the goal first, we know the original board is unsolvable.
+ *
+ * During the A* process, we maintain a priority queue (min-heap) of search nodes. In each iteration, we:
+ *
+ * Remove the board with the lowest priority (f(n))
+ *
+ * Check if it's the goal
+ *
+ * If not, we add all its valid neighbors (next possible moves) back into the queue
+ *
+ * This continues for both the original and twin boards until one of them reaches the goal. If the original board reaches it first, we return the solution path; if the twin does, we return that the original puzzle is unsolvable.
  */
 public class Solver {
     private static class SearchNode implements Comparable<SearchNode> {
