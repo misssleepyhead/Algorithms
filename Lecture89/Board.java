@@ -12,9 +12,9 @@ import java.util.List;
 public class Board {
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
-    int n;
-    int[][] tiles;
-    int[][] goal;
+    private int n;
+    private int[][] tiles;
+    private int[][] goal;
 
     public Board(int[][] tiles) {
         n = tiles.length;
@@ -63,7 +63,7 @@ public class Board {
             for (int j = 0; j < n; j++) {
                 int tile = tiles[i][j];
                 int goalTile = goal[i][j];
-                if (tile != goalTile) {
+                if (tile != goalTile && tile != 0) {
                     wrongTile++;
                 }
             }
@@ -74,7 +74,7 @@ public class Board {
     // sum of Manhattan distances between tiles and goal
     // The Manhattan distance formula is : abs(currentRow - goalRow) + abs(currentCol - goalCol)
     // goalRow = (val - 1) / n;
-    //goalCol = (val - 1) % n;
+    // goalCol = (val - 1) % n;
     public int manhattan() {
         int distance = 0;
         for (int i = 0; i < n; i++) {
@@ -154,7 +154,7 @@ public class Board {
     // a board that is obtained by exchanging any pair of tiles
     public Board twin() {
         int[][] copy = new int[n][n];
-        //deep copy tiles
+        // deep copy tiles
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 copy[i][j] = tiles[i][j];
@@ -190,5 +190,10 @@ public class Board {
         for (Board neighbor : board.neighbors()) {
             System.out.println(neighbor);
         }
+
+        // test hamming()
+        int[][] tiles2 = {{0, 1, 3}, {4, 2, 5}, {7, 8, 6}};
+        Board b2 = new Board(tiles2);
+        System.out.println(b2.hamming());
     }
 }
