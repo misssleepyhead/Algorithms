@@ -59,7 +59,7 @@ public class Board {
     // the hamming distance between a board and the goal board is the number of tiles in the wrong position
     public int hamming() {
         int wrongTile = 0;
-        int correctTile=1;
+        int correctTile = 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int tile = tiles[i][j];
@@ -83,7 +83,7 @@ public class Board {
             for (int j = 0; j < n; j++) {
                 int tile = tiles[i][j];
 //                int goalTile = goal[i][j];
-                if (tile != 0 ) {
+                if (tile != 0) {
                     int goalRow = (tile - 1) / n;
                     int goalCol = (tile - 1) % n;
                     distance += Math.abs(i - goalRow) + Math.abs(j - goalCol);
