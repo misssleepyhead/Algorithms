@@ -1,5 +1,7 @@
 import edu.princeton.cs.algs4.MinPQ;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -51,12 +53,26 @@ public class Solver {
                 solutionNode=current;
                 isSolvable=true;
                 break;
-            }else {
-
             }
 
+            // if the twin board is solvable then main one must be unsolvable
+            if(twinCurrent.board.isGoal()){
+                isSolvable=false;
+                break;
+            }
 
             // add its neighbors to the pq
+            for(Board b:current.board.neighbors()){
+                if (current.prev == null || !b.equals(current.prev.board)) {
+                    pq.insert(new SearchNode(b, current.moves + 1, current));
+                }
+            }
+
+            for(Board tb:twinCurrent.board.neighbors()){
+                if (twinCurrent.prev == null || !tb.equals(twinCurrent.prev.board)) {
+                    twinPQ.insert(new SearchNode(tb, twinCurrent.moves + 1, twinCurrent));
+                }
+            }
 
         }
     }
@@ -73,6 +89,12 @@ public class Solver {
 
     // sequence of boards in a shortest solution; null if unsolvable
     public Iterable<Board> solution() {
+        if(!isSolvable) return null;
+        LinkedList<Board> solutionBoards = new LinkedList<>();
+        for(SearchNode node = solutionNode;solutionNode!=null;solutionNode=solutionNode.prev){
+            solutionBoards.addFirst(node.board);
+        }
+        return solutionBoards;
     }
 
     // test client (see below)
