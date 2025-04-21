@@ -31,7 +31,6 @@ public class QuickSortThreePartitions {
             if (cmp < 0) exch(a, lt++, i++);
             else if (cmp > 0) {
                 exch(a, i, gt--);
-                i++;
             } else {
                 i++;
             }

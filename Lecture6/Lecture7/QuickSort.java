@@ -96,6 +96,7 @@ public class QuickSort {
     }
 
     /**
+     * QuickSelect, find the k-th smallest element in an unsorted array in expected linear time
      * Rearranges the array so that {@code a[k]} contains the kth smallest key;
      * {@code a[0]} through {@code a[k-1]} are less than (or equal to) {@code a[k]}; and
      * {@code a[k+1]} through {@code a[n-1]} are greater than (or equal to) {@code a[k]}.
