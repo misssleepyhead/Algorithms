@@ -2,7 +2,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
- * Symbol table
+ * Ordered Symbol Table
  */
 public class MyST<Key extends Comparable<Key>, Value>implements Iterable<Key> {
     private TreeMap<Key, Value> st;
@@ -25,8 +25,37 @@ public class MyST<Key extends Comparable<Key>, Value>implements Iterable<Key> {
         if (key == null) throw new IllegalArgumentException("null key");
         st.remove(key);
     }
+
+    public boolean contains(Key key){
+        return st.containsKey(key);
+    }
+
+    public boolean isEmpty(){
+        return st.isEmpty();
+    }
+
+    public int size(){
+        return st.size();
+    }
+
+    public Key min(){
+        return st.firstKey();
+    }
+
+    public Key max(){
+        return st.lastKey();
+    }
+
+    public Key floor(Key key){
+        return st.floorKey(key);
+    }
+
+    public Key ceiling(Key key){
+        return st.ceilingKey(key);
+    }
+
     @Override
     public Iterator<Key> iterator() {
-        return null;
+        return st.keySet().iterator();
     }
 }
