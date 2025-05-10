@@ -34,8 +34,8 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         else return treeNode.N;
     }
 
-    public boolean contains(Key key){
-        return get(key)!=null;
+    public boolean contains(Key key) {
+        return get(key) != null;
     }
 
     public Value get(Key key) {
@@ -64,46 +64,58 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         return x;
     }
 
-    public Key min(){
+    public Key min() {
         return min(root).key;
     }
-    private TreeNode min(TreeNode x){
+
+    private TreeNode min(TreeNode x) {
         // if left link is null, then min is the root
-        if(x.left==null) return x;
+        if (x.left == null) return x;
         return min(x.left);
     }
-    public Key max(){
+
+    public Key max() {
         return max(root).key;
     }
 
-    private TreeNode max(TreeNode x){
-        if(x.right==null) return x;
+    private TreeNode max(TreeNode x) {
+        if (x.right == null) return x;
         return max(x.right);
     }
 
-    public Key select(int rank){
-        return select(root,rank).key;
+    public Key select(int rank) {
+        return select(root, rank).key;
     }
 
-    private TreeNode select(TreeNode x, int rank){
-        if(x==null) return null;
+    private TreeNode select(TreeNode x, int rank) {
+        if (x == null) return null;
         int t = size(root.left);
-        if(t>rank) return select(root.left,rank);
-        else if (t<rank) return select(root.right,rank-t-1);
+        if (t > rank) return select(root.left, rank);
+        else if (t < rank) return select(root.right, rank - t - 1);
         else return x;
     }
 
-    public int rank(Key key){
-        return rank(key,root);
+    public int rank(Key key) {
+        return rank(key, root);
     }
 
-    private int rank(Key key, TreeNode x){
-        if (x==null) return 0;
-        int cmp=key.compareTo(x.key);
-        if(cmp<0) return rank(key,x.left);
-        else if (cmp>0) return 1+size(x.left)+rank(key,x.right);
+    private int rank(Key key, TreeNode x) {
+        if (x == null) return 0;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) return rank(key, x.left);
+        else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right);
         else return size(x.left);
     }
 
+    public void deleteMin() {
+        root = deleteMin(root);
+    }
+
+    private TreeNode deleteMin(TreeNode x) {
+        if (x.left == null) return x.right; //the min is the x itself, we return x.right but x.right may not exist
+        x.left = deleteMin(x.left); // then we mark the parent node of the min node 's child >> null
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+    }
 
 }
