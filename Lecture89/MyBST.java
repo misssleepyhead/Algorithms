@@ -1,3 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Queue;
 
 /**
  * Binary search tree symbol table
@@ -118,4 +121,54 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         return x;
     }
 
+    public void delete(Key key) {
+        root = delete(root, key);
+    }
+
+    private TreeNode delete(TreeNode x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) x.left = delete(x.left, key);
+        else if (cmp > 0) x.right = delete(x.right, key);
+        else {
+            // these two are for simple cases: no child or one child
+            if (x.right == null) return x.left;
+            if (x.left == null) return x.right;
+
+            // case 3: node has two children
+            TreeNode t = x;
+            x = min(t.right); // get the successor(smallest in right subtree)
+            x.right = deleteMin(t.right); // remove that successor from the original spot, assign x.right to new right subtree after delete the min(the new root)
+            x.left = t.left;
+        }
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+
+    }
+
+    private void print(TreeNode x) { // inorder traversal
+        if (x == null) return;
+        print(x.left); // first print all the keys in the left
+        System.out.println(x.key); // print the root
+        print(x.right); // print keys in the right
+    }
+
+    public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
+
+    private Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new ArrayDeque<>();
+        keys(root, queue, lo, hi);
+        return queue;
+    }
+
+    private void keys(TreeNode x, Queue<Key> queue, Key lo, Key hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) keys(x.left, queue, lo, hi); // search left if needed
+        if (cmplo <= 0 && cmphi >= 0) queue.add(x.key); // the current node is in the range[lo,hi], so we add it to the queue
+        if (cmphi > 0) keys(x.right, queue, lo, hi); // search right if needed
+    }
 }
