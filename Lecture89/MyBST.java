@@ -171,4 +171,17 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         if (cmplo <= 0 && cmphi >= 0) queue.add(x.key); // the current node is in the range[lo,hi], so we add it to the queue
         if (cmphi > 0) keys(x.right, queue, lo, hi); // search right if needed
     }
+    // Exercise 6: return tree height
+    public int height_a(){
+        return height_a(root);
+
+    }
+    private int height_a(TreeNode node){
+        if(node==null) return 1;
+        return 1+Math.max(height_a(node.left),height_a(node.right));
+    }
+    // adds a field to each node in the tree (and takes linear space and constant time per query).
+    public int height_b(){
+        return root.N;
+    }
 }
