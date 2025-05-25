@@ -169,20 +169,44 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         int cmplo = lo.compareTo(x.key);
         int cmphi = hi.compareTo(x.key);
         if (cmplo < 0) keys(x.left, queue, lo, hi); // search left if needed
-        if (cmplo <= 0 && cmphi >= 0) queue.add(x.key); // the current node is in the range[lo,hi], so we add it to the queue
+        if (cmplo <= 0 && cmphi >= 0)
+            queue.add(x.key); // the current node is in the range[lo,hi], so we add it to the queue
         if (cmphi > 0) keys(x.right, queue, lo, hi); // search right if needed
     }
+
     // Exercise 6: return tree height
-    public int height_a(){
+    public int height_a() {
         return height_a(root);
 
     }
-    private int height_a(TreeNode node){
-        if(node==null) return 1;
-        return 1+Math.max(height_a(node.left),height_a(node.right));
+
+    private int height_a(TreeNode node) {
+        if (node == null) return 1;
+        return 1 + Math.max(height_a(node.left), height_a(node.right));
     }
+
     // adds a field to each node in the tree (and takes linear space and constant time per query).
-    public int height_b(){
+    public int height_b() {
         return root.N;
     }
+
+    // creative problem 31: Certification, takes a Node as argument
+    // and returns true if the argument node is the root of a binary search tree, false otherwise.
+    public boolean isBST(TreeNode x) {
+        return isBST(x, null, null);
+    }
+
+    // when checking left subtree, we update max to current node(x) 's key and compare
+    // we don't care the min in left subtree, just the child never larger than the max
+    // so is right subtree
+    private boolean isBST(TreeNode x, Key min, Key max) {
+        if (x == null) return true;
+
+        if (min != null && x.key.compareTo(min) <= 0) return false;
+        if (max != null && x.key.compareTo(max) >= 0) return false;
+
+        return isBST(x.left, min, x.key) && isBST(x.right, max, x.key);
+    }
+
+
 }
