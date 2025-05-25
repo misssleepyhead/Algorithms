@@ -205,7 +205,7 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         if (min != null && x.key.compareTo(min) <= 0) return false;
         if (max != null && x.key.compareTo(max) >= 0) return false;
 
-        return isBST(x.left, min, x.key) && isBST(x.right, max, x.key);
+        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
     }
 
 
