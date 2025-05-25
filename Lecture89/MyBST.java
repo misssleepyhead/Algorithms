@@ -1,5 +1,7 @@
+import java.security.Key;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.Queue;
 
 /**
@@ -206,6 +208,24 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         if (max != null && x.key.compareTo(max) >= 0) return false;
 
         return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
+    }
+
+    // Creative problem 3.2.31 Equal key check:
+    // takes a node as argument and return true if there is no equal keys in the binary tree rooted at the argument
+    public boolean hasNoDuplicate(TreeNode node){
+        HashSet<Key> set = new HashSet<>();
+        return dfs(node,set);
+
+    }
+
+    // use hashset to solve this problem
+    private boolean dfs(TreeNode x, HashSet<Key> set){
+        if(x==null) return true;
+        if(set.contains(x.key)) return false;
+        set.add(x.key);
+        return dfs(x.left,set) && dfs(x.right,set);
+
+
     }
 
 
