@@ -1,6 +1,7 @@
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 
 /**
@@ -64,4 +65,51 @@ public class LevelOrderConstruct {
         return root;
 
     }
+
+    /**
+     * Web Exercise 6: Reverse a BST. Given a standard BST
+     * design a linear-time algorithm to transform it into a reverese BST
+     * (where each key is smaller than the keys in its left subtree and greater than the keys in its right subtree).
+     * The resulting tree shape should be symmetric to the original one.
+     */
+    public TreeNode reverse(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        // recursively reverse the left and right subtrees
+        TreeNode reversedLeft = reverse(root.left);
+        TreeNode reversedRight = reverse(root.right);
+
+        root.left = reversedRight;
+        root.right = reversedLeft;
+        return root;
+
+    }
+
+    // Example Usage (for testing purposes)
+    public static void main(String[] args) {
+        LevelOrderConstruct sol = new LevelOrderConstruct();
+        LevelOrderConstruct.TreeNode root = new TreeNode(4);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(5);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        printInOrder(root);
+        System.out.println();
+        TreeNode reversed = sol.reverse(root);
+        printInOrder(reversed);
+    }
+
+    // Helper method to print the tree in-order (left-root-right)
+    public static void printInOrder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        printInOrder(node.left);
+        System.out.print(node.val + " ");
+        printInOrder(node.right);
+    }
+
+
 }
