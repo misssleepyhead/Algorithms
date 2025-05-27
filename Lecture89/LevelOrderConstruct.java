@@ -67,6 +67,23 @@ public class LevelOrderConstruct {
     }
 
     /**
+     * Creative problem 3.2.37 Level order traversal
+     */
+    public static void printLevel(TreeNode root) {
+        if (root == null) return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode curr = queue.poll();
+            System.out.print(curr.val);
+            if (curr.left != null) queue.offer(curr.left);
+            if (curr.right != null) queue.offer(curr.right);
+        }
+
+    }
+
+    /**
      * Web Exercise 6: Reverse a BST. Given a standard BST
      * design a linear-time algorithm to transform it into a reverese BST
      * (where each key is smaller than the keys in its left subtree and greater than the keys in its right subtree).
@@ -96,6 +113,7 @@ public class LevelOrderConstruct {
         root.left.left = new TreeNode(1);
         root.left.right = new TreeNode(3);
         printInOrder(root);
+        printLevel(root);
         System.out.println();
         TreeNode reversed = sol.reverse(root);
         printInOrder(reversed);
