@@ -18,7 +18,7 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
         int size;
         boolean color;
 
-        public Node(Key key, Value value, int size, boolean color,) {
+        public Node(Key key, Value value, int size, boolean color) {
             this.key = key;
             this.value = value;
             this.color = color;
