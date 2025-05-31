@@ -14,7 +14,7 @@ public class BSTdoublyLinkedList<Key extends Comparable<Key>> {
         private TreeNode left, right; // left = prev, right = next in doubly linked list
 
 
-        public TreeNode(Key keyl) {
+        public TreeNode(Key key) {
             this.key = key;
 
         }
