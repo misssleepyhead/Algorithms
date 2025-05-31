@@ -103,7 +103,7 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
     }
 
     private Node put(Node h, Key key, Value val) {
-        if (h == null) return new Node(key, val, 1, RED); // standard insert, with red link to parent
+        if (h == null) return new Node(key, val, 1, RED); // insert at bottom and red link
 
         int cmp = key.compareTo(h.key);
         if (cmp > 0) h.right = put(h.right, key, val);
@@ -111,11 +111,35 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
         else h.value = val;
 
         // adjust structure if needed
-        if (isRed(h.right) && !isRed(h.left)) h = rotateLeft(h);
-        if (isRed(h.right) && !isRed(h.left.left)) h = rotateRight(h);
-        if (isRed(h.right) && isRed(h.left)) flipColors(h);
+        if (isRed(h.right) && !isRed(h.left)) h = rotateLeft(h); // lean left
+        if (isRed(h.right) && !isRed(h.left.left)) h = rotateRight(h); // balance 4-node
+        if (isRed(h.right) && isRed(h.left)) flipColors(h); // split 4 node
 
         h.size = size(h.left) + size(h.right) + 1;
+        return h;
+    }
+
+    // helper function for deletion
+    private Node moveRedLeft(Node h) {
+        // Assuming that h is black, and both h.left, h.left.left are black
+        // make h.left or one of its children red
+        flipColors(h); // turn h red and its children black, make a temp 4 node
+        // if h.right.left is not red, we just color flip in this function
+        // if it is red, we borrow a red link from the sibling
+        if (isRed(h.right.left)) {
+            h.right = rotateRight(h);
+            h = rotateLeft(h);
+        }
+        return h;
+    }
+
+    private Node moveRedRight(Node h) {
+        // we want to borrow the red link from the left sibling
+        flipColors(h);
+        if (isRed(h.left.left)) {
+            h.right = rotateRight(h);
+            flipColors(h);
+        }
         return h;
     }
 }
