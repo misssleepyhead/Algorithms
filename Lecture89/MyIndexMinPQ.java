@@ -1,3 +1,7 @@
+import edu.princeton.cs.algs4.StdRandom;
+
+import java.util.NoSuchElementException;
+
 public class MyIndexMinPQ<Key extends Comparable<Key>> {
     private int[] pq; // binary heap using 1-based indexing
     private int[] qp; // inverse of pq - qp[pq[i]] = pq[qp[i]] = i
@@ -73,6 +77,20 @@ public class MyIndexMinPQ<Key extends Comparable<Key>> {
         return index;
     }
 
+    // interview question 2 : sample(), return a random element in constant time
+    public int sample(){
+        if(n==0) throw new NoSuchElementException();
+        int randomIndex = StdRandom.uniformInt(1,n+1);
+        return pq[randomIndex];
+    }
+
+    // interview question 2 : delRandom() in O(log N) time
+    public Key delRandom(){
+        int randomIndex = sample();
+        Key delete = keys[randomIndex];
+        delete(randomIndex);
+        return delete;
+    }
 
     /***************************************************************************
      * Helper functions to restore the heap invariant.
