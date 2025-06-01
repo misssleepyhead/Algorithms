@@ -231,6 +231,25 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
         return h;
     }
 
+    public boolean isBST() {
+        return isBST(root, null, null);
+    }
+
+    private boolean isBST(Node x, Key min, Key max) {
+        if (x == null) return true;
+
+        if (min != null && (x.key.compareTo(min) <= 0)) return false;
+        if (max != null && (x.key.compareTo(max) >= 0)) return false;
+
+        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
+
+    }
+
+    public boolean isRedBlackBST(){
+        return isBST() && isBalanced()&&is23();
+    }
+
+
     private Node moveRedRight(Node h) {
         // we want to borrow the red link from the left sibling
         flipColors(h);
