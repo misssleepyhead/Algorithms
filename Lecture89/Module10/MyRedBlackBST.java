@@ -1,6 +1,5 @@
 package Module10;
 
-import com.sun.jdi.Value;
 
 /**
  * Implement red black BST
@@ -80,17 +79,6 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
         h.left.color = BLACK;
     }
 
-    public Value get(Key key) {
-        return get(root, key);
-    }
-
-    private Value get(Node x, Key key) {
-        if (x == null) return null;
-        int cmp = key.compareTo(x.key);
-        if (cmp > 0) return get(x.right, key);
-        else if (cmp < 0) return get(x.left, key);
-        else return x.value;
-    }
 
     public boolean contains(Key key) {
         return get(key) != null;
@@ -117,6 +105,79 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
 
         h.size = size(h.left) + size(h.right) + 1;
         return h;
+    }
+
+    // get, floor, ceiling, min, max functions are same as BST
+    public Value get(Key key) {
+        return get(root, key);
+    }
+
+    private Value get(Node x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp > 0) return get(x.right, key);
+        else if (cmp < 0) return get(x.left, key);
+        else return x.value;
+    }
+
+    public Key min() {
+        return min(root).key;
+    }
+
+    private Node min(Node x) {
+        if (x.left == null) return x;
+        return min(x.left);
+    }
+
+    public Key max() {
+        return max(root).key;
+    }
+
+    public Node max(Node x) {
+        if (x.right == null) return x;
+        return max(x.right);
+    }
+
+    public Key floor(Key key) {
+        Node x = floor(root, key);
+        return x == null ? null : x.key;
+    }
+
+    private Node floor(Node x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) return x;
+        else if (cmp < 0) return floor(x.left, key);
+        Node t = floor(x.right, key);
+        return t == null ? x : t; // x could be the floor but maybe t is closer to the key
+
+    }
+
+    public Key ceiling(Key key) {
+        Node x = ceiling(root, key);
+        return x == null ? null : x.key;
+    }
+
+    private Node ceiling(Node x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) return x;
+        else if (cmp > 0) return ceiling(x.right, key);
+        Node t = ceiling(x.left, key);
+        return t == null ? x : t;
+    }
+
+    // creative problem 33: Certification, check that no node is connected to two red links and that there are no right-leaning red links.
+    public boolean is23() {
+        return is23(root);
+
+    }
+
+    private boolean is23(Node x) {
+        if (x == null) return true;
+        if (isRed(x.right)) return false;
+        if (isRed(x) && isRed(x.left)) return false;
+        return is23(x.left) && is23(x.right);
     }
 
     // helper function for deletion
