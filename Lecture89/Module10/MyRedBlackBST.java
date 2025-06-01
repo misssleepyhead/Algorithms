@@ -180,6 +180,43 @@ public class MyRedBlackBST<Key extends Comparable<Key>, Value> {
         return is23(x.left) && is23(x.right);
     }
 
+    // check that all paths from the root to a null link have the same number of black links.
+    // text book answer
+    public boolean isBalanced() {
+        int black = 0;
+        Node x = root;
+        // first calculate the  required black-height for all root to null paths
+        while (x != null) {
+            if (!isRed(x)) black++;
+            x = x.left;
+        }
+        return isBalanced(root, black);
+    }
+
+    private boolean isBalanced(Node x, int black) {
+        if (x == null) return black == 0;
+        if (!isRed(x)) black--;
+        return isBalanced(x.left, black) && isBalanced(x.right, black);
+
+    }
+
+    //
+    public boolean isBalanced2() {
+        return blackHeight(root) != -1;
+    }
+
+    private int blackHeight(Node x) {
+        if (x == null) return 0;
+        int left = blackHeight(x.left);
+        int right = blackHeight(x.right);
+
+        // if any node the left and tight black height differ, return -1(unbalanced)
+        if (left == -1 || right == -1) return -1;
+        if (left != right) return -1; // ensure left and right paths black height are the same
+        // count black links here, add 1 if x is black 0 if red
+        return left + (isRed(x) ? 0 : 1);
+    }
+
     // helper function for deletion
     private Node moveRedLeft(Node h) {
         // Assuming that h is black, and both h.left, h.left.left are black
