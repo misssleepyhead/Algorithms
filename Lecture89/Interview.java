@@ -22,24 +22,34 @@ public class Interview {
 
         // 2. Iterate through all occurences of the first query word(query[0])
         List<Integer> firstWordOccur = map.get(query[0]);
+        if (firstWordOccur == null || firstWordOccur.isEmpty()) return -1;
         for (int i = 0; i < firstWordOccur.size(); i++) {
-            int currentStartIdx = firstWordOccur.get(i);
-            int prev = currentStartIdx;
-            int end = currentStartIdx;
+            int currentStartIdx = firstWordOccur.get(i); // the index to find query[0], this is fixed.
+            int prev = currentStartIdx; // the last target found so far, next target will be after it
+            int end = currentStartIdx; // the farthest point of this interval
             boolean found = true;
             for (int q = 1; q < query.length; q++) {
                 List<Integer> posList = map.get(query[q]);
-                int next = findNextOccurrence(posList, currentStartIdx);
+                int next = findNextOccurrence(posList, prev);
                 if (next != -1) {
                     prev = next;
                     end = next;
                 } else {
+                    // no valid next occurrence found, exit the loop and try next startIndex
                     found = false;
                     break;
                 }
             }
 
+            // if found a full sequence of query in document, calculate its length and update minIntervalLength
+            if (found) {
+                int currentInterval = end - currentStartIdx + 1;
+                minIntervalLength = Math.min(currentInterval, minIntervalLength);
+
+            }
+
         }
+        return (minIntervalLength == Integer.MAX_VALUE) ? -1 : minIntervalLength;
 
     }
 
