@@ -119,5 +119,20 @@ public class KdTree {
 
     }
 
+    public Point2D nearest(Point2D p) {
+        if (p == null) throw new IllegalArgumentException();
+        return nearest(p, root, null, Double.POSITIVE_INFINITY);
+
+
+    }
+
+    private Point2D nearest(Point2D p, PointNode node, Point2D best, double bestDist) {
+        if (node == null) return best;
+        if (p.distanceTo(node.point) < bestDist) {
+            best = node.point;
+            bestDist = p.distanceTo(node.point);
+        }
+    }
+
 
 }
