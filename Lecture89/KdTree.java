@@ -1,4 +1,8 @@
 import edu.princeton.cs.algs4.Point2D;
+import edu.princeton.cs.algs4.RectHV;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Module 11 assignment: KD-Trees
@@ -19,6 +23,14 @@ public class KdTree {
             this.point = point;
             this.oddLevel = oddLevel;
         }
+
+        public void draw() {
+            if (left != null) {
+                left.draw();
+            }
+            point.draw();
+            if (right != null) right.draw();
+        }
     }
 
     private PointNode root;
@@ -37,15 +49,73 @@ public class KdTree {
         return size;
     }
 
-    public void insert(PointNode p) {
+    public void insert(Point2D p) {
         if (p == null) throw new IllegalArgumentException();
-        if (root == null) {
-            root =p;
+        if (root == null || !contains(p)) {
             size++;
-            return;
+            root = insert(root, p, true);
         }
 
+    }
 
+    private PointNode insert(PointNode h, Point2D p, Boolean oddLevel) {
+        if (h == null) return new PointNode(p, oddLevel);
+
+        if (oddLevel) {
+            if (p.x() < h.point.x()) h.left = insert(h.left, p, !oddLevel);
+            else h.right = insert(h.right, p, !oddLevel);
+        } else {
+            if (p.y() < h.point.y()) h.left = insert(h.left, p, oddLevel);
+            else h.right = insert(h.right, p, oddLevel);
+        }
+        return h;
+    }
+
+    public boolean contains(Point2D p) {
+        if (p == null) throw new IllegalArgumentException();
+        return contains(root, p);
+
+    }
+
+    private boolean contains(PointNode h, Point2D p) {
+        if (h == null) return false;
+        if (h.point.equals(p)) return true;
+
+        if (h.oddLevel) {
+            if (p.x() < h.point.x()) return contains(h.left, p);
+            else return contains(h.right, p);
+        } else {
+            if (p.y() < h.point.y()) return contains(h.left, p);
+            else return contains(h.right, p);
+        }
+    }
+
+    public void draw() {
+        if (!isEmpty()) root.draw();
+    }
+
+    public Iterable<Point2D> range(RectHV rect) {
+        if (rect == null) throw new IllegalArgumentException();
+        List<Point2D> list = new ArrayList<>();
+
+        if (!isEmpty()) range(rect, root, list);
+        return list;
+    }
+
+    private void range(RectHV rect, PointNode node, List<Point2D> list) {
+        if (node == null) return;
+
+        if (rect.contains(node.point)) list.add(node.point);
+
+        if (node.oddLevel) {
+            double px = node.point.x();
+            if (rect.xmin() <= px) range(rect, node.left, list);
+            if (rect.xmax() >= px) range(rect, node.right, list);
+        } else {
+            double py = node.point.y();
+            if (rect.ymin() <= py) range(rect, node.left, list);
+            if (rect.ymax() >= py) range(rect, node.right, list);
+        }
 
     }
 
