@@ -121,17 +121,62 @@ public class KdTree {
 
     public Point2D nearest(Point2D p) {
         if (p == null) throw new IllegalArgumentException();
-        return nearest(p, root, null, Double.POSITIVE_INFINITY);
+        if (root == null) return null;
+        return nearest(p, root, root.point, root.point.distanceSquaredTo(p), new RectHV(0, 0, 1, 1));
 
 
     }
 
-    private Point2D nearest(Point2D p, PointNode node, Point2D best, double bestDist) {
+    private Point2D nearest(Point2D p, PointNode node, Point2D best, double bestDist, RectHV rect) {
         if (node == null) return best;
-        if (p.distanceTo(node.point) < bestDist) {
+        double dist = node.point.distanceSquaredTo(p);
+
+        // 1. update best with current node
+        if (dist < bestDist) {
             best = node.point;
-            bestDist = p.distanceTo(node.point);
+            bestDist = dist;
         }
+
+        // 2. Decide which child is the closer side
+        PointNode nearChild, farChild;
+        RectHV nearRect, farRect;
+        if (node.oddLevel) {
+            if (p.x() < node.point.x()) {
+                nearChild = node.left;
+                farChild = node.right;
+                nearRect = new RectHV(rect.xmin(), rect.ymin(), node.point.x(), node.point.y());
+                farRect = new RectHV(node.point.x(), rect.ymin(), rect.xmax(), rect.ymax());
+            } else {
+                nearChild = node.right;
+                farChild = node.left;
+                nearRect = new RectHV(node.point.x(), rect.ymin(), rect.xmax(), rect.ymax());
+                farRect = new RectHV(rect.xmin(), rect.ymin(), node.point.x(), rect.ymax());
+            }
+
+        } else {
+            if (p.y() < node.point.y()) {
+                nearChild = node.left;
+                farChild = node.right;
+                nearRect = new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), node.point.y());
+                farRect = new RectHV(rect.xmin(), node.point.y(), rect.xmax(), rect.ymax());
+            } else {
+                nearChild = node.right;
+                farChild = node.left;
+                nearRect = new RectHV(rect.xmin(), node.point.y(), rect.xmax(), rect.ymax());
+                farRect = new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), node.point.y());
+            }
+        }
+
+        // 3. Recurse into the near side first
+        best = nearest(p,nearChild,best,bestDist,nearRect);
+        bestDist=best.distanceSquaredTo(p);
+
+        // 4. Explore the far side only if its rect could contain closer points
+        if(farChild!=null && farRect.distanceSquaredTo(p)<bestDist){
+            best=nearest(p, farChild, best,bestDist,farRect);
+        }
+        return best;
+
     }
 
 
