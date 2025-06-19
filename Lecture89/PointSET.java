@@ -13,7 +13,7 @@ import java.util.TreeSet;
 
 
 public class PointSET {
-    Set<Point2D> treeSet;
+    private Set<Point2D> treeSet;
 
     // construct an empty set of points
     public PointSET() {
