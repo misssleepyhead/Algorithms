@@ -65,8 +65,8 @@ public class KdTree {
             if (p.x() < h.point.x()) h.left = insert(h.left, p, !oddLevel);
             else h.right = insert(h.right, p, !oddLevel);
         } else {
-            if (p.y() < h.point.y()) h.left = insert(h.left, p, oddLevel);
-            else h.right = insert(h.right, p, oddLevel);
+            if (p.y() < h.point.y()) h.left = insert(h.left, p, !oddLevel);
+            else h.right = insert(h.right, p, !oddLevel);
         }
         return h;
     }
@@ -144,7 +144,7 @@ public class KdTree {
             if (p.x() < node.point.x()) {
                 nearChild = node.left;
                 farChild = node.right;
-                nearRect = new RectHV(rect.xmin(), rect.ymin(), node.point.x(), node.point.y());
+                nearRect = new RectHV(rect.xmin(), rect.ymin(), node.point.x(), rect.ymax());
                 farRect = new RectHV(node.point.x(), rect.ymin(), rect.xmax(), rect.ymax());
             } else {
                 nearChild = node.right;
@@ -168,12 +168,12 @@ public class KdTree {
         }
 
         // 3. Recurse into the near side first
-        best = nearest(p,nearChild,best,bestDist,nearRect);
-        bestDist=best.distanceSquaredTo(p);
+        best = nearest(p, nearChild, best, bestDist, nearRect);
+        bestDist = best.distanceSquaredTo(p);
 
         // 4. Explore the far side only if its rect could contain closer points
-        if(farChild!=null && farRect.distanceSquaredTo(p)<bestDist){
-            best=nearest(p, farChild, best,bestDist,farRect);
+        if (farChild != null && farRect.distanceSquaredTo(p) < bestDist) {
+            best = nearest(p, farChild, best, bestDist, farRect);
         }
         return best;
 
