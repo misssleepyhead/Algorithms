@@ -98,4 +98,65 @@ public class NonrecursiveBST<Key extends Comparable<Key>, Value> {
         return queue;
 
     }
+
+    // 3.2.14 nonrecursive min()
+    public Key min() {
+        if (root == null) return null;
+        if (root.left == null) return root.key;
+        TreeNode x = root;
+
+        while (x.left != null) {
+            x = x.left;
+        }
+        return x.key;
+    }
+
+    // 3.2.14 nonrecursive max()
+    public Key max() {
+        if (root == null) return null;
+        TreeNode x = root;
+        while (x.right != null) {
+            x = x.right;
+        }
+        return x.key;
+    }
+
+    // nonrecursive floor()
+    public Key floor(Key key) {
+        TreeNode x = root;
+        Key floor = null; // best so far
+
+        while (x != null) {
+            int cmp = key.compareTo(x.key);
+
+            if (cmp == 0) return x.key; // exact match ➜ floor is the key itself
+            else if (cmp < 0) {
+                x = x.left;   // key < x.key  ➜ go left to look for smaller keys
+            } else {
+                floor = x.key;   // key > x.key  ➜ x.key is a candidate floor, remember it
+                x = x.right;     // …and try to find a larger (but still ≤ key) candidate
+            }
+        }
+        return floor;
+    }
+
+
+    public Key ceiling(Key key) {
+        if(root==null) return null;
+        TreeNode x = root;
+        Key bestCeil = null; // best so far
+
+        while (x != null) {
+            int cmp = key.compareTo(x.key);
+            if (cmp == 0) return x.key;
+            else if (cmp > 0) {
+                x = x.right;
+            } else {
+                bestCeil= x.key;
+                x = x.left;
+            }
+        }
+        return bestCeil;
+    }
+
 }
