@@ -51,6 +51,19 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         else return x.val;
     }
 
+    // exercises 3.2.13 get() nonrecursive
+    public Value get2(Key key) {
+        TreeNode x = root;
+        while (x != null) {
+            int cmp = key.compareTo(x.key);
+            if (cmp == 0) return x.val;
+            else if (cmp < 0) x = x.left;
+            else if (cmp > 0) x = x.right;
+        }
+        return null;
+    }
+
+
     public void put(Key key, Value val) {
         root = put(root, key, val);
     }
@@ -63,6 +76,41 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         else x.val = val;
         x.N = size(x.left) + size(x.right) + 1;
         return x;
+    }
+
+    // exercises 3.2.13 put() non-recursive
+    public void put2(Key key, Value value) {
+        if (root == null) {
+            root = new TreeNode(key, value, 1);
+            return;
+        }
+
+        TreeNode x = root;
+        while (true) {
+            int cmp = key.compareTo(x.key);
+            if (cmp == 0) {
+                // key already exist, update to new value
+                x.val = value;
+                return;
+            } else if (cmp < 0) {
+                if (x.left == null) {
+                    int n = size(x.left) + size(x.right) + 1;
+                    x.left = new TreeNode(key, value, n);
+                    return;
+                } else {
+                    x = x.left;
+                }
+
+            } else {
+                // cmp>0
+                if (x.right == null) {
+                    int n = size(x.left) + size(x.right) + 1;
+                    x.right = new TreeNode(key, value, n);
+                } else {
+                    x = x.right;
+                }
+            }
+        }
     }
 
 
