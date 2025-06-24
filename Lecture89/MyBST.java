@@ -1,11 +1,10 @@
-import java.security.Key;
 import java.util.*;
 
 /**
  * Binary search tree symbol table
  */
 public class MyBST<Key extends Comparable<Key>, Value> {
-     class TreeNode {
+    class TreeNode {
         private Key key;
         private Value val;
         private TreeNode left, right;
@@ -110,6 +109,22 @@ public class MyBST<Key extends Comparable<Key>, Value> {
         else return size(x.left);
     }
 
+    public Key floor(Key key) {
+        TreeNode x = floor(root, key);
+        if (x != null) return x.key;
+        else return null;
+    }
+
+    private TreeNode floor(TreeNode x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) return x;
+        else if (cmp < 0) return floor(x.left, key);
+        TreeNode t = floor(x.right, key);
+        if (t != null) return t;
+        else return x;
+    }
+
     public void deleteMin() {
         root = deleteMin(root);
     }
@@ -209,24 +224,21 @@ public class MyBST<Key extends Comparable<Key>, Value> {
 
     // Creative problem 3.2.31 Equal key check:
     // takes a node as argument and return true if there is no equal keys in the binary tree rooted at the argument
-    public boolean hasNoDuplicate(TreeNode node){
+    public boolean hasNoDuplicate(TreeNode node) {
         HashSet<Key> set = new HashSet<>();
-        return dfs(node,set);
+        return dfs(node, set);
 
     }
 
     // use hashset to solve this problem
-    private boolean dfs(TreeNode x, HashSet<Key> set){
-        if(x==null) return true;
-        if(set.contains(x.key)) return false;
+    private boolean dfs(TreeNode x, HashSet<Key> set) {
+        if (x == null) return true;
+        if (set.contains(x.key)) return false;
         set.add(x.key);
-        return dfs(x.left,set) && dfs(x.right,set);
+        return dfs(x.left, set) && dfs(x.right, set);
 
 
     }
-
-
-
 
 
 }
