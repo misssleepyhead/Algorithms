@@ -9,7 +9,7 @@ public class MyLinearProbingHashST<Key, Value> {
     private Value[] vals;
 
     public MyLinearProbingHashST() {
-        this(INIT_CAP)
+        this(INIT_CAP);
     }
 
     public MyLinearProbingHashST(int cap) {
