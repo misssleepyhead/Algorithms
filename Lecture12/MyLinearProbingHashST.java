@@ -3,11 +3,18 @@
  */
 public class MyLinearProbingHashST<Key, Value> {
     private int N; // number of k-v pairs in the table
-    private int M = 16; // size of linear-probing table
+    private int M; // size of linear-probing table
+    private static final int INIT_CAP = 4; // must be power of 2
     private Key[] keys;
     private Value[] vals;
 
     public MyLinearProbingHashST() {
+        this(INIT_CAP)
+    }
+
+    public MyLinearProbingHashST(int cap) {
+        M = cap;
+        N = 0;
         keys = (Key[]) new Object[M];
         vals = (Value[]) new Object[M];
     }
@@ -25,6 +32,16 @@ public class MyLinearProbingHashST<Key, Value> {
     }
 
     public void resize(int newSize) {
+        MyLinearProbingHashST<Key, Value> t;
+        t = new MyLinearProbingHashST<>(newSize);
+        for (int i = 0; i < M; i++) {
+            if (keys[i] != null) {
+                t.put(keys[i], vals[i]);
+            }
+        }
+        keys = t.keys;
+        vals = t.vals;
+        M = t.M;
     }
 
     /**
@@ -32,6 +49,7 @@ public class MyLinearProbingHashST<Key, Value> {
      * scan sequentially to find an empty position
      */
     public void put(Key key, Value value) {
+        // ensure table is at most half full
         if (N >= M / 2) resize(2 * M);
         int i;
         for (i = hash(key); keys[i] != null; i = (i + 1) % M) {
@@ -52,5 +70,39 @@ public class MyLinearProbingHashST<Key, Value> {
             }
         }
         return null; // search miss
+    }
+
+    public boolean contain(Key key) {
+        return get(key) != null;
+    }
+
+    public void delete(Key key) {
+        if (!contain(key)) return;
+
+        //find pos of the key
+        int i = hash(key);
+        while (!key.equals(keys[i])) {
+            i = (i + 1) % M;
+        }
+
+        // delete key and its value
+        keys[i] = null;
+        vals[i] = null;
+
+        // rehash all keys
+        i = (i + 1) % M;
+        while (keys[i] != null) {
+            // delete keys[i] and vlas[i] and reinsert
+            Key keyToRehash = keys[i];
+            Value valToRehash = vals[i];
+            keys[i] = null;
+            vals[i] = null;
+            N--;
+            put(keyToRehash, valToRehash);
+            i = (i + 1) % M;
+        }
+        N--;
+        //  ensure table is at least one eight full
+        if (N > 0 && N <= M / 8) resize(M / 2);
     }
 }
