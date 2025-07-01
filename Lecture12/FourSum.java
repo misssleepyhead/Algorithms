@@ -39,17 +39,17 @@ public class FourSum {
 
         //  2. for each sum(key), look for two non-overlapping pairs
         for (List<Pair> pairs : map.values()) {
-            if (pairs.size() >= 2) {
-                for (int p = 0; p < pairs.size(); p++) {
-                    for (int q = p + 1; q < pairs.size(); q++) {
-                        Pair first = pairs.get(p);
-                        Pair second = pairs.get(q);
-                        if (first.i != second.i && first.i != second.j && first.j != second.i && first.j != second.j) {
-                            return true;
-                        }
+
+            for (int p = 0; p < pairs.size(); p++) {
+                for (int q = p + 1; q < pairs.size(); q++) {
+                    Pair first = pairs.get(p);
+                    Pair second = pairs.get(q);
+                    if (first.i != second.i && first.i != second.j && first.j != second.i && first.j != second.j) {
+                        return true;
                     }
                 }
             }
+
         }
         return false;
     }
