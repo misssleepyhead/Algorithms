@@ -58,4 +58,6 @@ public class MyST<Key extends Comparable<Key>, Value>implements Iterable<Key> {
     public Iterator<Key> iterator() {
         return st.keySet().iterator();
     }
+
+    public Iterable<Key> keys(){ return st.keySet();}
 }
