@@ -1,13 +1,18 @@
 import javax.swing.plaf.PanelUI;
-
+/**
+ *
+ * book practice 3.1.25 software caching, add cache instance variable to save time for client code
+ * */
 public class MyBinarySearchST<Key extends Comparable<Key>, Value> {
     private Key[] keys;
     private Value[] vals;
     private int N;
+    private int cache;
 
     public MyBinarySearchST(int capacity) {
         keys = (Key[]) new Comparable[capacity];
         vals = (Value[]) new Object[capacity];
+        cache=-1;
 
     }
 
@@ -46,15 +51,21 @@ public class MyBinarySearchST<Key extends Comparable<Key>, Value> {
 
     public Value get(Key key) {
         if (isEmpty()) return null;
+        if(cache!=-1 && keys[cache].equals(key)) return vals[cache];
         int i = rank(key);
-        if (i < N && keys[i].compareTo(key) == 0) return vals[i];
-        else return null;
+        if (i < N && keys[i].compareTo(key) == 0){
+            cache = i;
+            return vals[i];
+        }
+        return null;
     }
 
     public void put(Key key, Value val) {
+        if(cache!=-1  && keys[cache].equals(key)) {vals[cache]=val; return;}
         int i = rank(key);
         if (i < N && keys[i].compareTo(key) == 0) {
             vals[i] = val;
+            cache=i;
             return;
             // found key, update val.
         }
@@ -65,6 +76,7 @@ public class MyBinarySearchST<Key extends Comparable<Key>, Value> {
         }
         keys[i] = key;
         vals[i] = val;
+        cache=i;
         N++;
     }
 
