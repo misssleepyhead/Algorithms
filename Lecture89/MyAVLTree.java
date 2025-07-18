@@ -32,7 +32,7 @@ public class MyAVLTree<Key extends Comparable<Key>, Value> {
     }
 
     private int height(AVLNode<Key, Value> n) {
-        return n == null ? 0 : n.height;
+        return (n == null) ? 0 : n.height;
     }
 
     private void refresh(AVLNode<Key, Value> x) {
