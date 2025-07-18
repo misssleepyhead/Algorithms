@@ -81,6 +81,10 @@ public class MyAVLTree<Key extends Comparable<Key>, Value> {
         return h;
     }
 
+    // note that there is a core rotation for left-heavy(right-rotation) and right-heavy(left-rotation),
+    // but for LR, RL, have to handle little "wrinkle", so we do that little fix first,
+    // then fo the core rotation in the end(return), avoid four almost-duplicate block
+    // keep height update in one place, cleaner code. 
     private AVLNode<Key, Value> rebalance(AVLNode<Key, Value> z) {
         if (bf(z) == 2) {                  // left-heavy
             if (bf(z.left) < 0)            // LR: child leans right
