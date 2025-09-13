@@ -48,16 +48,12 @@ public class MyGraph {
     }
 
     // compute the degree of v
-    public static int degree(MyGraph g, int v) {
-        int degree = 0;
-        for (int w : g.adj(v)) {
-            degree++;
-        }
-        return degree;
+    public int degree(MyGraph g, int v) {
+        return adj[v].size();
     }
 
     // compute maximum degree
-    public static int maxDegree(MyGraph g) {
+    public int maxDegree(MyGraph g) {
         int max = 0;
         for (int v = 0; v < g.V(); v++) {
             if (degree(g, v) > max) {
@@ -90,6 +86,7 @@ public class MyGraph {
             for (int w : this.adj(v)) {
                 s += w + " ";
             }
+            s+="\n";
         }
         return s;
     }
