@@ -1,8 +1,7 @@
 import edu.princeton.cs.algs4.Graph;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import edu.princeton.cs.algs4.In;
+
+import java.util.*;
 
 /**
  * Find a general cycle that uses every edge exactly once
@@ -18,7 +17,7 @@ public class Hierholzer {
 
     private List<Integer> cycle;
     private List<EdgeRef>[] adj;
-    private List<int[]> edgeList = new ArrayList<>();
+    private final List<Integer> tour = new ArrayList<>();
     private final boolean[] used;
     private final int V,E;
 
@@ -44,15 +43,8 @@ public class Hierholzer {
         used = new boolean[id];
     }
 
-    private int addEdge(int u, int v) {
-        int id = edgeList.size();
-        edgeList.add(new int[]{u, v});
-        adj[u].add(new EdgeRef(id, v));
-        adj[v].add(new EdgeRef(id, u));
-        return id;
-    }
 
-    private List<Integer> findCycle(List<Integer>[] adj) {
+    private List<Integer> findCycle() {
         // 1. check all degrees are even and connected
         if(!isEulerian()) return List.of();
 
@@ -66,14 +58,18 @@ public class Hierholzer {
 
         while (!stack.isEmpty()) {
             int v = stack.peek();
-            if (!adj[v].isEmpty()) {
-                int w = adj[v].remove(adj[v].size() - 1);
-                adj[w].remove((Integer) v);
-                stack.push(w);
-            } else { //stuck, all edges of current v are used
-                tour.add(stack.pop());
+            // find first unused edge out of v
+            while (!adj[v].isEmpty() && used[adj[v].get(0).id]) adj[v].remove(0);
+            if (adj[v].isEmpty()) {
+                tour.add(stack.pop());      // dead end → output order
+            } else {
+                EdgeRef e = adj[v].get(0);
+                used[e.id] = true;
+                stack.push(e.to);
             }
         }
+        if (tour.size() != E + 1) return List.of(); // graph disconnected
+        Collections.reverse(tour);      // option: build reversed while popping
         return tour;
 
     }
@@ -108,5 +104,12 @@ public class Hierholzer {
             if(!adj[v].isEmpty()&& !seen[v]) return false;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        Graph G = new Graph(new In("tinyG.txt"));
+        Hierholzer hz = new Hierholzer(G);
+        System.out.println(hz.adj);
+        System.out.println(hz.findCycle());
     }
 }
