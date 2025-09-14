@@ -2,11 +2,13 @@ import edu.princeton.cs.algs4.BreadthFirstPaths;
 import edu.princeton.cs.algs4.Graph;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Interview question 2:
  * Find Diameter in tree (connected, no cycle graph)
+ * Find center in tree
  */
 public class Diameter {
     private final int endPointA;
@@ -32,6 +34,32 @@ public class Diameter {
         }
         length = bfsA.distTo(endPointB);
 
+    }
+
+    public List<Integer> center() {
+        List<Integer> central = new ArrayList<>();
+        int steps = length() / 2;
+        if (length % 2 == 0) { // even = single center
+            central.add(path().get(steps));
+        } else { // odd: two centers
+            central.add(path().get(steps));
+            central.add(path().get(steps + 1));
+
+        }
+        return central;
+
+    }
+
+    public List<Integer> path() {
+        return Collections.unmodifiableList(path);
+    }
+
+    public int getEndPointA() {
+        return endPointA;
+    }
+
+    public int getEndPointB() {
+        return endPointB;
     }
 
     public int length() {
