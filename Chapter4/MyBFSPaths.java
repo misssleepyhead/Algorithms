@@ -3,7 +3,7 @@ import edu.princeton.cs.algs4.Queue;
 
 
 /**
- * Text book practice: breadth first search tp find paths in a grapg
+ * Text book practice: breadth first search tp find paths in a graph
  */
 public class MyBFSPaths {
     private boolean[] marked;
