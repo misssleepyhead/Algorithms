@@ -22,9 +22,9 @@ public class Cycle {
         marked[v] = true;
         for(int w:g.adj(v)){
             if(!marked[w]){
-                dfs(g,w,v);
+                dfs(g,w,v); // pass current node v as "parent" u
             } else if (w!=u) {
-                hasCycle = true;
+                hasCycle = true; // visit a visited neighbor that is not parent -> cycle
             }
         }
     }
