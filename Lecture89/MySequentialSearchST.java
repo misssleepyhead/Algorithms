@@ -33,8 +33,6 @@ public class MySequentialSearchST<Key, Value> {
         if(cache!=null && cache.key.equals(key)){
             return cache.val;
         }
-
-
         // scan through the list, using equal() to compare key, return value if we found target key otherwise return null
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
@@ -50,8 +48,6 @@ public class MySequentialSearchST<Key, Value> {
             cache.val=val;
             return;
         }
-
-
         // search for the key, update val if found, create a new node if not found
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {

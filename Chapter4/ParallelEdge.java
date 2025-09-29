@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.Graph;
 
 /**
- * Creative problem 32, parallel edge detection: devise a linear time algorithm to count the parallel edges in a graph
+ *   parallel edge detection: devise a linear time algorithm to count the parallel edges in a graph
  * parallel edges = multiple edges between the same pair of vertices
  */
 public class ParallelEdge {
