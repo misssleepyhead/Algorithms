@@ -56,6 +56,26 @@ public class WordNet {
         return nounID.containsKey(word);
     }
 
+    // build a directed graph by reading the Hypernyms
+    private void readHypernyms(String filename) {
+        In in = new In(filename);
+        graph = new Digraph(synsetOf.length);
+
+        while (in.hasNextLine()) {
+            String[] l = in.readLine().split(",");
+            int v = Integer.parseInt(l[0]);
+            for (int i = 1; i < l.length; i++) {
+                graph.addEdge(v, Integer.parseInt(l[i]));
+            }
+        }
+    }
+
+    // the graph must be rooted DAG
+//    private boolean rootDAGValidataion(Digraph g){
+//        if()
+//
+//    }
+
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
         if (!isNoun(nounA) || !isNoun(nounB)) {
