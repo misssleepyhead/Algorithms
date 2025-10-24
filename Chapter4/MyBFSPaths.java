@@ -1,11 +1,13 @@
 import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.Stack;
 
 
 /**
  * Text book practice: breadth first search tp find paths in a graph
  */
 public class MyBFSPaths {
+    private static final int INFINITY=Integer.MAX_VALUE;
     private boolean[] marked;
     private int[] edgeTo;
     private int[] distTo; // distTo[v] = number of edges shortest s-v path
@@ -16,7 +18,7 @@ public class MyBFSPaths {
         edgeTo = new int[g.V()];
         distTo = new int[g.V()];
         for (int v = 0; v < g.V(); v++) {
-            distTo[v] = Integer.MAX_VALUE;
+            distTo[v] = INFINITY;
         }
         this.s = s;
         bfs(g, s);
@@ -24,8 +26,13 @@ public class MyBFSPaths {
     // BFS FROM A SINGLE SOURCE
     private void bfs(Graph g, int s) {
         Queue<Integer> queue = new Queue<>();
+        for(int v=0;v<g.V();v++){
+            distTo[v]=INFINITY;
+        }
+        distTo[s] =0;
         marked[s] = true;
         queue.enqueue(s);
+
         while (!queue.isEmpty()) {
             int v = queue.dequeue();
             for (int w : g.adj(v)) {
@@ -66,11 +73,11 @@ public class MyBFSPaths {
 
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
-        Queue<Integer> path = new Queue<>();
+        Stack<Integer> path = new Stack<>();
         for (int x = v; x != s; x = edgeTo[x]) {
-            path.enqueue(x);
+            path.push(x);
         }
-        path.enqueue(s);
+        path.push(s);
         return path;
     }
 
