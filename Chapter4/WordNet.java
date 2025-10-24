@@ -1,15 +1,14 @@
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.DirectedCycle;
 import edu.princeton.cs.algs4.In;
-
-import java.security.DigestException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class WordNet {
-    private Map<String, Bag<Integer>> nounID; // a noun might have multiple ids
+    private Map<String, Bag<Integer>> nounID; // a noun might has multiple ids
     private String[] synsetOf; // id and its synset
     private Digraph graph;
 
@@ -31,7 +30,6 @@ public class WordNet {
         }
 
         synsetOf = new String[lines.size()];
-
         for (String line : lines) {
             String[] l = line.split(",", 3); // split line by comma, maximum 3 split set, to avoid the comma in the gloss make another useless spilt
             int id = Integer.parseInt(l[0]);
@@ -60,7 +58,7 @@ public class WordNet {
     private void readHypernyms(String filename) {
         In in = new In(filename);
         graph = new Digraph(synsetOf.length);
-
+        // example : 34, 111,222 (id, hypernyms, hypernyms)
         while (in.hasNextLine()) {
             String[] l = in.readLine().split(",");
             int v = Integer.parseInt(l[0]);
@@ -71,10 +69,21 @@ public class WordNet {
     }
 
     // the graph must be rooted DAG
-//    private boolean rootDAGValidataion(Digraph g){
-//        if()
-//
-//    }
+    private void rootDAGValidate(){
+        // 1. check if the graph is acyclic (no cycle)
+        if(new DirectedCycle(graph).hasCycle()){
+            throw new IllegalArgumentException("not acyclic");
+        }
+        // 2. check if there is a root (outdegree =0) and there should be "one" root
+        int root =0;
+        for(int v=0;v<graph.V();v++){
+            if(graph.outdegree(v)==0){
+                root++;
+            }
+        }
+        if(root!=1) throw new IllegalArgumentException("not rooted");
+
+    }
 
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
