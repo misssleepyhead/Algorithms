@@ -86,4 +86,21 @@ public class MyBreadthFirstDirectedPaths {
     }
 
 
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v > V) throw new IllegalArgumentException();
+    }
+
+    private void validateVertex(Iterable<Integer> vertices) {
+        if (vertices == null) throw new IllegalArgumentException();
+        int vertexCount = 0;
+        for (Integer v : vertices) {
+            vertexCount++;
+            if (v == null) throw new IllegalArgumentException();
+            validateVertex(v);
+        }
+        if (vertexCount == 0) throw new IllegalArgumentException();
+    }
+
+
 }
