@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,36 +21,38 @@ public class Outcast {
     // given an array of WordNet nouns, return an outcast
     public String outcast(String[] nouns) {
         if (nouns == null) throw new IllegalArgumentException();
-        int maxSum = -1;
-        String worst = null;
 
-        Map<String, Integer> cache = new HashMap<>();
+        int n = nouns.length;
+        int[] sum = new int[n];
 
-        for (int i = 0; i < nouns.length; i++) {
-            String current = nouns[i];
-            if (!wordNet.isNoun(current)) throw new IllegalArgumentException();
+        for (int i = 0; i < n; i++) {
+            if (!wordNet.isNoun(nouns[i])) throw new IllegalArgumentException();
+            for (int j = i + 1; j < n; j++) {
+                if (!wordNet.isNoun(nouns[j])) throw new IllegalArgumentException();
 
-            int sum = 0;
-            for (int j = 0; j < nouns.length; j++) {
-                String b = nouns[j];
-                if (i == j) continue;
-
-                String key = current.compareTo(b) < 0 ? current + "#" + b : b + "#" + current;
-                Integer d = cache.get(key);
-                if (d == null) {
-                    d = wordNet.distance(current, b);
-                    cache.put(key, d);
-                }
-                sum += d;
-            }
-            if (sum > maxSum) {
-                maxSum = sum;
-                worst = current;
+                int d = wordNet.distance(nouns[i], nouns[j]);
+                sum[i] += d;
+                sum[j] += d;
             }
         }
-        return worst;
+
+        int max = -1, idx = -1;
+        for (int i = 0; i < n; i++) {
+            if (sum[i] > max) {
+                max = sum[i];
+                idx = i;
+            }
+        }
+        return idx == -1 ? null : nouns[idx];
     }
 
     public static void main(String[] args) {
+        WordNet wordnet = new WordNet(args[0], args[1]);
+        Outcast outcast = new Outcast(wordnet);
+        for (int t = 2; t < args.length; t++) {
+            In in = new In(args[t]);
+            String[] nouns = in.readAllStrings();
+            StdOut.println(args[t] + ": " + outcast.outcast(nouns));
+        }
     }
 }

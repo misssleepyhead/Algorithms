@@ -1,5 +1,7 @@
-import edu.princeton.cs.algs4.*;
-
+import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.BreadthFirstDirectedPaths;
+import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.In;
 
 public class SAP {
     private final Digraph G;
@@ -94,12 +96,9 @@ public class SAP {
         Digraph g = new Digraph(in);
         SAP sap = new SAP(g);
 
-        while (!StdIn.isEmpty()) {
-            int v = StdIn.readInt();
-            int w = StdIn.readInt();
-            int length   = sap.length(v, w);
-            int ancestor = sap.ancestor(v, w);
-            StdOut.printf("length = %d, ancestor = %d\n", length, ancestor);
-        }
+        System.out.println("len(9,12) = " + sap.length(3,11));
+        System.out.println("anc(9,12) = " + sap.ancestor(3,11));
+        System.out.println("len(9,12) = " + sap.length(9,12));
+        System.out.println("anc(9,12) = " + sap.ancestor(9,12));
     }
 }

@@ -37,10 +37,10 @@ public class WordNet {
 
         synsetOf = new String[lines.size()];
         for (String line : lines) {
-            String[] l = line.split(",", 3); // split line by comma, maximum 3 split set, to avoid the comma in the gloss make another useless spilt
-            int id = Integer.parseInt(l[0]);
+            String[] w = line.split(",", 3); // split line by comma, maximum 3 split set, to avoid the comma in the gloss make another useless spilt
+            int id = Integer.parseInt(w[0]);
             // add synset to string[id]
-            String synset = l[1];
+            String synset = w[1];
             synsetOf[id] = synset;
 
             for (String noun : synset.split(" ")) {
@@ -67,10 +67,10 @@ public class WordNet {
         graph = new Digraph(synsetOf.length);
         // example : 34, 111,222 (id, hypernyms, hypernyms)
         while (in.hasNextLine()) {
-            String[] l = in.readLine().split(",");
-            int v = Integer.parseInt(l[0]);
-            for (int i = 1; i < l.length; i++) {
-                graph.addEdge(v, Integer.parseInt(l[i]));
+            String[] w = in.readLine().split(",");
+            int v = Integer.parseInt(w[0]);
+            for (int i = 1; i < w.length; i++) {
+                graph.addEdge(v, Integer.parseInt(w[i]));
             }
         }
     }
