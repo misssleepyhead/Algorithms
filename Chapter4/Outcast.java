@@ -1,9 +1,6 @@
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * an outcast means given a list of WordNet nouns(x1,x2,...xn) which noun is the least related ti the others?
  * di = distance(xi,x1)+distance(xi,x2)+..+ distance(xi,xn) and return a noun xt for which dt is maximum, note that distance(xi,xi) is 0
