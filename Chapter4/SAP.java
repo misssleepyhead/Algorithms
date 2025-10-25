@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.In;
 
 public class SAP {
     private final Digraph G;
@@ -36,6 +37,17 @@ public class SAP {
     private void validateVertex(int v){
         int V = G.V();
         if(v<0 ||v>V) throw new IllegalArgumentException();
+    }
+
+    private void validateVertex(Iterable<Integer> vertices){
+        if(vertices==null) throw new IllegalArgumentException();
+        int vertexCount = 0;
+        for(Integer v:vertices){
+            vertexCount++;
+            if(v==null) throw new IllegalArgumentException();
+            validateVertex(v);
+        }
+        if(vertexCount==0) throw new IllegalArgumentException();
     }
     // do unit testing of this class
     public static void main(String[] args) {
