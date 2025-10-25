@@ -77,7 +77,7 @@ public class SAP {
 
     private void validateVertex(int v) {
         int V = G.V();
-        if (v < 0 || v > V) throw new IllegalArgumentException();
+        if (v < 0 || v >= V) throw new IllegalArgumentException();
     }
 
     private void validateVertex(Iterable<Integer> vertices) {

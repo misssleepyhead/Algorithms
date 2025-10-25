@@ -45,7 +45,7 @@ public class MyDirectedDFS {
 
     private void validateVertex(int v) {
         int V = marked.length;
-        if (v < 0 || v > V) throw new IllegalArgumentException();
+        if (v < 0 || v >= V) throw new IllegalArgumentException();
 
     }
 
