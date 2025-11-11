@@ -17,6 +17,7 @@ public class MyEdge {
     }
 
     public int either() {
+        // return either of this edge's vertex
         return v;
     }
 
