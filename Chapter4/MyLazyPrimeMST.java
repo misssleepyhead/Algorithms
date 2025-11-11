@@ -18,10 +18,10 @@ public class MyLazyPrimeMST {
         mst = new Queue<>();
         visite(graph, 0);
         while (!pq.isEmpty()) {
-            Edge e = pq.delMin();
+            Edge e = pq.delMin(); // get lowest-weight edge from pw
             int v = e.either(), w = e.other(v);
             if (marked[v] && marked[w]) continue; // skip if ineligible
-            mst.enqueue(e);
+            mst.enqueue(e); //add edge to the tree
             if (!marked[v]) visite(graph, v);
             if (!marked[w]) visite(graph, w); // add vertex to tree, either v or w
         }
