@@ -1,7 +1,7 @@
 /**
  * 4.3 Weighted edge data type Edge
  */
-public class MyEdge {
+public class MyEdge implements Comparable<MyEdge>{
     private final int v; // one vertex
     private final int w; // another vertex
     private final double weight;
