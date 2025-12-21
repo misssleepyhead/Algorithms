@@ -1,6 +1,4 @@
-import edu.princeton.cs.algs4.Edge;
-import edu.princeton.cs.algs4.EdgeWeightedGraph;
-import edu.princeton.cs.algs4.IndexMinPQ;
+import edu.princeton.cs.algs4.*;
 
 /**
  * 4.3 Eager version prime's MST
@@ -39,5 +37,19 @@ public class MyEagerPrimeMST {
                 else pq.insert(w, distTo[w]);
             }
         }
+    }
+
+    /**
+     * 4.3.21 edges() Returns the edges in a minimum spanning tree(or forest)
+     * return all non-null entries in edgeTo[]
+     */
+    public Iterable<Edge> edges() {
+        Queue<Edge> mst = new Queue<>();
+        for (int v = 0; v < edgeTo.length; v++) {
+            Edge e = edgeTo[v];
+            if (e != null) mst.enqueue(e);
+        }
+        return mst;
+
     }
 }
