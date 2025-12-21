@@ -14,15 +14,25 @@ public class MyEagerPrimeMST {
         edgeTo = new Edge[n];
         distTo = new double[n];
         marked = new boolean[n];
+        pq = new IndexMinPQ<>(n);
         for (int v = 0; v < n; v++) {
             distTo[v] = Double.POSITIVE_INFINITY; // init distance
         }
-        pq = new IndexMinPQ<>(n);
+        for (int v = 0; v < g.V(); v++) {
+            if (!marked[v]) prim(g, v);
+        }
+
+    }
+
+    // run prim's in graph
+    private void prim(EdgeWeightedGraph g, int s) {
+
         distTo[0] = 0.0;
         pq.insert(0, 0.0);
         while (!pq.isEmpty()) visit(g, pq.delMin()); // add closest vertex to tree
     }
 
+    // scan vertex
     private void visit(EdgeWeightedGraph g, int v) {
         // add v to tree, update data structure
         marked[v] = true;
@@ -50,6 +60,42 @@ public class MyEagerPrimeMST {
             if (e != null) mst.enqueue(e);
         }
         return mst;
+
+    }
+
+    public double weight() {
+        double weight = 0.0;
+        for (Edge e : edges()) {
+            weight += e.weight();
+        }
+        return weight;
+    }
+
+    // website problem 33
+    //following cut optimality conditions to verify at a proposed set of edges is in fact an MST:
+    // A set of edges is an MST if it is a spanning tree and every edge is a minimum-weight edge in the cut defined by removing that edge from the tree.
+    public boolean check(EdgeWeightedGraph graph) {
+        for (Edge e : edges()) {
+            UF uf = new UF(graph.V());
+            for (Edge f : edges()) {
+                int x = f.either(), y = f.other(x);
+                if (f != e)
+                    uf.union(x, y);  // remove edge e and look at the resulting forest, and rebuilding connectivity information for the graph T-e
+            }
+            // since an MST is a tree, remove one edge will get exactly two connected components
+            // check that e is min weight edge in crossing cut
+            for (Edge f : graph.edges()) {
+                int x = f.either(), y = f.other(x);
+                if (uf.find(x) != uf.find(y)) {
+                    if (f.weight() < e.weight()) { // checking among all edges that cross the cut defined by removing e, none is lighter than e
+                        System.out.println("Edge" + f + " violated cut optimality conditions");
+                        return false;
+                    }
+                }
+            }
+
+        }
+        return true;
 
     }
 }
