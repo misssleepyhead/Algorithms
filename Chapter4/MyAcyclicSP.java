@@ -14,22 +14,22 @@ public class MyAcyclicSP {
         edgeTo = new DirectedEdge[graph.V()];
         distTo = new double[graph.V()];
 
-        for(int v=0;v< graph.V();v++){
-            distTo[v]=Double.POSITIVE_INFINITY;
+        for (int v = 0; v < graph.V(); v++) {
+            distTo[v] = Double.POSITIVE_INFINITY;
         }
-        distTo[s]=0.0;
+        distTo[s] = 0.0;
         Topological topo = new Topological(graph);
-        for(int v: topo.order()){
-            relax(graph,v);
+        for (int v : topo.order()) {
+            relax(graph, v);
         }
     }
 
-    private void relax(EdgeWeightedDigraph graph,int v){
-        for(DirectedEdge e:graph.adj(v) ){
+    private void relax(EdgeWeightedDigraph graph, int v) {
+        for (DirectedEdge e : graph.adj(v)) {
             int w = e.to();
-            if(distTo[w]>distTo[v]+e.weight()){
-                distTo[w] = distTo[v]+e.weight();
-                edgeTo[w]=e;
+            if (distTo[w] > distTo[v] + e.weight()) {
+                distTo[w] = distTo[v] + e.weight();
+                edgeTo[w] = e;
 
             }
         }
