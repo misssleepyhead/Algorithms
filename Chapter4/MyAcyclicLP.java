@@ -15,13 +15,13 @@ public class MyAcyclicLP {
         edgeTo = new DirectedEdge[digraph.V()];
 
         for (int v = 0; v < digraph.V(); v++) {
-            distTo[v] = Double.POSITIVE_INFINITY;
+            distTo[v] = Double.NEGATIVE_INFINITY;
         }
         distTo[s] = 0.0;
 
         Topological topo = new Topological(digraph);
         if (!topo.hasOrder()) {
-            throw new IllegalArgumentException("digraph is not acuclic");
+            throw new IllegalArgumentException("digraph is not acyclic");
         }
         for (int v : topo.order()) {
             for (DirectedEdge e : digraph.adj(v)) {
