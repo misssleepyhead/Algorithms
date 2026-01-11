@@ -58,6 +58,8 @@ public class MyQueueBasedBellmanFord {
                 spt.addEdge(edgeTo[v]);
             }
         }
+        EdgeWeightedCycleFinder cf = new EdgeWeightedCycleFinder(spt);
+        cycle=cf.cycle();
 
 
     }
@@ -66,7 +68,7 @@ public class MyQueueBasedBellmanFord {
         return cycle != null;
     }
 
-    public Iterable<Edge> negativeCycle() {
+    public Iterable<DirectedEdge> negativeCycle() {
         return cycle;
     }
 }
