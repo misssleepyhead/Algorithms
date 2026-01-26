@@ -9,6 +9,8 @@ import java.util.List;
  * A path is monotonic if the weight of every edge on the path is either strictly increasing or strictly decreasing.
  */
 public class MyMonotonicSP {
+    public static final long INF = Long.MAX_VALUE / 4;
+
     public static class Edge {
         public final int from, to;
         public final int weight;
@@ -32,29 +34,44 @@ public class MyMonotonicSP {
 
     }
 
-    public static long[] findIncreasingPath(int n, List<Edge> edges, int src) {
+
+    /**
+     * Final answer: min(increasing, decreasing) for each vertex.
+     */
+    public static long[] monotonicShortestPaths(int n, List<Edge> edges, int src) {
+        long[] inc = increasingPass(n, edges, src);
+        long[] dec = decreasingPass(n, edges, src);
+        long[] ans = new long[n];
+        for (int v = 0; v < n; v++) ans[v] = Math.min(inc[v], dec[v]);
+        return ans;
+    }
+
+    // Strictly increasing edge weights along the path, re;ax edges in ascending order and find a best path
+    public static long[] increasingPass(int n, List<Edge> edges, int src) {
         long[] dist = new long[n];
-        Arrays.fill(dist, Long.MAX_VALUE);
+        Arrays.fill(dist, INF);
         dist[src] = 0;
 
         // 1. sort edges by weight
-        edges.sort(Comparator.comparingInt(e -> e.weight));
+        List<Edge> sorted = new ArrayList<>(edges);
+        sorted.sort(Comparator.comparingInt(e -> e.weight)); // ascending
+
         int i = 0;
         int m = edges.size();
 
         // 2. process edges in batches of the same weight
         while (i < m) {
-            int j = 1;
+            int j = i;
 
             int currentWeight = edges.get(i).weight;
             List<Update> batchUpdates = new ArrayList<>();
 
-            while (j < m && edges.get(j).weight == currentWeight) {
-                Edge e = edges.get(j);
+            while (j < m && sorted.get(j).weight == currentWeight) {
+                Edge e = sorted.get(j);
 
                 // if src is reachable from a previous weight group
-                if (dist[e.from] != Long.MAX_VALUE) {
-                    batchUpdates.add(new Update(e.to, dist[e.from] + e.weight));
+                if (dist[e.from] < INF) {
+                    batchUpdates.add(new Update(e.to, dist[e.from] + currentWeight));
                 }
                 j++;
             }
@@ -69,5 +86,40 @@ public class MyMonotonicSP {
 
         }
         return dist;
+    }
+
+    /**
+     * Best strictly decreasing monotonic distances from src. relax edges in descending order and find a best path
+     */
+    public static long[] decreasingPass(int n, List<Edge> edges, int src) {
+        long[] dist = new long[n];
+        Arrays.fill(dist, INF);
+        dist[src] = 0;
+
+        List<Edge> sorted = new ArrayList<>(edges);
+        sorted.sort((a, b) -> Integer.compare(b.weight, a.weight)); // descending
+
+        int i = 0;
+        int m = sorted.size();
+        while (i < m) {
+            int currentweight = sorted.get(i).weight;
+
+            int j = i;
+            List<Update> pending = new ArrayList<>();
+            while (j < m && sorted.get(j).weight == currentweight) {
+                Edge e = sorted.get(j);
+                if (dist[e.from] < INF) {
+                    pending.add(new Update(e.to, dist[e.from] + currentweight));
+                }
+                j++;
+            }
+
+            for (Update up : pending) {
+                if (up.newDist < dist[up.vertex]) dist[up.vertex] = up.newDist;
+            }
+            i = j;
+        }
+        return dist;
+
     }
 }
