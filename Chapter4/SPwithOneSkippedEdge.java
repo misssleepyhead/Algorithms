@@ -54,7 +54,6 @@ public class SPwithOneSkippedEdge {
                 skipEdge = e;
             }
 
-
         }
         this.bestDist=best;
         this.skippedEdge=skipEdge;
@@ -104,12 +103,9 @@ public class SPwithOneSkippedEdge {
 
     ) {
 
-        // If no path to t at all (even without skip), we still might have a skip-candidate.
-        // But our scanning logic would keep best = dist(s,t) = INF and bestSkip stays null.
-        // In that case return empty.
+        // No skip needed: just return shortest s->t
         if (bestSkip == null) {
             if (!spFromS.hasPathTo(t)) {
-                // DijkstraSP doesn't have t(), so handle below in safer way:
                 return Collections.emptyList();
             }
             List<DirectedEdge> path = new ArrayList<>();
@@ -133,11 +129,11 @@ public class SPwithOneSkippedEdge {
 
         // 3) v -> t (use reversed-graph path t -> v, reverse it and flip directions)
         List<DirectedEdge> revEdges = new ArrayList<>();
-        for (DirectedEdge e : spToT.pathTo(v)) revEdges.add(e); // edges from t to v in Grev
+        for (DirectedEdge e : spToT.pathTo(v)) revEdges.add(e); // edges from t to v in reversed graph
 
-        // Convert t->...->v in Grev into v->...->t in original:
+        // Convert t->...->v in reversed graph into v->...->t in original:
         for (int i = revEdges.size() - 1; i >= 0; i--) {
-            DirectedEdge e = revEdges.get(i); // e: a -> b in Grev
+            DirectedEdge e = revEdges.get(i); // e: a -> b in reversed graph
             // original direction is b -> a
             path.add(new DirectedEdge(e.to(), e.from(), e.weight()));
         }
