@@ -1,5 +1,4 @@
 import edu.princeton.cs.algs4.Digraph;
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 
@@ -22,10 +21,14 @@ public class MyBreadthFirstDirectedPaths {
         marked = new boolean[g.V()];
         edgeTo = new int[g.V()];
         distTo = new int[g.V()];
+
         for (int v = 0; v < g.V(); v++) {
             distTo[v] = INFINITY;
         }
+        bfs(g, s);
+
     }
+
 
     private void bfs(Digraph g, int s) {
         Queue<Integer> queue = new Queue<>();
@@ -49,7 +52,7 @@ public class MyBreadthFirstDirectedPaths {
         Queue<Integer> q = new Queue<>();
         for (int s : sources) {
             marked[s] = true;
-            edgeTo[s] = 0;
+            distTo[s] = 0;
             q.enqueue(s);
         }
 
