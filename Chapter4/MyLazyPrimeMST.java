@@ -11,6 +11,7 @@ public class MyLazyPrimeMST {
     private boolean[] marked; // MST vertices
     private Queue<Edge> mst; //MST edges
     private MinPQ<Edge> pq;  // crossing edges
+    private int weight;
 
     public MyLazyPrimeMST(EdgeWeightedGraph graph) {
         pq = new MinPQ<Edge>();
@@ -22,6 +23,7 @@ public class MyLazyPrimeMST {
             int v = e.either(), w = e.other(v);
             if (marked[v] && marked[w]) continue; // skip if ineligible
             mst.enqueue(e); //add edge to the tree
+            weight += e.weight();
             if (!marked[v]) visite(graph, v);
             if (!marked[w]) visite(graph, w); // add vertex to tree, either v or w
         }
@@ -34,5 +36,9 @@ public class MyLazyPrimeMST {
         for (Edge e : g.adj(v)) {
             if (!marked[e.other(v)]) pq.insert(e);
         }
+    }
+
+    private int weight() {
+        return weight;
     }
 }
