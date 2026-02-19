@@ -8,10 +8,11 @@ import java.util.Comparator;
  */
 public class MyKruskalMST {
     private Queue<Edge> mst;
+    private double weight = 0.0;
 
     public MyKruskalMST(EdgeWeightedGraph g) {
         mst = new Queue<>();
-        MinPQ<Edge> pq = new MinPQ<Edge>((Comparator<Edge>) g.edges());
+        MinPQ<Edge> pq = new MinPQ<>();
         UF uf = new UF(g.V());
 
         while (!pq.isEmpty() && mst.size() < g.V() - 1) {
@@ -20,6 +21,15 @@ public class MyKruskalMST {
             if (uf.connected(v, w)) continue;
             uf.union(v, w); //merge components
             mst.enqueue(e); // add edge to mst
+            weight+=e.weight();
+
         }
     }
+
+    public double weight() {
+        return weight;
+    }
+    public Iterable<Edge> edges() { return mst; }
+
+
 }
