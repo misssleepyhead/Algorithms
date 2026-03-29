@@ -191,18 +191,44 @@ public class SeamCarver {
 
     // remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
-        if (seam == null || height <= 1) {
+        if (seam == null || height <= 1 || seam.length != width) {
             throw new IllegalArgumentException();
         }
+        Picture newPic = new Picture(width,height-1);
+        for(int col = 0;col<width;col++){
+            int newRow = 0;
+            for(int row=0;row<width;row++){
+                if(row == seam[col]) continue;
+                newPic.set(col, newRow, currentPicture.get(col,row));
+                newRow++;
+            }
+        }
+        currentPicture = newPic;
+        height--;
     }
 
     // remove vertical seam from current picture
     public void removeVerticalSeam(int[] seam) {
-        if (seam == null || width <= 1) {
+        // 1. validate seam
+        if (seam == null || width <= 1 || seam.length != height) {
             throw new IllegalArgumentException();
         }
+        // 2. make a new picture with width -1
+        Picture newPic = new Picture(width - 1, height);
+        // 3. for each row, skip the seam pixel and copy the rest
+        for (int row = 0; row < width; row++) {
+            int newCol = 0;
+            for (int col = 0; col < height; col++) {
+                if (col == seam[row]) continue;
+                newPic.set(newCol, row, currentPicture.get(col, row));
+                newCol++;
+            }
+        }
+        currentPicture = newPic;
+        width--;
 
     }
+
 
     //  unit testing (optional)
     public static void main(String[] args) {
