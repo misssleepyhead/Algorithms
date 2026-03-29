@@ -1,6 +1,6 @@
 import edu.princeton.cs.algs4.Picture;
 
-import java.awt.*;
+import java.awt.Color;
 
 
 public class SeamCarver {
@@ -52,7 +52,7 @@ public class SeamCarver {
 
         int rx = right.getRed() - left.getRed();
         int gx = right.getGreen() - left.getGreen();
-        int bx = right.getRGB() - left.getBlue();
+        int bx = right.getBlue() - left.getBlue();
 
         int ry = down.getRed() - up.getRed();
         int gy = down.getGreen() - up.getGreen();
@@ -161,7 +161,6 @@ public class SeamCarver {
             seam[y] = x;
             x = edgeTo[y][x];
         }
-
         return seam;
     }
 
@@ -176,30 +175,16 @@ public class SeamCarver {
         }
     }
 
-    private void relaxHorizontal(int x, int y, int nextx, int nexty,
-                                 double[][] distTo, int[][] edgeTo) {
-        if (nextx < 0 || nextx >= width || nexty < 0 || nexty >= height) {
-            return;
-        }
-
-        double candidate = distTo[y][x] + energy(nextx, nexty);
-        if (candidate < distTo[nexty][nextx]) {
-            distTo[nexty][nextx] = candidate;
-            edgeTo[nexty][nextx] = y;   // store previous ROW
-        }
-    }
 
     // remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
-        if (seam == null || height <= 1 || seam.length != width) {
-            throw new IllegalArgumentException();
-        }
-        Picture newPic = new Picture(width,height-1);
-        for(int col = 0;col<width;col++){
+        validateHorizontalSeam(seam);
+        Picture newPic = new Picture(width, height - 1);
+        for (int col = 0; col < width; col++) {
             int newRow = 0;
-            for(int row=0;row<width;row++){
-                if(row == seam[col]) continue;
-                newPic.set(col, newRow, currentPicture.get(col,row));
+            for (int row = 0; row < height; row++) {
+                if (row == seam[col]) continue;
+                newPic.set(col, newRow, currentPicture.get(col, row));
                 newRow++;
             }
         }
@@ -210,15 +195,13 @@ public class SeamCarver {
     // remove vertical seam from current picture
     public void removeVerticalSeam(int[] seam) {
         // 1. validate seam
-        if (seam == null || width <= 1 || seam.length != height) {
-            throw new IllegalArgumentException();
-        }
+        validateVerticalSeam(seam);
         // 2. make a new picture with width -1
         Picture newPic = new Picture(width - 1, height);
         // 3. for each row, skip the seam pixel and copy the rest
-        for (int row = 0; row < width; row++) {
+        for (int row = 0; row < height; row++) {
             int newCol = 0;
-            for (int col = 0; col < height; col++) {
+            for (int col = 0; col < width; col++) {
                 if (col == seam[row]) continue;
                 newPic.set(newCol, row, currentPicture.get(col, row));
                 newCol++;
@@ -229,9 +212,38 @@ public class SeamCarver {
 
     }
 
+    private void validateVerticalSeam(int[] seam) {
+        if (seam == null || width <= 1 || seam.length != height) {
+            throw new IllegalArgumentException();
+        }
+        for (int row = 0; row < height; row++) {
+            if (seam[row] < 0 || seam[row] >= width) {
+                throw new IllegalArgumentException();
+            }
+            if (row > 0 && Math.abs(seam[row] - seam[row - 1]) > 1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void validateHorizontalSeam(int[] seam) {
+        if (seam == null || height <= 1 || seam.length != width) {
+            throw new IllegalArgumentException();
+        }
+        for (int col = 0; col < width; col++) {
+            if (seam[col] < 0 || seam[col] >= height) {
+                throw new IllegalArgumentException();
+            }
+            if (col > 0 && Math.abs(seam[col] - seam[col - 1]) > 1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
 
     //  unit testing (optional)
     public static void main(String[] args) {
+        // unused
     }
 
 }
