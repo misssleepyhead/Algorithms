@@ -6,27 +6,34 @@ import edu.princeton.cs.algs4.*;
  */
 public class MyCPM {
     public static void main(String[] args) {
-        int N = StdIn.readInt();
-        StdIn.readLine();
-        EdgeWeightedDigraph G;
-        G = new EdgeWeightedDigraph(2 * N + 2);
-        int s = 2 * N, t = 2 * N + 1;
-        for (int i = 0; i < N; i++) {
-            String[] a = StdIn.readLine().split("\\s+");
-            double duration = Double.parseDouble(a[0]);
-            G.addEdge(new DirectedEdge(i, i + N, duration));
-            G.addEdge(new DirectedEdge(s, i, 0.0));
-            G.addEdge(new DirectedEdge(i + N, t, 0.0));
-            for (int j = 1; j < a.length; j++) {
-                int successor = Integer.parseInt(a[j]);
-                G.addEdge(new DirectedEdge(i + N, successor, 0.0));
+        // number of jobs
+        int n = StdIn.readInt();
+
+        // source and sink
+        int source = 2*n;
+        int sink   = 2*n + 1;
+
+        // build network
+        EdgeWeightedDigraph G = new EdgeWeightedDigraph(2*n + 2);
+        for (int i = 0; i < n; i++) {
+            double duration = StdIn.readDouble();
+            G.addEdge(new DirectedEdge(source, i, 0.0)); // source connect to every start(i)
+            G.addEdge(new DirectedEdge(i+n, sink, 0.0)); // after finishing job i, may proceed to sink
+            G.addEdge(new DirectedEdge(i, i+n,    duration));  // start(i) -> finish(i) weight duration
+
+            // precedence constraints
+            int m = StdIn.readInt();
+            for (int j = 0; j < m; j++) {
+                int precedent = StdIn.readInt();
+                G.addEdge(new DirectedEdge(n+i, precedent, 0.0)); // jon i mut complete before job precedent
+                // finish(i) -> start(precedent)
             }
         }
-        AcyclicLP lp = new AcyclicLP(G, s);
+        AcyclicLP lp = new AcyclicLP(G, source);
         System.out.println("start times:");
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             StdOut.printf("%4d: %5.1f\n", i, lp.distTo(i));
         }
-        StdOut.printf("Finish time: %5.1f\n", lp.distTo(t));
+        StdOut.printf("Finish time: %5.1f\n", lp.distTo(sink));
     }
 }
