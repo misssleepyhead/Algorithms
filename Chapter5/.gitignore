@@ -1,0 +1,16 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Java build output
+out/
+*.class
+
+# Gradle / Maven, if used later
+build/
+target/
+.gradle/
+
+# OS files
+.DS_Store
+Thumbs.db
