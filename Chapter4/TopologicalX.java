@@ -24,7 +24,6 @@ public class TopologicalX {
 
     public TopologicalX(Digraph digraph) {
         int n = digraph.V();
-        ;
         // an array to track the indegree of every vertex
         int[] indegrees = new int[n];
         for (int v = 0; v < n; v++) {

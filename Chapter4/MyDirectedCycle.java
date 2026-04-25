@@ -37,6 +37,7 @@ public class MyDirectedCycle {
                 }
                 cycle.push(w);
                 cycle.push(v);
+
                 // cycle now holds vertices along the loop; consumers can iterate it
             }
         }

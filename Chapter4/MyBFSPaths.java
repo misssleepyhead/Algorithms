@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.Graph;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 
@@ -11,16 +12,22 @@ public class MyBFSPaths {
     private boolean[] marked;
     private int[] edgeTo;
     private int[] distTo; // distTo[v] = number of edges shortest s-v path
-    private final int s;
+
 
     public MyBFSPaths(Graph g, int s) {
+        marked = new boolean[g.V()];
+        edgeTo = new int[g.V()];
+        distTo = new int[g.V()];
+        bfs(g, s);
+    }
+
+    public MyBFSPaths(Graph g, Iterable<Integer> s) {
         marked = new boolean[g.V()];
         edgeTo = new int[g.V()];
         distTo = new int[g.V()];
         for (int v = 0; v < g.V(); v++) {
             distTo[v] = INFINITY;
         }
-        this.s = s;
         bfs(g, s);
     }
     // BFS FROM A SINGLE SOURCE
@@ -74,10 +81,9 @@ public class MyBFSPaths {
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<>();
-        for (int x = v; x != s; x = edgeTo[x]) {
+        for (int x = v; distTo[x]!=0; x = edgeTo[x]) {
             path.push(x);
         }
-        path.push(s);
         return path;
     }
 

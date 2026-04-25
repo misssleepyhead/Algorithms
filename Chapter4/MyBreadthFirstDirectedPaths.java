@@ -15,6 +15,7 @@ public class MyBreadthFirstDirectedPaths {
         for (int v = 0; v < g.V(); v++) {
             distTo[v] = INFINITY;
         }
+        bfs(g,s);
     }
 
     public MyBreadthFirstDirectedPaths(Digraph g, Iterable<Integer> s) {
