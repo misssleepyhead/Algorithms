@@ -30,15 +30,21 @@ public class MyFlowEdge {
         return flow;
     }
 
+    public int other(int vertex) {
+        if (vertex == v) return w;
+        else if (vertex == w) return v;
+        else throw new RuntimeException("Inconsistent edge");
+    }
+
     public double residualCapacityTo(int vertex) {
         if (vertex == v) return flow;
         else if (vertex == w) return capacity - flow;
         else throw new RuntimeException("Inconsistent edge");
     }
 
-    public void addResidualFlowTo(int vertex, double delta){
-        if(vertex==v) flow-= delta;
-        else if (vertex==w) flow +=delta;
+    public void addResidualFlowTo(int vertex, double delta) {
+        if (vertex == v) flow -= delta;
+        else if (vertex == w) flow += delta;
         else throw new RuntimeException("Inconsistent edge");
     }
 
