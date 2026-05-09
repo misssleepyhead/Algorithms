@@ -14,6 +14,14 @@ public class MyFlowEdge {
         this.flow = 0.0;
     }
 
+    public MyFlowEdge(MyFlowEdge e){
+        this.v = e.v;
+        this.w = e.w;
+        this.capacity=e.capacity;
+        this.flow = e.flow;
+
+    }
+
     public int from() {
         return v;
     }
