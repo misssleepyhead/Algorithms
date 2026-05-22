@@ -38,8 +38,8 @@ public class MyFlowNetWork {
         int w = e.to();
         validateVertex(v);
         validateVertex(w);
-        adj[v].add(e);
-        adj[w].add(e);
+        adj[v].add(e); // add forward edge
+        adj[w].add(e); // add backward edge
     }
 
     public Iterable<FlowEdge> adj(int v) {
