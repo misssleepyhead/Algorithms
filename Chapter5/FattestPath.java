@@ -51,7 +51,7 @@ public class FattestPath {
 
         if (settled[w]) return;
 
-        double candidate = Math.min(best[v], e.weight());
+        double candidate = Math.min(best[v], e.weight()); //If I reach w by going through v, what bottleneck capacity would that path have?
 
         if (candidate > best[w]) {
             best[w] = candidate;
