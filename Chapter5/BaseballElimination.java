@@ -1,10 +1,13 @@
+import edu.princeton.cs.algs4.FlowEdge;
 import edu.princeton.cs.algs4.FlowNetwork;
+import edu.princeton.cs.algs4.FordFulkerson;
 import edu.princeton.cs.algs4.In;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Flow;
 
 /**
  * Unit 6 assignment homework: Baseball elimination
@@ -13,14 +16,14 @@ public class BaseballElimination {
     private static class NetworkData {
         private final FlowNetwork network;
         private final int source;
-        private final int target;
+        private final int sink;
         private final int totalTeamCapacity;
         private final int[] teamVertex;
 
-        public NetworkData(FlowNetwork network, int source, int target, int totalTeamCapacity, int[] teamVertex) {
+        public NetworkData(FlowNetwork network, int source, int sink, int totalTeamCapacity, int[] teamVertex) {
             this.network = network;
             this.source = source;
-            this.target = target;
+            this.sink = sink;
             this.totalTeamCapacity = totalTeamCapacity;
             this.teamVertex = teamVertex;
         }
@@ -126,6 +129,9 @@ public class BaseballElimination {
         }
 
         // non-trivial case
+        NetworkData data = buildFlowNetwork(xIndex);
+        FordFulkerson ff = new FordFulkerson(data.network, data.source, data.sink);
+        return ff.value() < data.totalTeamCapacity;
     }
 
     public Iterable<String> certificateOfElimination(String team) {
@@ -139,18 +145,80 @@ public class BaseballElimination {
         }
     }
 
-    private NetworkData buildFlowNetwork(int teamX){
-        int maxWin = wins[teamX]+remainings[teamX];
+    private NetworkData buildFlowNetwork(int teamX) {
+        int maxWin = wins[teamX] + remainings[teamX];
 
         // count game vertices, one vertex for every pair except team x
         int gameVertexCount = 0;
         int totalGameCapacity = 0;
 
-        for(int i=0;i<n;i++){
-            if(i==teamX) continue;
+        for (int i = 0; i < n; i++) {
+            if (i == teamX) continue;
 
-
+            for (int j = 0; j < n; j++) {
+                if (j == teamX) continue;
+                gameVertexCount++;
+                totalGameCapacity += games[i][j];
+            }
         }
+
+        int teamVertexCount = n - 1;
+        int source = 0;
+        int firstGameVertex = 1;
+        int firstTeamVertex = firstGameVertex + gameVertexCount;
+        int sink = firstTeamVertex + teamVertexCount;
+
+        int vertexCount = sink + 1;
+        FlowNetwork network = new FlowNetwork(vertexCount);
+
+        int[] teamVertex = new int[n];
+        // init tam vertex
+        for (int i = 0; i < n; i++) {
+            teamVertex[i] = -1;
+        }
+
+        // assign real vertex number
+        int currentTeamVertex = firstTeamVertex;
+        for (int i = 0; i < n; i++) {
+            if (i == teamX) continue;
+            teamVertex[i] = currentTeamVertex;
+            currentTeamVertex++;
+        }
+
+        // edge for game to team should be inf
+        double infinity = totalGameCapacity + 1.0;
+        int currentGameVertex = firstGameVertex;
+
+        for (int i = 0; i < n; i++) {
+            if (i == teamX) continue;
+            for (int j = 0; j < n; j++) {
+                if (j == teamX) continue;
+
+                int gameVertex = currentGameVertex++;
+
+                //source -> game
+                network.addEdge(new FlowEdge(source, gameVertex, games[i][j]));
+
+                //game -> team i
+                network.addEdge(new FlowEdge(gameVertex, teamVertex[i], infinity));
+
+                // game -> team j
+                network.addEdge(new FlowEdge(gameVertex, teamVertex[j], infinity));
+
+            }
+        }
+
+        // add team -> sink
+        for (int i = 0; i < n; i++) {
+            if (i == teamX) continue;
+
+            int capacity = maxWin - wins[i];
+            // capacity should be positive but use math.max fot safety
+            network.addEdge(new FlowEdge(teamVertex[i], sink, Math.max(0, capacity)));
+        }
+        return new NetworkData(network, source, sink, totalGameCapacity, teamVertex);
+
+
     }
 
 
