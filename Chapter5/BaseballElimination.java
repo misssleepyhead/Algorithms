@@ -143,7 +143,7 @@ public class BaseballElimination {
         int maxWin = wins[xIndex] + remaining[xIndex];
 
         List<String> certificate = new ArrayList<>();
-        //trivial case
+        // trivial case
         for (int i = 0; i < n; i++) {
             if (i != xIndex && wins[i] > maxWin) {
                 certificate.add(teamNames[i]);
@@ -225,15 +225,15 @@ public class BaseballElimination {
 
         for (int i = 0; i < n; i++) {
             if (i == teamX) continue;
-            for (int j = 0; j < n; j++) {
+            for (int j = i+1; j < n; j++) {
                 if (j == teamX) continue;
 
                 int gameVertex = currentGameVertex++;
 
-                //source -> game
+                // source -> game
                 network.addEdge(new FlowEdge(source, gameVertex, games[i][j]));
 
-                //game -> team i
+                // game -> team i
                 network.addEdge(new FlowEdge(gameVertex, teamVertex[i], infinity));
 
                 // game -> team j
