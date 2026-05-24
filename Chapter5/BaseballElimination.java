@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Flow;
+
 
 /**
  * Unit 6 assignment homework: Baseball elimination
@@ -17,14 +17,14 @@ public class BaseballElimination {
         private final FlowNetwork network;
         private final int source;
         private final int sink;
-        private final int totalTeamCapacity;
+        private final int totalGameCapacity;
         private final int[] teamVertex;
 
-        public NetworkData(FlowNetwork network, int source, int sink, int totalTeamCapacity, int[] teamVertex) {
+        public NetworkData(FlowNetwork network, int source, int sink, int totalGameCapacity, int[] teamVertex) {
             this.network = network;
             this.source = source;
             this.sink = sink;
-            this.totalTeamCapacity = totalTeamCapacity;
+            this.totalGameCapacity = totalGameCapacity;
             this.teamVertex = teamVertex;
         }
 
@@ -36,7 +36,7 @@ public class BaseballElimination {
     private final Map<String, Integer> teamToIndex;
     private final int[] wins;
     private final int[] losses;
-    private final int[] remainings;
+    private final int[] remaining;
     private final int[][] games;
 
     // create a baseball division from given filename in format specified below
@@ -49,7 +49,7 @@ public class BaseballElimination {
         teamToIndex = new HashMap<>();
         wins = new int[n];
         losses = new int[n];
-        remainings = new int[n];
+        remaining = new int[n];
         games = new int[n][n];
 
         for (int i = 0; i < n; i++) {
@@ -60,7 +60,7 @@ public class BaseballElimination {
 
             wins[i] = in.readInt();
             losses[i] = in.readInt();
-            remainings[i] = in.readInt();
+            remaining[i] = in.readInt();
 
             for (int j = 0; j < n; j++) {
                 games[i][j] = in.readInt();
@@ -102,7 +102,7 @@ public class BaseballElimination {
         // number of remaining games for given team
         validateTeam(team);
         int index = teamToIndex.get(team);
-        return remainings[index];
+        return remaining[index];
     }
 
     public int against(String team1, String team2) {
@@ -119,7 +119,7 @@ public class BaseballElimination {
         // is given team eliminated?
         validateTeam(team);
         int xIndex = teamToIndex.get(team);
-        int maxWin = wins[xIndex] + remainings[xIndex];
+        int maxWin = wins[xIndex] + remaining[xIndex];
 
         // trivial case: check if other teams wins already more than team x's maxWin
         for (int i = 0; i < n; i++) {
@@ -131,12 +131,46 @@ public class BaseballElimination {
         // non-trivial case
         NetworkData data = buildFlowNetwork(xIndex);
         FordFulkerson ff = new FordFulkerson(data.network, data.source, data.sink);
-        return ff.value() < data.totalTeamCapacity;
+        // ff.value() means the remaining wins that must be assigned to other teams
+        return ff.value() < data.totalGameCapacity;
     }
 
     public Iterable<String> certificateOfElimination(String team) {
         // subset R of teams that eliminates given team; null if not eliminated
+        // certificate means the subset of teams on the s side cut after max flow
         validateTeam(team);
+        int xIndex = teamToIndex.get(team);
+        int maxWin = wins[xIndex] + remaining[xIndex];
+
+        List<String> certificate = new ArrayList<>();
+        //trivial case
+        for (int i = 0; i < n; i++) {
+            if (i != xIndex && wins[i] > maxWin) {
+                certificate.add(teamNames[i]);
+            }
+
+        }
+        if (!certificate.isEmpty()) return certificate;
+
+        // non-trivial
+        NetworkData data = buildFlowNetwork(xIndex);
+        FordFulkerson ff = new FordFulkerson(data.network, data.source, data.sink);
+
+        if (ff.value() >= data.totalGameCapacity) {
+            return null;
+        }
+
+        // teams on the source side of min cut form the certificate
+        for (int i = 0; i < n; i++) {
+            if (i == xIndex) continue;
+            int v = data.teamVertex[i];
+            if (ff.inCut(v)) {
+                certificate.add(teamNames[i]);
+            }
+        }
+        return certificate;
+
+
     }
 
     private void validateTeam(String team) {
@@ -146,7 +180,7 @@ public class BaseballElimination {
     }
 
     private NetworkData buildFlowNetwork(int teamX) {
-        int maxWin = wins[teamX] + remainings[teamX];
+        int maxWin = wins[teamX] + remaining[teamX];
 
         // count game vertices, one vertex for every pair except team x
         int gameVertexCount = 0;
@@ -155,7 +189,7 @@ public class BaseballElimination {
         for (int i = 0; i < n; i++) {
             if (i == teamX) continue;
 
-            for (int j = 0; j < n; j++) {
+            for (int j = i+1; j < n; j++) {
                 if (j == teamX) continue;
                 gameVertexCount++;
                 totalGameCapacity += games[i][j];
