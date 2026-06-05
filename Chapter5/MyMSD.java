@@ -53,9 +53,33 @@ public class MyMSD {
             insertion(a,lo,hi,d);
             return;
         }
-        int[] count = new int[R + 1];
-        int mask = R-1; //0xFF
+        int[] count = new int[R + 2];
+        //compute frequency count
+        for(int i=lo; i<=hi;i++){
+            int c = charAt(a[i],d);
+            count[c+2]++;
+        }
 
+        // transform counts to indices
+        for(int r=0;r<R+1;r++){
+            count[r+1] += count[r];
+        }
+
+        // distribute
+        for(int i=lo;i>=hi;i++){
+            int c = charAt(a[i], d);
+            aux[count[c+1]++] = a[i];
+        }
+
+        // copy nack
+        for (int i=lo;i<=hi;i++){
+            a[i] = aux[i-lo];
+        }
+
+        // recursively sort for each char (excludes sentinel -1)
+        for(int r=0;r<R; r++){
+            sort(a,lo+count[r], lo+count[r+1]-1, d+1);
+        }
 
     }
 }
