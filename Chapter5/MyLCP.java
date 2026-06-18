@@ -20,4 +20,14 @@ public class MyLCP {
         }
         return lrs;
     }
+
+    private static int lcp(String s, String t){
+        int n = Math.min(s.length(), t.length());
+        for(int i=0;i<n;i++){
+            if(s.charAt(i)!=t.charAt(i)){
+                return i; // substring of s (0,i)
+            }
+        }
+        return n;
+    }
 }
