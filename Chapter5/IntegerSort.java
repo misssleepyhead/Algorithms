@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Exercise 3:
  * Given an array of N decimal integers of different lengths,
@@ -47,6 +50,7 @@ public class IntegerSort {
             count[len + 1]++;
         }
 
+
         // transform count to indices
         for (int r = 0; r <= maxLen; r++) {
             count[r + 1] += count[r];
@@ -56,8 +60,11 @@ public class IntegerSort {
         String[] aux = new String[a.length];
         for (String s : a) {
             int len = s.length();
-            aux[count[len]++] = s;
+            int pos = count[len]; // where this length group place next item
+            aux[pos] = s;
+            count[len] ++; // move pointer to next available slot
         }
+        // aux becomes [  9   7   3   45   88   12   123   501   1000]
 
         // copy back
         for (int i = 0; i < a.length; i++) {
@@ -74,7 +81,7 @@ public class IntegerSort {
         for (int d = w - 1; d >= 0; d--) {
             int[] count = new int[R + 1];
             for (int i = lo; i <= hi; i++) {
-                int digit = a[i].charAt(d) - '0';
+                int digit = a[i].charAt(d) - '0'; // convert unicode value to real integer 0..9
                 count[digit + 1]++;
             }
 
