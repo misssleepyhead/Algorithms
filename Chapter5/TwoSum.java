@@ -34,12 +34,12 @@ public class TwoSum {
 
         // start one byte at a time
         for (int d = 0; d < bytes; d++) {
-            // reset count[]
+            // reset count[] every round because every round counts a different byte
             for (int r = 0; r <= R; r++) {
                 count[r] = 0;
             }
 
-            int shift = 8 * d;
+            int shift = 8 * d; // each byte = 8 bits
 
             // frequency count
             for (int i = 0; i < n; i++) {
@@ -67,7 +67,9 @@ public class TwoSum {
 
     }
 
+    // this helper function works like charAt() for integer
     private static int byteAt(long x, int shift) {
+        long transformed = x^Long.MAX_VALUE;
         return (int) ((x >>> shift) & 0xFF);
     }
 
